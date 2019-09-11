@@ -34,6 +34,7 @@ public class CharacterController2D : MonoBehaviour
     /// </summary>
 	int directionParamID;
     int fallParamID;
+	int onGroundParamID;
 
 	void Awake()
 	{
@@ -52,6 +53,7 @@ public class CharacterController2D : MonoBehaviour
         // than passing string into the animator.
 		directionParamID = Animator.StringToHash("Direction");
         fallParamID = Animator.StringToHash("VelocityY");
+		onGroundParamID = Animator.StringToHash("IsOnGround");
 	}
 
 	void FixedUpdate()
@@ -65,13 +67,18 @@ public class CharacterController2D : MonoBehaviour
 		for (int i = 0; i < colliders.Length; i++)
 		{
 			if (colliders[i].gameObject != gameObject)
+			{
 				m_Grounded = true;
 				if(!wasGrounded)
 				{
 					OnLandEvent.Invoke();
 				}
+			}
 		}
 
+		// Say the animator the state of the variable.
+		animator.SetBool(onGroundParamID, m_Grounded);
+		
 		// Say the animator to activate the fall animation.
 		animator.SetFloat(fallParamID, m_Rigidbody2D.velocity.y);
 	}

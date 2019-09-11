@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 	int speedParamID;
     int jumpParamID;
     int carryParamID;
+    int fallParamID;
 
     void Awake()
 	{
@@ -55,8 +56,9 @@ public class PlayerMovement : MonoBehaviour
         // Get the integer hashes of the Animator parameters. This is much more efficient
         // than passing string into the animator.
 		speedParamID = Animator.StringToHash("Speed");
-        jumpParamID = Animator.StringToHash("IsJumping");
+        jumpParamID = Animator.StringToHash("Prevent2Jump");
         carryParamID = Animator.StringToHash("IsCarry");
+        fallParamID = Animator.StringToHash("VelocityY");
 	}
 
     void Update()
@@ -67,28 +69,22 @@ public class PlayerMovement : MonoBehaviour
         // Say the animator to activate the running animation.
         animator.SetFloat(speedParamID, Mathf.Abs(horizontalMove));
 
-        // If press jump button, activate jumping animation.
+        // If press jump button, activate jumping animation and deactivate carry animation if it is playing.
         if (Input.GetButtonDown("Jump"))
         {
             isJump = true;
-            animator.SetBool(jumpParamID, true);
+
+            if(isCarry)
+            {
+                CarryPosition();
+            }
         }
 
-        // If press jump button, enable the collider and activate jumping animation.
+        // If press carry button, call CarryPosition method.
         if (Input.GetButtonDown("Carry"))
         {
-            isCarry = true;
-            controller.EnableCarryCollider(isCarry);
-            animator.SetBool(carryParamID, true);
+            CarryPosition();
         }
-        // If loose jump button, enable the collider and activate jumping animation.
-        else if(Input.GetButtonUp("Carry"))
-        {
-            isCarry = false;
-            controller.EnableCarryCollider(isCarry);
-            animator.SetBool(carryParamID, false);
-        }
-
 
         // With this method the character ignores the collider of the other player to avoid colliding.
         if(playerCollider && otherPlayerCollider)
@@ -100,13 +96,34 @@ public class PlayerMovement : MonoBehaviour
     // Method that deactivate the jumping animation.
     public void OnLanding()
     {
-        animator.SetBool(jumpParamID, false);
+        animator.SetBool(jumpParamID, true);
     }
 
     void FixedUpdate()
     {
         // Call the "Move" function.
         controller.Move(horizontalMove * Time.fixedDeltaTime, isJump);
+
+        // Prevent 2 jump in the air.
+        if(isJump)
+        {
+            animator.SetBool(jumpParamID, false);
+        }
+
         isJump = false;
+
+        // Deactivate carry animation if it is playing.
+        if(isCarry && animator.GetFloat(fallParamID) < -0.01)
+        {
+            CarryPosition();
+        }
+    }
+
+    void CarryPosition()
+    {
+        // Switch the carry, collider and animation state.
+        isCarry = !isCarry;
+        controller.EnableCarryCollider(isCarry);
+        animator.SetBool(carryParamID, isCarry);
     }
 }
