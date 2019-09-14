@@ -5,9 +5,9 @@ using UnityEngine;
 public class ElevatedPlataform : MonoBehaviour
 {
     /// <summary>
-    /// Reference to the Sprite Renderer component.
+    /// Reference to the PressStud script that control the platform.
     /// </summary>
-    [HideInInspector] public bool isUp = false;
+    public PressStud button;
 
     /// <summary>
     /// Reference to the Sprite Renderer component.
@@ -25,11 +25,11 @@ public class ElevatedPlataform : MonoBehaviour
     // Platform rises or falls depending on the status of the controller button
     void Update()
     {
-        if(isUp && transform.position.y < finalPos)
+        if(button.isButtonActivate() && transform.position.y < finalPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.03f, transform.position.z);
         }
-        else if(!isUp && transform.position.y > initialPos)
+        else if(!button.isButtonActivate() && transform.position.y > initialPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.03f, transform.position.z);
         }

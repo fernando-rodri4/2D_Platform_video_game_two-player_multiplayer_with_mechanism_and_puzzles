@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-///The script is based on the one provided by Unity as part of their Standard Assets.
+/// The script is based on the one provided by Unity as part of their Standard Assets.
 /// </summary>
 public class CharacterController2D : MonoBehaviour
 {
@@ -18,11 +18,6 @@ public class CharacterController2D : MonoBehaviour
 	Rigidbody2D m_Rigidbody2D;
 	bool m_FacingRight = true;  				// For determining which way the player is currently facing.
 	Vector3 velocity = Vector3.zero;
-
-	[Header("Events")]
-	[Space]
-
-	public UnityEvent OnLandEvent;				// Allows us to trigger certain functionality when something occurs.
 
 	/// <summary>
     /// Reference to the animator component.
@@ -40,9 +35,6 @@ public class CharacterController2D : MonoBehaviour
 	{
 		// Get reference to the rigidbody2d, animator component and create an UnityEvent.
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
-		if (OnLandEvent == null)
-			OnLandEvent = new UnityEvent();
 
 		animator = GetComponent<Animator>();
 	}
@@ -69,10 +61,6 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				if(!wasGrounded)
-				{
-					OnLandEvent.Invoke();
-				}
 			}
 		}
 

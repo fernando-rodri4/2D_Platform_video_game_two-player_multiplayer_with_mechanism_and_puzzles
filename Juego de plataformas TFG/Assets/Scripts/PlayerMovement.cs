@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,9 +42,18 @@ public class PlayerMovement : MonoBehaviour
     /// Reference to the animator parameters.
     /// </summary>
 	int speedParamID;
-    int jumpParamID;
     int carryParamID;
     int fallParamID;
+
+    /// <summary>
+    /// Locking object to synchronize the function.
+    /// </summary>
+    readonly object lock_ = new object();
+
+    /// <summary>
+    /// Reference to the CameraTransition.
+    /// </summary>
+    public CameraTransition cameraTrans;
 
     void Awake()
 	{
@@ -56,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
         // Get the integer hashes of the Animator parameters. This is much more efficient
         // than passing string into the animator.
 		speedParamID = Animator.StringToHash("Speed");
-        jumpParamID = Animator.StringToHash("Prevent2Jump");
         carryParamID = Animator.StringToHash("IsCarry");
         fallParamID = Animator.StringToHash("VelocityY");
 	}
@@ -64,13 +73,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Calculate the character speed
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if(!cameraTrans.start)
+        {
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        }
+        else
+        {
+             horizontalMove = 0;
+        }
 
         // Say the animator to activate the running animation.
         animator.SetFloat(speedParamID, Mathf.Abs(horizontalMove));
 
         // If press jump button, activate jumping animation and deactivate carry animation if it is playing.
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !cameraTrans.start)
         {
             isJump = true;
 
@@ -81,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // If press carry button, call CarryPosition method.
-        if (Input.GetButtonDown("Carry"))
+        if (Input.GetButtonDown("Carry") && !cameraTrans.start)
         {
             CarryPosition();
         }
@@ -93,22 +109,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Method that deactivate the jumping animation.
-    public void OnLanding()
-    {
-        animator.SetBool(jumpParamID, true);
-    }
-
     void FixedUpdate()
     {
         // Call the "Move" function.
         controller.Move(horizontalMove * Time.fixedDeltaTime, isJump);
-
-        // Prevent 2 jump in the air.
-        if(isJump)
-        {
-            animator.SetBool(jumpParamID, false);
-        }
 
         isJump = false;
 
@@ -125,5 +129,25 @@ public class PlayerMovement : MonoBehaviour
         isCarry = !isCarry;
         controller.EnableCarryCollider(isCarry);
         animator.SetBool(carryParamID, isCarry);
+    }
+
+    IEnumerator OnTriggerStay2D(Collider2D other)
+    {
+        lock(lock_)
+        {
+            if(other.tag == "Warp Enter" && Input.GetButtonDown("Enter"))
+            {
+                cameraTrans.FadeIn();
+
+                yield return new WaitForSeconds(cameraTrans.fadeTime);
+
+                // Transport the character to the exit.
+                other.gameObject.SetActive(false);
+                transform.position = other.transform.GetChild(0).transform.position;
+                cameraTrans.ChangeConfiner();
+
+                cameraTrans.FadeOut();
+            }
+        }
     }
 }

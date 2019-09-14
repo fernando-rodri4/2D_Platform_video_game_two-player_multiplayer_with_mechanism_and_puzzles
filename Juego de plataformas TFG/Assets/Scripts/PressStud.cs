@@ -8,24 +8,21 @@ public class PressStud : MonoBehaviour
     public SpriteRenderer spRen;
 
     /// <summary>
-    /// Reference to the ElevatedPlataform script that button control.
-    /// </summary>
-    public ElevatedPlataform[] plataforms;
-
-    /// <summary>
     /// Reference to the sprites that change.
     /// </summary>
     public Sprite sprite1, sprite2;
+
+    /// <summary>
+    /// Indicates if the button is pressed or not.
+    /// </summary>
+    private bool isActivate = false;
 
     // When something enters the collider the sprite is changed and notify the platform that controls the change.
     void OnTriggerEnter2D(Collider2D col)
     {
         spRen.sprite = sprite2;
 
-        foreach (var plataform in plataforms)
-        {
-            plataform.isUp = true;
-        }
+        isActivate = true;
     }
 
     // When something exits the collider the sprite is changed and notify the platform that controls the change.
@@ -33,9 +30,11 @@ public class PressStud : MonoBehaviour
     {
         spRen.sprite = sprite1;
         
-        foreach (var plataform in plataforms)
-        {
-            plataform.isUp = false;
-        }
+        isActivate = false;
+    }
+
+    public bool isButtonActivate()
+    {
+        return isActivate;
     }
 }

@@ -221,9 +221,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Prevent2Jump
-    m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: VelocityY
     m_EventTreshold: 0.01
@@ -389,9 +386,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Prevent2Jump
-    m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: Speed
     m_EventTreshold: 0.01
@@ -517,12 +511,6 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: VelocityY
     m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: Prevent2Jump
-    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -899,7 +887,7 @@ AnimatorStateMachine:
     m_Position: {x: 1400, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7023467868369641659}
-    m_Position: {x: 1100, y: -40, z: 0}
+    m_Position: {x: 1110, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3718258637363045331}
     m_Position: {x: 1110, y: -120, z: 0}
@@ -926,9 +914,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Prevent2Jump
-    m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: Speed
     m_EventTreshold: 0.01
