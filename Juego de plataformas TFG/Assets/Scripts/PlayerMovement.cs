@@ -9,11 +9,6 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
 
     /// <summary>
-    /// Reference to the collider of both players.
-    /// </summary>
-    public Collider2D playerCollider, otherPlayerCollider;
-
-    /// <summary>
     /// Reference to the animator component.
     /// </summary>
     Animator animator;
@@ -51,9 +46,29 @@ public class PlayerMovement : MonoBehaviour
     readonly object lock_ = new object();
 
     /// <summary>
+    /// Check if the character enters the door collider.
+    /// </summary>
+    GameObject elementEnterDoor = null;
+
+    /// <summary>
+    /// Check if the character enters the box collider.
+    /// </summary>
+    GameObject elementEnterBox = null;
+
+    /// <summary>
+    /// Check if the character enters the box collider.
+    /// </summary>
+    GameObject carriedElement = null;
+
+    /// <summary>
     /// Reference to the CameraTransition.
     /// </summary>
     public CameraTransition cameraTrans;
+
+    /// <summary>
+    /// Reference to the IgnoreCollision2D script.
+    /// </summary>
+    public IgnoreCollision2D ignoreCollision;
 
     void Awake()
 	{
@@ -102,10 +117,9 @@ public class PlayerMovement : MonoBehaviour
             CarryPosition();
         }
 
-        // With this method the character ignores the collider of the other player to avoid colliding.
-        if(playerCollider && otherPlayerCollider)
+        if(elementEnterDoor != null && Input.GetButtonDown("Enter"))
         {
-            Physics2D.IgnoreCollision(playerCollider, otherPlayerCollider);
+            StartCoroutine(TransportPlayer());
         }
     }
 
@@ -125,29 +139,95 @@ public class PlayerMovement : MonoBehaviour
 
     void CarryPosition()
     {
+        if (Input.GetButtonDown("Carry") && elementEnterBox != null && !isCarry)
+        {
+            TakeObject();
+        }
+
         // Switch the carry, collider and animation state.
         isCarry = !isCarry;
         controller.EnableCarryCollider(isCarry);
         animator.SetBool(carryParamID, isCarry);
+
+        if (Input.GetButtonDown("Carry") && carriedElement != null && !isCarry)
+        {
+            DropObject(50.0f);
+        }
+        else if (carriedElement != null && !isCarry)
+        {
+            DropObject(0.0f);
+        }
     }
 
-    IEnumerator OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Warp Enter")
+        {
+            elementEnterDoor = other.gameObject;
+        }
+
+        if(other.gameObject.tag == "Box")
+        {
+            elementEnterBox = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Warp Enter")
+        {
+            elementEnterDoor = null;
+        }
+
+        if(other.gameObject.tag == "Box")
+        {
+            elementEnterBox = null;
+        }
+    }
+
+    IEnumerator TransportPlayer()
     {
         lock(lock_)
         {
-            if(other.tag == "Warp Enter" && Input.GetButtonDown("Enter"))
-            {
                 cameraTrans.FadeIn();
 
                 yield return new WaitForSeconds(cameraTrans.fadeTime);
 
                 // Transport the character to the exit.
-                other.gameObject.SetActive(false);
-                transform.position = other.transform.GetChild(0).transform.position;
+                transform.position = elementEnterDoor.transform.GetChild(0).transform.position;
+                elementEnterDoor.SetActive(false);
+
                 cameraTrans.ChangeConfiner();
 
                 cameraTrans.FadeOut();
-            }
         }
+    }
+
+    void TakeObject()
+    {
+        elementEnterBox.transform.SetParent(this.transform);
+        elementEnterBox.transform.position = transform.GetChild(1).transform.position;
+        elementEnterBox.GetComponent<Rigidbody2D>().simulated = false;
+
+        carriedElement = elementEnterBox;
+    }
+
+    void DropObject(float thrust)
+    {
+        carriedElement.transform.parent = null;
+        
+        Rigidbody2D rb = carriedElement.GetComponent<Rigidbody2D>();
+
+        rb.simulated = true;
+
+        if(controller.GetFacingRight())
+        {
+            rb.AddForce(Vector3.right * thrust, ForceMode2D .Impulse);
+        }
+        else
+        {
+            rb.AddForce(Vector3.left * thrust, ForceMode2D .Impulse);
+        }
+
     }
 }

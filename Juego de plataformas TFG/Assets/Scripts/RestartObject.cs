@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class RestartObject : MonoBehaviour
 {
+    /// <summary>
+    /// Reference the respawn position.
+    /// </summary>
     public GameObject respawn;
-    public string tag = "";
 
+    /// <summary>
+    /// Reference to the tag to collide.
+    /// </summary>
+    public string tag_ = "";
+
+    // Change the other position to the respawn position
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == tag)
+        if(other.tag == tag_)
         {
             other.transform.position = respawn.transform.position;
         }

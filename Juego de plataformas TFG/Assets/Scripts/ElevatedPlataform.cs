@@ -13,7 +13,7 @@ public class ElevatedPlataform : MonoBehaviour
     /// Reference to the Sprite Renderer component.
     /// </summary>
     [SerializeField]
-    float finalPos;
+    float finalPos = 0;
     float initialPos;
 
     void Start()

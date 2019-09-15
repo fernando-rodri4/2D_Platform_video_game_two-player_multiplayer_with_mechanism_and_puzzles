@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Warp Enter
   - Runway
+  - Box
   layers:
   - Default
   - TransparentFX

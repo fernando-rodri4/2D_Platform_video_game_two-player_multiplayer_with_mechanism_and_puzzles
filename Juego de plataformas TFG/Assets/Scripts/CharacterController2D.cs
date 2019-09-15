@@ -10,8 +10,8 @@ public class CharacterController2D : MonoBehaviour
 	[Range(0, .3f)] [SerializeField] float m_MovementSmoothing = .05f;	// How much to smooth out the movement.
 	[SerializeField] bool m_AirControl = false;							// Whether or not a player can steer while jumping.
 	[SerializeField] LayerMask m_WhatIsGround;							// A mask determining what is ground to the character.
-	[SerializeField] Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
-	[SerializeField] Collider2D m_CarryEnableCollider;					// A collider that will be enable when carry something o press the button.
+	[SerializeField] Transform m_GroundCheck = null;							// A position marking where to check if the player is grounded.
+	[SerializeField] Collider2D m_CarryEnableCollider = null;					// A collider that will be enable when carry something o press the button.
 
 	const float k_GroundedRadius = .2f;			// Radius of the overlap circle to determine if grounded.
 	bool m_Grounded;            				// Whether or not the player is grounded.
@@ -126,5 +126,10 @@ public class CharacterController2D : MonoBehaviour
 		{
 			m_CarryEnableCollider.enabled = isEnable;
 		}
+	}
+
+	public bool GetFacingRight()
+	{
+		return m_FacingRight;
 	}
 }
