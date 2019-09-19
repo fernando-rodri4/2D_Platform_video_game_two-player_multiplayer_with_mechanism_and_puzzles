@@ -197,8 +197,6 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = elementEnterDoor.transform.GetChild(0).transform.position;
                 elementEnterDoor.SetActive(false);
 
-                cameraTrans.ChangeConfiner();
-
                 cameraTrans.FadeOut();
         }
     }

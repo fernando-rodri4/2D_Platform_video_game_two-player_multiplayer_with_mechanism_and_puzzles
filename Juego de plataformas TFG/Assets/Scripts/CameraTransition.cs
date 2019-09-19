@@ -86,11 +86,4 @@ public class CameraTransition : MonoBehaviour
     {
         isFadeIn = false;
     }
-
-    // Change confiner of the camera
-    public void ChangeConfiner()
-    {
-        cineConfi.m_BoundingShape2D = polygonCollider;
-        cineConfi.InvalidatePathCache();
-    }
 }
