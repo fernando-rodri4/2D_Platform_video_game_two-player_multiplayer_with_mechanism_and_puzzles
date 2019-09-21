@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class IgnoreCollision2D : MonoBehaviour
 {
@@ -14,6 +12,7 @@ public class IgnoreCollision2D : MonoBehaviour
         if(collider_ == null || otherCollider == null)
         {
             Destroy(this);
+            Debug.LogError("Error with IgnoreCollision2D script component " + this);
         }
     }
 

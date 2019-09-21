@@ -6,12 +6,37 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Reference to CharacterController2D script.
     /// </summary>
-    public CharacterController2D controller;
+    public CharacterController2D controller = null;
+
+    /// <summary>
+    /// Reference to GameManager script.
+    /// </summary>
+    public GameManager manager = null;
+
+    /// <summary>
+    /// Reference to the CameraTransition.
+    /// </summary>
+    public CameraTransition cameraTrans;
 
     /// <summary>
     /// Reference to the animator component.
     /// </summary>
-    Animator animator;
+    Animator animator = null;
+
+    /// <summary>
+    /// Warp GameObject that collides with player.
+    /// </summary>
+    GameObject entranceDoor = null;
+
+    /// <summary>
+    /// Player or box GameObject that collides with player.
+    /// </summary>
+    GameObject elementToCarry = null;
+
+    /// <summary>
+    /// Element that player carry.
+    /// </summary>
+    GameObject carriedElement = null;
 
     /// <summary>
     /// Run speed.
@@ -19,17 +44,17 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
 
     /// <summary>
-    /// Character speed.
+    /// Player speed.
     /// </summary>
     float horizontalMove = 0f;
 
     /// <summary>
-    /// Check if the character is jumping or not.
+    /// Check if the player is jumping or not.
     /// </summary>
     bool isJump = false;
 
     /// <summary>
-    /// Check if the character is in a position to carry something or not.
+    /// Check if the player is in a position to carry something or not.
     /// </summary>
     bool isCarry = false;
 
@@ -41,34 +66,9 @@ public class PlayerMovement : MonoBehaviour
     int fallParamID;
 
     /// <summary>
-    /// Locking object to synchronize the function.
+    /// Mass of the item being carried.
     /// </summary>
-    readonly object lock_ = new object();
-
-    /// <summary>
-    /// Check if the character enters the door collider.
-    /// </summary>
-    GameObject elementEnterDoor = null;
-
-    /// <summary>
-    /// Check if the character enters the box collider.
-    /// </summary>
-    GameObject elementEnterBox = null;
-
-    /// <summary>
-    /// Check if the character enters the box collider.
-    /// </summary>
-    GameObject carriedElement = null;
-
-    /// <summary>
-    /// Reference to the CameraTransition.
-    /// </summary>
-    public CameraTransition cameraTrans;
-
-    /// <summary>
-    /// Reference to the IgnoreCollision2D script.
-    /// </summary>
-    public IgnoreCollision2D ignoreCollision;
+    public float carryElementMass;
 
     void Awake()
 	{
@@ -78,6 +78,12 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start()
 	{
+        if(controller == null || manager == null || cameraTrans == null || animator == null)
+        {
+            Destroy(this);
+            Debug.LogError("Error with PlayerMovement script components " + this);
+        }
+
         // Get the integer hashes of the Animator parameters. This is much more efficient
         // than passing string into the animator.
 		speedParamID = Animator.StringToHash("Speed");
@@ -87,21 +93,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Calculate the character speed
-        if(!cameraTrans.start)
-        {
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        }
-        else
-        {
-             horizontalMove = 0;
-        }
-
-        // Say the animator to activate the running animation.
-        animator.SetFloat(speedParamID, Mathf.Abs(horizontalMove));
+        MovePlayer();
 
         // If press jump button, activate jumping animation and deactivate carry animation if it is playing.
-        if (Input.GetButtonDown("Jump") && !cameraTrans.start)
+        if (Input.GetButtonDown("Jump") && !cameraTrans.isStart())
         {
             isJump = true;
 
@@ -112,12 +107,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // If press carry button, call CarryPosition method.
-        if (Input.GetButtonDown("Carry") && !cameraTrans.start)
+        if (Input.GetButtonDown("Carry") && !cameraTrans.isStart() && horizontalMove == 0 && animator.GetFloat(fallParamID) == 0)
         {
             CarryPosition();
         }
 
-        if(elementEnterDoor != null && Input.GetButtonDown("Enter"))
+        if(entranceDoor != null && Input.GetButtonDown("Enter"))
         {
             StartCoroutine(TransportPlayer());
         }
@@ -130,16 +125,64 @@ public class PlayerMovement : MonoBehaviour
 
         isJump = false;
 
-        // Deactivate carry animation if it is playing.
+        // Deactivate carry animation if it is falling.
         if(isCarry && animator.GetFloat(fallParamID) < -0.01)
         {
             CarryPosition();
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Warp Enter")
+        {
+            entranceDoor = other.gameObject;
+        }
+
+        if(other.gameObject.tag == "Box" || other.gameObject.tag == "Player")
+        {
+            elementToCarry = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Warp Enter")
+        {
+            entranceDoor = null;
+        }
+
+        if(other.gameObject.tag == "Box" || other.gameObject.tag == "Player")
+        {
+            elementToCarry = null;
+        }
+    }
+
+    /// <summary>
+    /// Calculate and perform player movement.
+    /// </summary>
+    void MovePlayer()
+    {
+        // Calculate the player speed
+        if(!cameraTrans.isStart())
+        {
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        }
+        else
+        {
+             horizontalMove = 0;
+        }
+
+        // Say the animator to activate the running animation.
+        animator.SetFloat(speedParamID, Mathf.Abs(horizontalMove));
+    }
+
+    /// <summary>
+    /// Perform the actions to pick up or drop an object and fit the animation to carry.
+    /// </summary>
     void CarryPosition()
     {
-        if (Input.GetButtonDown("Carry") && elementEnterBox != null && !isCarry)
+        if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
         {
             TakeObject();
         }
@@ -151,63 +194,48 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Carry") && carriedElement != null && !isCarry)
         {
-            DropObject(50.0f);
+            DropObject(5f);
         }
         else if (carriedElement != null && !isCarry)
         {
-            DropObject(0.0f);
+            DropObject(0f);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "Warp Enter")
-        {
-            elementEnterDoor = other.gameObject;
-        }
-
-        if(other.gameObject.tag == "Box")
-        {
-            elementEnterBox = other.gameObject;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.tag == "Warp Enter")
-        {
-            elementEnterDoor = null;
-        }
-
-        if(other.gameObject.tag == "Box")
-        {
-            elementEnterBox = null;
-        }
-    }
-
+    /// <summary>
+    /// Transport the player from one point to another with a camera animation.
+    /// </summary>
     IEnumerator TransportPlayer()
     {
-        lock(lock_)
+        lock(manager.lock_)
         {
+            if(entranceDoor != null)
+            {
                 cameraTrans.FadeIn();
 
-                yield return new WaitForSeconds(cameraTrans.fadeTime);
+                yield return new WaitForSeconds(cameraTrans.getFadeTime());
 
-                // Transport the character to the exit.
-                transform.position = elementEnterDoor.transform.GetChild(0).transform.position;
-                elementEnterDoor.SetActive(false);
+                // Transport the player to the exit.
+                transform.position = entranceDoor.transform.GetChild(0).transform.position;
+                entranceDoor.SetActive(false);
+                entranceDoor = null;
 
                 cameraTrans.FadeOut();
+            }
         }
     }
 
     void TakeObject()
     {
-        elementEnterBox.transform.SetParent(this.transform);
-        elementEnterBox.transform.position = transform.GetChild(1).transform.position;
-        elementEnterBox.GetComponent<Rigidbody2D>().simulated = false;
+        elementToCarry.transform.SetParent(this.transform);
+        elementToCarry.transform.position = transform.GetChild(1).transform.position;
 
-        carriedElement = elementEnterBox;
+        Rigidbody2D rb = elementToCarry.GetComponent<Rigidbody2D>();
+        rb.simulated = false;
+        carryElementMass = rb.mass;
+        rb.mass = 0;
+
+        carriedElement = elementToCarry;
     }
 
     void DropObject(float thrust)
@@ -215,17 +243,35 @@ public class PlayerMovement : MonoBehaviour
         carriedElement.transform.parent = null;
         
         Rigidbody2D rb = carriedElement.GetComponent<Rigidbody2D>();
-
         rb.simulated = true;
+        rb.mass = carryElementMass;
+
+        carriedElement = null;
 
         if(controller.GetFacingRight())
         {
-            rb.AddForce(Vector3.right * thrust, ForceMode2D .Impulse);
+            rb.AddForce(Vector3.right * (thrust * rb.mass), ForceMode2D .Impulse);
         }
         else
         {
-            rb.AddForce(Vector3.left * thrust, ForceMode2D .Impulse);
+            rb.AddForce(Vector3.left * (thrust * rb.mass), ForceMode2D .Impulse);
         }
+    }
 
+    /// <summary>
+    /// When the object leaves the player's collider, its rigidbody is restored.
+    /// </summary>
+    public void ResetObject()
+    {
+        if(carriedElement != null)
+        {
+            carriedElement.transform.parent = null;
+            
+            Rigidbody2D rb = carriedElement.GetComponent<Rigidbody2D>();
+            rb.simulated = true;
+            rb.mass = carryElementMass;
+
+            carriedElement = null;
+        }
     }
 }

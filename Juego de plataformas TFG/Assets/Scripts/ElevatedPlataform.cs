@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ElevatedPlataform : MonoBehaviour
 {
@@ -18,11 +16,18 @@ public class ElevatedPlataform : MonoBehaviour
 
     void Start()
     {
-        // Get the initial position
+        if (button == null)
+        {
+            Destroy(this);
+            Debug.LogError("Error with ElevatedPlatform script component " + this);
+        }
+        // Get the initial position.
         initialPos = transform.position.y;
     }
 
-    // Platform rises or falls depending on the status of the controller button
+    /// <summary>
+    // Platform rises or falls depending on the status of the controller button.
+    /// </summary>
     void Update()
     {
         if(button.isButtonActivate() && transform.position.y < finalPos)

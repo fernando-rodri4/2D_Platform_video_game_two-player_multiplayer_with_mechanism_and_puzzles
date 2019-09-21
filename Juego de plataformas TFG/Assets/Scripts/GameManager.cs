@@ -1,9 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// Locking object to synchronize the function.
+    /// </summary>
+    public readonly object lock_ = new object();
+
     // Start is called before the first frame update
     void Start()
     {
