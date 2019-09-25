@@ -32,11 +32,19 @@ public class ElevatedPlataform : MonoBehaviour
     {
         if(button.isButtonActivate() && transform.position.y < finalPos)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.03f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.03125f, transform.position.z);
+        }
+        else if(button.isButtonActivate() && transform.position.y > finalPos)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.03125f, transform.position.z);
         }
         else if(!button.isButtonActivate() && transform.position.y > initialPos)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.03f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.03125f, transform.position.z);
+        }
+        else if(!button.isButtonActivate() && transform.position.y < initialPos)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.03125f, transform.position.z);
         }
     }
 }
