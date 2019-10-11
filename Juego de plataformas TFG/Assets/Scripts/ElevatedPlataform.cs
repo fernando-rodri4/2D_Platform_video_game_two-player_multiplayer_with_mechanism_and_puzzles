@@ -5,13 +5,12 @@ public class ElevatedPlataform : MonoBehaviour
     /// <summary>
     /// Reference to the PressStud script that control the platform.
     /// </summary>
-    public PressStud button;
+    [SerializeField] PressStud button = null;
 
     /// <summary>
     /// Reference to the Sprite Renderer component.
     /// </summary>
-    [SerializeField]
-    float finalPos = 0;
+    [SerializeField] float finalPos = 0;
     float initialPos;
 
     void Start()
@@ -28,21 +27,23 @@ public class ElevatedPlataform : MonoBehaviour
     /// <summary>
     // Platform rises or falls depending on the status of the controller button.
     /// </summary>
-    void Update()
+    void FixedUpdate()
     {
-        if(button.isButtonActivate() && transform.position.y < finalPos)
+        bool isButtonActivate = button.IsButtonActivate();
+
+        if (isButtonActivate && transform.position.y < finalPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.03125f, transform.position.z);
         }
-        else if(button.isButtonActivate() && transform.position.y > finalPos)
+        else if(isButtonActivate && transform.position.y > finalPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.03125f, transform.position.z);
         }
-        else if(!button.isButtonActivate() && transform.position.y > initialPos)
+        else if(!isButtonActivate && transform.position.y > initialPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.03125f, transform.position.z);
         }
-        else if(!button.isButtonActivate() && transform.position.y < initialPos)
+        else if(!isButtonActivate && transform.position.y < initialPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.03125f, transform.position.z);
         }

@@ -9,12 +9,12 @@ public class ParallaxLayer : MonoBehaviour
     /// <summary>
     /// Movement of the layer is scaled by this value.
     /// </summary>
-    public Vector3 movementScale = Vector3.one;
+    [SerializeField] Vector3 movementScale = Vector3.one;
 
     /// <summary>
     /// Reference to main camera.
     /// </summary>
-    Transform cam;
+    Transform cam = null;
 
     void Awake()
     {

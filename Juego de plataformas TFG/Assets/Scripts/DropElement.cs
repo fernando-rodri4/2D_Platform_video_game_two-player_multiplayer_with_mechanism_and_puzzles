@@ -5,7 +5,12 @@ public class DropElement : MonoBehaviour
     /// <summary>
     /// Reference to the PlayerMovement script.
     /// </summary>
-    public PlayerMovement plrMove;
+    PlayerMovement plrMove = null;
+
+    void Awake()
+    {
+        plrMove = GetComponentInParent<PlayerMovement>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +29,6 @@ public class DropElement : MonoBehaviour
     /// <param name="other">The Collision2D data associated with this collision.</param>
     void OnCollisionExit2D(Collision2D other)
     {
-        plrMove.ResetObject();
+        plrMove.ResetRBObject();
     }
 }

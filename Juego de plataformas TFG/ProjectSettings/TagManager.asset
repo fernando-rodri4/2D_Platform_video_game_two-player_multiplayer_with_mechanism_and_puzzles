@@ -46,6 +46,9 @@ TagManager:
   - name: Platforms
     uniqueID: 2513392417
     locked: 0
+  - name: Thief
+    uniqueID: 2023588891
+    locked: 0
   - name: Player
     uniqueID: 1014593393
     locked: 0

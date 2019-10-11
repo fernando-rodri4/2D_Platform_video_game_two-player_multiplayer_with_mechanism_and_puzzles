@@ -5,18 +5,25 @@ public class PressStud : MonoBehaviour
     /// <summary>
     /// Reference to the Sprite Renderer component.
     /// </summary>
-    public SpriteRenderer spRen;
+    SpriteRenderer spRen;
 
     /// <summary>
     /// Reference to the sprites that change.
     /// </summary>
-    public Sprite sprite1, sprite2;
+    [SerializeField] Sprite spriteUp = null, spriteDown = null;
 
     /// <summary>
     /// Indicates if the button is pressed or not.
     /// </summary>
-    private bool isActivate = false;
-    private int isEnter = 0;
+    bool isActivate = false;
+    int isEnter = 0;
+
+
+    void Awake()
+    {
+        // Get reference to the SpriteRenderer.
+        spRen = GetComponent<SpriteRenderer>();
+    }
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -24,7 +31,7 @@ public class PressStud : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if(spRen == null || sprite1 == null || sprite2 == null)
+        if(spRen == null || spriteUp == null || spriteDown == null)
         {
             Destroy(this);
             Debug.LogError("Error with PressStud script components " + this);
@@ -39,7 +46,7 @@ public class PressStud : MonoBehaviour
     {
         if(!isActivate)
         {
-            spRen.sprite = sprite2;
+            spRen.sprite = spriteDown;
 
             isActivate = true;
         }
@@ -57,7 +64,7 @@ public class PressStud : MonoBehaviour
     {
         if(isEnter == 0)
         {
-            spRen.sprite = sprite1;
+            spRen.sprite = spriteUp;
             
             isActivate = false;
         }
@@ -67,7 +74,7 @@ public class PressStud : MonoBehaviour
         }
     }
 
-    public bool isButtonActivate()
+    public bool IsButtonActivate()
     {
         return isActivate;
     }

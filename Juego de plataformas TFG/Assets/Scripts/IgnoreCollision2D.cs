@@ -5,7 +5,7 @@ public class IgnoreCollision2D : MonoBehaviour
     /// <summary>
     /// Reference to the collider of both players.
     /// </summary>
-    public Collider2D collider_, otherCollider;
+    [SerializeField] Collider2D collider_ = null, otherCollider = null;
 
     void Start()
     {

@@ -11,14 +11,13 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class LightFlicker : MonoBehaviour
 {
-    public float amount;	//The amount of light flicker
-    public float speed;		//The speed of the flicker
-    
     Light2D localLight;		//Reference to the light component
-    float intensity;		//The collective intensity of the light component
-	float offset;			//An offset so all flickers are different
+    float intensity;        //The collective intensity of the light component
+    float offset;			//An offset so all flickers are different
 
-
+    [SerializeField] float amount = 0f;	//The amount of light flicker
+    [SerializeField] float speed = 0f;		//The speed of the flicker
+    
 	void Awake()
 	{
 		//If this is a mobile platform, remove this script
