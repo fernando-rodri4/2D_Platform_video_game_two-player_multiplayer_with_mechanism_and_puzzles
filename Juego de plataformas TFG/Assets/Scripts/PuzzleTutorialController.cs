@@ -31,11 +31,6 @@ public class PuzzleTutorialController : MonoBehaviour
     /// <summary>
     /// Camera that show the puzzle
     /// </summary>
-    [SerializeField] GameObject camera_ = null;
-
-    /// <summary>
-    /// Camera that show the puzzle
-    /// </summary>
     [SerializeField] PlayerMovement[] players = null;
 
     bool elementEnter = false;
@@ -60,7 +55,7 @@ public class PuzzleTutorialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (picturesBackground == null || pictures == null || activeLadder == null || camera_ == null || players == null)
+        if (picturesBackground == null || pictures == null || activeLadder == null || players == null)
         {
             Destroy(this);
             Debug.LogError("Error with PuzzleTutorialController script component " + this);
@@ -72,7 +67,7 @@ public class PuzzleTutorialController : MonoBehaviour
     {
         if (elementEnter && Input.GetKeyDown(KeyCode.E))
         {
-            camera_.SetActive(true);
+            ActivateCamera.Instance.ActivateCamera_(0);
 
             foreach (var item in players)
             {
@@ -93,7 +88,7 @@ public class PuzzleTutorialController : MonoBehaviour
             picturesBackground[6].rotation = pictures[6].rotation;
             picturesBackground[7].rotation = pictures[7].rotation;
 
-            camera_.SetActive(false);
+            ActivateCamera.Instance.DeactivateCamera(0);
 
             foreach (var item in players)
             {
@@ -129,7 +124,7 @@ public class PuzzleTutorialController : MonoBehaviour
     /// <returns></returns>
     IEnumerator ActiveFinalLadder()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         activeLadder.SetActive(true);
     }
 }
