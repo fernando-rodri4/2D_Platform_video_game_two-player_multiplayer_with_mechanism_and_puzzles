@@ -39,9 +39,13 @@ public class WarpTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && player != null)
+        if (Input.GetButtonDown("Enter") && player != null)
         {
+            player.GetComponent<PlayerMovement>().canMove = false;
+
             StartCoroutine(TransportPlayer());
+
+            player.GetComponent<PlayerMovement>().canMove = true;
         }
     }
 

@@ -14,7 +14,7 @@ public class ActivateCamera : MonoBehaviour
     /// </summary>
     public static ActivateCamera Instance = null;
 
-    [SerializeField] GameObject[] cameras;
+    [SerializeField] GameObject[] cameras = null;
 
     void Awake()
     {

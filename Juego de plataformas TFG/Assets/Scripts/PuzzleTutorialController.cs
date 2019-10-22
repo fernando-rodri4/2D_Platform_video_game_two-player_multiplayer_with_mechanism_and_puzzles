@@ -1,6 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class PuzzleTutorialController : MonoBehaviour
 {
@@ -29,13 +29,15 @@ public class PuzzleTutorialController : MonoBehaviour
     [SerializeField] GameObject activeLadder = null;
 
     /// <summary>
-    /// Camera that show the puzzle
+    /// The layer the player game object is on
     /// </summary>
-    [SerializeField] PlayerMovement[] players = null;
+    protected int playerLayer;
 
-    bool elementEnter = false;
+    List<GameObject> players;
 
     bool isCorrect = false;
+
+    int activeForPlayer1 = 0, activeForPlayer2 = 1;
 
     void Awake()
     {
@@ -55,58 +57,67 @@ public class PuzzleTutorialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (picturesBackground == null || pictures == null || activeLadder == null || players == null)
+        Debug.Log("cambiar ontrigger");
+
+
+        if (picturesBackground == null || pictures == null || activeLadder == null)
         {
             Destroy(this);
             Debug.LogError("Error with PuzzleTutorialController script component " + this);
+        }
+
+        //Get the integer representation of the "Player" layer
+        playerLayer = LayerMask.NameToLayer("Player");
+
+        players = new List<GameObject>();
+
+
+        Debug.Log("cambiar");
+        if (true)//eres jugador 1 cambiar
+        {
+            pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            pictures[activeForPlayer2].localScale = new Vector3(1, 1, 1);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (elementEnter && Input.GetKeyDown(KeyCode.E))
+        NextPicture();
+
+        Rotate();
+
+        if (players.Count == 2)
         {
             ActivateCamera.Instance.ActivateCamera_(0);
 
-            foreach (var item in players)
+            foreach (var player in players)
             {
-                item.canMove = false;
+                player.GetComponent<PlayerMovement>().canMove = false;
             }
         }
 
         if (pictures[0].rotation.z == 0 && pictures[1].rotation.z == 0 && pictures[2].rotation.z == 0 && pictures[3].rotation.z == 0 &&
             pictures[4].rotation.z == 0 && pictures[5].rotation.z == 0 && pictures[6].rotation.z == 0 && pictures[7].rotation.z == 0)
         {
-            isCorrect = true;
-            picturesBackground[0].rotation = pictures[0].rotation;
-            picturesBackground[1].rotation = pictures[1].rotation;
-            picturesBackground[2].rotation = pictures[2].rotation;
-            picturesBackground[3].rotation = pictures[3].rotation;
-            picturesBackground[4].rotation = pictures[4].rotation;
-            picturesBackground[5].rotation = pictures[5].rotation;
-            picturesBackground[6].rotation = pictures[6].rotation;
-            picturesBackground[7].rotation = pictures[7].rotation;
-
-            ActivateCamera.Instance.DeactivateCamera(0);
-
-            foreach (var item in players)
-            {
-                item.canMove = true;
-            }
-
-            StartCoroutine(ActiveFinalLadder());
+            StartCoroutine(CompletePuzzle());
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        elementEnter = true;
+        if (collision.gameObject.layer == playerLayer /*&& !players.Contains(collision.gameObject) && Input.GetButtonDown("Enter")*/)
+        {
+            players.Add(collision.gameObject);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        elementEnter = false;
+        players.Remove(collision.gameObject);
     }
 
     /// <summary>
@@ -119,6 +130,76 @@ public class PuzzleTutorialController : MonoBehaviour
     }
 
     /// <summary>
+    /// Rotate picture left or right when player press the correct button
+    /// </summary>
+    void Rotate()
+    {
+        if (Input.GetButtonDown("RotateRight") /*&& eres el jugador 1*/)
+        {
+            pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateRight();
+        }
+        else if (Input.GetButtonDown("RotateRight") /*&&eres el jugador 2*/)
+        {
+            pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateRight();
+        }
+
+        if (Input.GetButtonDown("RotateLeft") /*&& eres el jugador 1*/)
+        {
+            pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateLeft();
+        }
+        else if (Input.GetButtonDown("RotateLeft") /*&&eres el jugador 2*/)
+        {
+            pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateLeft();
+        }
+    }
+
+    /// <summary>
+    /// Select the next picture
+    /// </summary>
+    void NextPicture()
+    {
+        Debug.Log("cambiar");
+        if (Input.GetButtonDown("Enter") /* && eres el jugador 1*/)
+        {
+            pictures[activeForPlayer1].localScale = new Vector3(0.96f, 0.96f, 1);
+
+            if (activeForPlayer1 == 0 || activeForPlayer1 == 5)
+            {
+                activeForPlayer1 = (activeForPlayer1 + 2) % 8;
+            }
+            else if (activeForPlayer1 == 7)
+            {
+                activeForPlayer1 = (activeForPlayer1 + 1) % 8;
+            }
+            else
+            {
+                activeForPlayer1 = (activeForPlayer1 + 3) % 8;
+            }
+
+            pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
+        }
+        else if (Input.GetButtonDown("Enter") /* && eres el jugador 2*/)
+        {
+            pictures[activeForPlayer2].localScale = new Vector3(0.96f, 0.96f, 1);
+
+            if (activeForPlayer2 == 1 || activeForPlayer2 == 4)
+            {
+                activeForPlayer2 = (activeForPlayer2 + 2) % 8;
+            }
+            else if (activeForPlayer2 == 3)
+            {
+                activeForPlayer2 = (activeForPlayer2 + 1) % 8;
+            }
+            else
+            {
+                activeForPlayer2 = (activeForPlayer2 + 3) % 8;
+            }
+
+            pictures[activeForPlayer2].localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+    /// <summary>
     /// Active final ladder
     /// </summary>
     /// <returns></returns>
@@ -126,5 +207,34 @@ public class PuzzleTutorialController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         activeLadder.SetActive(true);
+    }
+
+    IEnumerator CompletePuzzle()
+    {
+        foreach (var picture in pictures)
+        {
+            picture.localScale = new Vector3(1, 1, 1);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        isCorrect = true;
+
+        foreach (var picture in picturesBackground)
+        {
+            picture.localScale = new Vector3(1, 1, 1);
+            picture.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        ActivateCamera.Instance.DeactivateCamera(0);
+
+        foreach (var player in players)
+        {
+            player.GetComponent<PlayerMovement>().canMove = true;
+        }
+
+        players.Clear();
+
+        StartCoroutine(ActiveFinalLadder());
     }
 }
