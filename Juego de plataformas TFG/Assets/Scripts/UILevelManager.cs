@@ -96,7 +96,7 @@ public class UILevelManager : MonoBehaviour
     /// <param name="color1">Original color</param>
     /// <param name="color2">Second color</param>
     /// <returns></returns>
-    private IEnumerator FlickeringText(TextMeshProUGUI text, Color color1, Color color2)
+    IEnumerator FlickeringText(TextMeshProUGUI text, Color color1, Color color2)
     {
         float time = 0;
         float waitSecond = 0.15f;

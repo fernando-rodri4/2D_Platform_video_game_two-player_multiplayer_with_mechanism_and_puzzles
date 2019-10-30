@@ -8,8 +8,7 @@ public class PuzzleTutorialController : MonoBehaviour
 
     /// <summary>
     /// This class holds a static reference to itself to ensure that there will only be
-    /// one in existence. This is often referred to as a "singleton" design pattern. Other
-    /// scripts access this one through this instance.
+    /// one in existence. This is often referred to as a "singleton" design pattern.
     /// </summary>
     public static PuzzleTutorialController Instance = null;
 
@@ -211,6 +210,8 @@ public class PuzzleTutorialController : MonoBehaviour
 
     IEnumerator CompletePuzzle()
     {
+        yield return new WaitForSeconds(0.5f);
+
         foreach (var picture in pictures)
         {
             picture.localScale = new Vector3(1, 1, 1);

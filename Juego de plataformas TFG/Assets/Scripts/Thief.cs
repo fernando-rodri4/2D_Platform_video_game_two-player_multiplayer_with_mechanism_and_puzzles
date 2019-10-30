@@ -48,8 +48,8 @@ public class Thief : MonoBehaviour
         //at this location and rotation
         Instantiate(smokeParticles, transform.position, transform.rotation);
 
-        /*//Tell audio manager to play orb collection audio
-        AudioManager.PlayOrbCollectionAudio();*/
+        //Tell audio manager to play orb collection audio
+        AudioLevelManager.Instance.PlayThiefCollectionAudio();
 
         //Tell the game manager that this thief was collected
         LevelManager.Instance.PlayerCaptureThief(this);

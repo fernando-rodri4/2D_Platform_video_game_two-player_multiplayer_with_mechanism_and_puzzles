@@ -26,16 +26,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI displayText = null;
 
     /// <summary>
-    /// Element that plays audios
-    /// </summary>
-    [SerializeField] AudioSource audioSource;
-
-    /// <summary>
-    /// AudioClip that plays audio when letter is write
-    /// </summary>
-    [SerializeField] AudioClip typeSentenceAudio = null;
-
-    /// <summary>
     /// Player that enters in the collider
     /// </summary>
     GameObject playerEnter;
@@ -63,7 +53,6 @@ public class DialogueManager : MonoBehaviour
     protected void Start()
     {
         sentences = new Queue<string>();
-        audioSource = GetComponent<AudioSource>();
 
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
@@ -160,7 +149,7 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < sentence.ToCharArray().Length && displayText.text != activeSentence; i++)
         {
             displayText.text += sentence.ToCharArray()[i];
-            //audioSource.PlayOneShot(typeSentenceAudio);
+            AudioLevelManager.Instance.PlayLetterAudio();
             yield return new WaitForSeconds(typingSpeed);
         }
 

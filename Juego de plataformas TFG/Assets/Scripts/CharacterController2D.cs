@@ -11,6 +11,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] LayerMask m_WhatIsGround;							// A mask determining what is ground to the character.
 	[SerializeField] Transform m_GroundCheck = null;					// A position marking where to check if the player is grounded.
 	[SerializeField] Collider2D m_CarryEnableCollider = null;			// A collider that will be enable when carry something o press the button.
+    [SerializeField] bool isSister = false;
 
 	const float k_GroundedRadius = .2f;			// Radius of the overlap circle to determine if grounded.
 	bool m_Grounded;            				// Whether or not the player is grounded.
@@ -108,6 +109,7 @@ public class CharacterController2D : MonoBehaviour
 			// add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            AudioLevelManager.Instance.PlayJumpAudio(isSister);
 		}
 	}
 
@@ -140,4 +142,12 @@ public class CharacterController2D : MonoBehaviour
 	{
 		return m_FacingRight;
 	}
+
+    //This method is called from events in the animation itself. This keeps the footstep
+    //sounds in sync with the visuals
+    public void StepAudio()
+    {
+        //Tell the Audio Manager to play a footstep sound
+        AudioLevelManager.Instance.PlayFootstepAudio(isSister);
+    }
 }
