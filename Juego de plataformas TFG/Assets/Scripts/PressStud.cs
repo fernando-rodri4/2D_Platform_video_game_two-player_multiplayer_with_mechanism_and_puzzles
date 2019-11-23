@@ -16,8 +16,11 @@ public class PressStud : MonoBehaviour
     /// Indicates if the button is pressed or not.
     /// </summary>
     bool isActivate = false;
-    int isEnter = 0;
 
+    /// <summary>
+    /// How many elements collide with the button, minus 1.
+    /// </summary>
+    int isEnter = 0;
 
     void Awake()
     {
@@ -33,8 +36,9 @@ public class PressStud : MonoBehaviour
     {
         if(spRen == null || spriteUp == null || spriteDown == null)
         {
-            Destroy(this);
             Debug.LogError("Error with PressStud script components " + this);
+            Destroy(this);
+            return;
         }
     }
 

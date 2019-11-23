@@ -37,6 +37,9 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     [SerializeField] float typingSpeed = 0;
 
+    /// <summary>
+    /// Current sensence it's being written
+    /// </summary>
     protected string activeSentence;
 
     /// <summary>
@@ -45,9 +48,10 @@ public class DialogueManager : MonoBehaviour
     protected int playerLayer;
 
     protected bool isDialogueStart = false;
+    
+    Coroutine coroutine = null;
 
     public Dialogue dialogue;
-
 
     // Start is called before the first frame update
     protected void Start()
@@ -59,18 +63,22 @@ public class DialogueManager : MonoBehaviour
 
         displayText.text = "";
 
-        Debug.Log("Descomentar");
-
-        if (dialoguePanel == null || button == null || displayText == null /*|| typeSentenceAudio == null*/)
+        if (dialoguePanel == null || button == null || displayText == null)
         {
-            Destroy(this);
             Debug.LogError("Error with DialogueManager script component " + this);
+            Destroy(this);
+            return;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerEnter == null)
+        {
+            return;
+        }
+
         if (playerEnter != null && Input.GetButtonDown("Enter") && isDialogueStart)
         {
             DisplayNextSentence();
@@ -104,7 +112,6 @@ public class DialogueManager : MonoBehaviour
 
     protected void StartDialogue()
     {
-
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)
@@ -127,14 +134,22 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        DisplayNextSentenceFuncionality();
+    }
+
+    protected void DisplayNextSentenceFuncionality()
+    {
         if (displayText.text == activeSentence || displayText.text == "")
         {
             button.SetActive(false);
 
             activeSentence = sentences.Dequeue();
 
-            StopAllCoroutines();
-            StartCoroutine(TypeTheSentence(activeSentence));
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = StartCoroutine(TypeTheSentence(activeSentence));
         }
         else
         {
@@ -142,7 +157,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    protected IEnumerator TypeTheSentence(string sentence)
+    IEnumerator TypeTheSentence(string sentence)
     {
         displayText.text = "";
 

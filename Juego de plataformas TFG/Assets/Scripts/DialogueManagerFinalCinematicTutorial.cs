@@ -33,8 +33,9 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
 
         if (image == null || text == null || gameTitle == null || images[0] == null || images[1] == null )
         {
-            Destroy(this);
             Debug.LogError("Error with DialogueManagerFinalCinematicTutorial script component " + this);
+            Destroy(this);
+            return;
         }
 
         players = new List<GameObject>();
@@ -44,6 +45,11 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
     // Update is called once per frame
     void Update()
     {
+        if (players.Count == 0)
+        {
+            return;
+        }
+
         if (players.Count == 2 && Input.GetButtonDown("Enter") && isDialogueStart)
         {
             DisplayNextSentence();
@@ -87,28 +93,15 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
         if (sentences.Count <= 0 && displayText.text == activeSentence)
         {
             dialoguePanel.SetActive(false);
-            //isDialogueStart = false;
 
-            ActivateCamera.Instance.ActivateCamera_(1);
+            ActivateCamera.Instance.EnableCamera(1);
 
             StartCoroutine(AppearTitle());
 
             return;
         }
 
-        if (displayText.text == activeSentence || displayText.text == "")
-        {
-            button.SetActive(false);
-
-            activeSentence = sentences.Dequeue();
-
-            StopAllCoroutines();
-            StartCoroutine(TypeTheSentence(activeSentence));
-        }
-        else
-        {
-            displayText.text = activeSentence;
-        }
+        DisplayNextSentenceFuncionality();
     }
 
     IEnumerator AppearTitle()

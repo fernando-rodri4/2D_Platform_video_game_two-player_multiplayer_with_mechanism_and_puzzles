@@ -7,9 +7,6 @@ public class ElevatedPlataform : MonoBehaviour
     /// </summary>
     [SerializeField] PressStud button = null;
 
-    /// <summary>
-    /// Reference to the Sprite Renderer component.
-    /// </summary>
     [SerializeField] float finalPos = 0;
     float initialPos;
 
@@ -17,9 +14,11 @@ public class ElevatedPlataform : MonoBehaviour
     {
         if (button == null)
         {
-            Destroy(this);
             Debug.LogError("Error with ElevatedPlatform script component " + this);
+            Destroy(this);
+            return;
         }
+
         // Get the initial position.
         initialPos = transform.position.y;
     }
@@ -30,6 +29,11 @@ public class ElevatedPlataform : MonoBehaviour
     void FixedUpdate()
     {
         bool isButtonActivate = button.IsButtonActivate();
+
+        if(!isButtonActivate && transform.position.y == initialPos)
+        {
+            return;
+        }
 
         if (isButtonActivate && transform.position.y < finalPos)
         {

@@ -37,10 +37,10 @@ public sealed class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //If a Game Manager exists and this isn't it...
+        //If a LevelManager exists and this isn't it...
         if (Instance != null && Instance != this)
         {
-            //...destroy this and exit. There can only be one Game Manager
+            //...destroy this and exit. There can only be one LevelManager
             Destroy(gameObject);
             return;
         }
@@ -69,7 +69,7 @@ public sealed class LevelManager : MonoBehaviour
     /// <param name="thief">Thief who is going to register at the level</param>
     public void RegisterThief(Thief thief)
     {
-        //If there is no current Game Manager, exit
+        //If there is no current LevelManager, exit
         if (Instance == null)
             return;
 

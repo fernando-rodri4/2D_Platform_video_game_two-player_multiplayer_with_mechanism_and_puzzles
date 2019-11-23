@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Thief : MonoBehaviour
 {
@@ -25,6 +23,7 @@ public class Thief : MonoBehaviour
         {
             Destroy(this);
             Debug.LogError("Error with Thief script components " + this);
+            return;
         }
 
         //Get the integer representation of the "Player" layer

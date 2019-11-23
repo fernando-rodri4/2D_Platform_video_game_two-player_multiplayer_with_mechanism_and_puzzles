@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Cinemachine;
+﻿using UnityEngine;
 
 public class ActivateCamera : MonoBehaviour
 {
@@ -22,21 +19,21 @@ public class ActivateCamera : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Debug.LogError("Error with ActivateCamera script components, 2 instances " + this);
-            //...destroy this and exit. There can be only one UILevelManager
+            //...destroy this and exit. There can be only one ActivateCamera
             Destroy(gameObject);
             return;
         }
 
-        //This is the Instance ActivateCamera and it should persist between scene loads
+        //This is the Instance ActivateCamera, we use it for use the class's methods.
         Instance = this;
     }
 
-    public void ActivateCamera_(int index)
+    public void EnableCamera(int index)
     {
         cameras[index].SetActive(true);
     }
 
-    public void DeactivateCamera(int index)
+    public void DisableCamera(int index)
     {
         cameras[index].SetActive(false);
     }

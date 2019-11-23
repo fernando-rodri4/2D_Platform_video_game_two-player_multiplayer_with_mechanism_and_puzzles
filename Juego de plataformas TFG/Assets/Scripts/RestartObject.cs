@@ -18,6 +18,7 @@ public class RestartObject : MonoBehaviour
         {
             Destroy(this);
             Debug.LogError("Error with RestartObject script components " + this);
+            return;
         }
     }
 
@@ -27,7 +28,7 @@ public class RestartObject : MonoBehaviour
     /// <param name="other">The other Collider2D involved in this collision.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == _tag)
+        if(other.CompareTag(_tag))
         {
             other.transform.position = respawn.transform.position;
             other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);

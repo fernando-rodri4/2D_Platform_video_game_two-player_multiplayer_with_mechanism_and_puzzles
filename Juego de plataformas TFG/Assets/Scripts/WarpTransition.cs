@@ -9,9 +9,9 @@ public class WarpTransition : MonoBehaviour
     CameraTransition cameraTrans;
 
     /// <summary>
-    /// Indicates if Warp Point should be deactivated
+    /// Indicates if Warp Point should be deactivated, if numberTransport = -1 infinite transport
     /// </summary>
-    public bool desactivateWarpPoint;
+    [SerializeField] int numberTransport = -1;
 
     /// <summary>
     /// The layer the player game object is on
@@ -32,6 +32,8 @@ public class WarpTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Cambiar para permitir transportar a los dos personajes cuando cada uno le de a enter");
+
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
     }
@@ -44,8 +46,6 @@ public class WarpTransition : MonoBehaviour
             player.GetComponent<PlayerMovement>().canMove = false;
 
             StartCoroutine(TransportPlayer());
-
-            player.GetComponent<PlayerMovement>().canMove = true;
         }
     }
 
@@ -76,16 +76,18 @@ public class WarpTransition : MonoBehaviour
     {
         cameraTrans.FadeIn();
 
-        yield return new WaitForSeconds(cameraTrans.getFadeTime());
+        yield return new WaitForSeconds(cameraTrans.GetFadeTime());
 
         // Transport the player to the exit.
         player.transform.position = transform.GetChild(0).transform.position;
 
-        if (desactivateWarpPoint)
+        if (numberTransport == 0)
         {
             gameObject.SetActive(false);
         }
 
         cameraTrans.FadeOut();
+
+        player.GetComponent<PlayerMovement>().canMove = true;
     }
 }

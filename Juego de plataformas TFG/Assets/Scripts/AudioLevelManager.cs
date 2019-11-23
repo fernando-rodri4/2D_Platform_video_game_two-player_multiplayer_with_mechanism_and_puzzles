@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 public class AudioLevelManager : MonoBehaviour
 {
     AudioLevelManager() { }
+
     //This class holds a static reference to itself to ensure that there will only be
     //one in existence. This is often referred to as a "singleton" design pattern.
     public static AudioLevelManager Instance = null;
@@ -47,7 +48,7 @@ public class AudioLevelManager : MonoBehaviour
             return;
         }
 
-        //This is the Instance AudioLevelManager
+        //This is the Instance AudioLevelManager, we use it for use the class's methods.
         Instance = this;
 
         //Generate the Audio Source "channels" for our game's audio

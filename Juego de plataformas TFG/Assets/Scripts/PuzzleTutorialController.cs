@@ -30,7 +30,7 @@ public class PuzzleTutorialController : MonoBehaviour
     /// <summary>
     /// The layer the player game object is on
     /// </summary>
-    protected int playerLayer;
+    int playerLayer;
 
     List<GameObject> players;
 
@@ -40,7 +40,7 @@ public class PuzzleTutorialController : MonoBehaviour
 
     void Awake()
     {
-        //If an UIManager exists and it is not this...
+        //If an PuzzleTutorialController exists and it is not this...
         if (Instance != null && Instance != this)
         {
             Debug.LogError("Error with PuzzleTutorialController script components, 2 instances " + this);
@@ -49,7 +49,7 @@ public class PuzzleTutorialController : MonoBehaviour
             return;
         }
 
-        //This is the Instance PuzzleTutorialController and it should persist between scene loads
+        //This is the Instance PuzzleTutorialController and it should persist
         Instance = this;
     }
 
@@ -61,8 +61,9 @@ public class PuzzleTutorialController : MonoBehaviour
 
         if (picturesBackground == null || pictures == null || activeLadder == null)
         {
-            Destroy(this);
             Debug.LogError("Error with PuzzleTutorialController script component " + this);
+            Destroy(this);
+            return;
         }
 
         //Get the integer representation of the "Player" layer
@@ -70,7 +71,7 @@ public class PuzzleTutorialController : MonoBehaviour
 
         players = new List<GameObject>();
 
-
+        //Active the first image for each player
         Debug.Log("cambiar");
         if (true)//eres jugador 1 cambiar
         {
@@ -85,13 +86,18 @@ public class PuzzleTutorialController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isCorrect || players.Count == 0)
+        {
+            return;
+        }
+
         NextPicture();
 
         Rotate();
 
         if (players.Count == 2)
         {
-            ActivateCamera.Instance.ActivateCamera_(0);
+            ActivateCamera.Instance.EnableCamera(0);
 
             foreach (var player in players)
             {
@@ -198,16 +204,6 @@ public class PuzzleTutorialController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Active final ladder
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator ActiveFinalLadder()
-    {
-        yield return new WaitForSeconds(1f);
-        activeLadder.SetActive(true);
-    }
-
     IEnumerator CompletePuzzle()
     {
         yield return new WaitForSeconds(0.5f);
@@ -227,7 +223,7 @@ public class PuzzleTutorialController : MonoBehaviour
             picture.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        ActivateCamera.Instance.DeactivateCamera(0);
+        ActivateCamera.Instance.DisableCamera(0);
 
         foreach (var player in players)
         {
@@ -236,6 +232,8 @@ public class PuzzleTutorialController : MonoBehaviour
 
         players.Clear();
 
-        StartCoroutine(ActiveFinalLadder());
+        // Active final ladder
+        yield return new WaitForSeconds(1f);
+        activeLadder.SetActive(true);
     }
 }

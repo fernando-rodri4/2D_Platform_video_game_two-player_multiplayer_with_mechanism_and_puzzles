@@ -23,7 +23,7 @@ public class CameraTransition : MonoBehaviour
     /// <summary>
     /// 1 second transition.
     /// </summary>
-    float fadeTime = 1f;
+    readonly float fadeTime = 1f;
 
     /// <summary>
     // Draw a square with opacity on the screen simulating a transition.
@@ -83,12 +83,16 @@ public class CameraTransition : MonoBehaviour
         isFadeIn = false;
     }
 
-    public bool isStart()
+    /// <summary>
+    /// Return if the transition animation is start
+    /// </summary>
+    /// <returns>start</returns>
+    public bool IsStart()
     {
         return start;
     }
 
-    public float getFadeTime()
+    public float GetFadeTime()
     {
         return fadeTime;
     }

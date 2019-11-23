@@ -1,5 +1,4 @@
-﻿// This script is a Manager that controls the UI HUD (deaths, time, and orbs) for the 
-// project. All HUD UI commands are issued through the static methods of this class
+﻿// This script is a Manager that controls the UI HUD (thieves captured, time) for the project.
 
 using UnityEngine;
 using TMPro;
@@ -17,12 +16,12 @@ public class UILevelManager : MonoBehaviour
     public static UILevelManager Instance = null;
 
     /// <summary>
-    /// Text element showing number of thieves captured
+    /// Text element showing number of thieves captured.
     /// </summary>
     [SerializeField] TextMeshProUGUI thiefText = null;
 
     /// <summary>
-    /// Thief text container
+    /// Thief text container.
     /// </summary>
     [SerializeField] RectTransform thiefCount = null;
 
@@ -30,16 +29,16 @@ public class UILevelManager : MonoBehaviour
 
     void Awake()
     {
-        //If an UIManager exists and it is not this...
+        //If an UILevelManager exists and it is not this...
         if (Instance != null && Instance != this)
         {
             Debug.LogError("Error with UILevelManager script components, 2 instances " + this);
-            //...destroy this and exit. There can be only one UILevelManager
+            //...destroy this and exit. There can be only one UILevelManager.
             Destroy(gameObject);
             return;
         }
 
-        //This is the Instance UILevelManager and it should persist between scene loads
+        //This is the Instance UILevelManager.
         Instance = this;
     }
 
@@ -47,13 +46,19 @@ public class UILevelManager : MonoBehaviour
     {
         if (thiefText == null || thiefCount == null)
         {
-            Destroy(this);
             Debug.LogError("Error with UILevelManager script component " + this);
+            Destroy(this);
+            return;
         }
     }
 
     void FixedUpdate()
     {
+        if (!isThiefTextActive && thiefCount.position.x == -127)
+        {
+            return;
+        }
+
         if (isThiefTextActive && thiefCount.position.x < 127)
         {
             thiefCount.position = new Vector3(thiefCount.position.x + 2.54f, thiefCount.position.y, thiefCount.position.z); //1.984375f
@@ -71,7 +76,7 @@ public class UILevelManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator UpdateThiefUI(int numThieves)
     {
-        //If there is no Instance UIManager, exit
+        //If there is no Instance UILevelManager, exit
         if (Instance == null)
             yield break;
 
@@ -103,18 +108,18 @@ public class UILevelManager : MonoBehaviour
 
         while (time < 0.75)
         {
-            //Establecemos nuestro texto en blanco
+            //Cambiamos el color
             text.color = color1;
 
-            //mostramos el texto en blanco por waitSecond segundos
+            //Mostramos el texto por waitSecond segundos
             yield return new WaitForSeconds(waitSecond);
 
             time += waitSecond;
 
-            //Establecemos nuestro texto en blanco
+            //Cambiamos el color
             text.color = color2;
 
-            //mostramos el texto en blanco por waitSecond segundos
+            //mostramos el texto por waitSecond segundos
             yield return new WaitForSeconds(waitSecond);
 
             time += waitSecond;

@@ -9,7 +9,7 @@ public class Dialogue
     public string name;
 
     /// <summary>
-    /// Sentences that person sais
+    /// Sentences that person says
     /// </summary>
     [TextArea(3, 10)]
     public string[] sentences;

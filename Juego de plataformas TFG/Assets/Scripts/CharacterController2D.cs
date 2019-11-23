@@ -44,6 +44,7 @@ public class CharacterController2D : MonoBehaviour
 		{
 			Destroy(this);
             Debug.LogError("Error with CharacterController2D script components " + this);
+            return;
 		}
 		
 		// Get the integer hashes of the Animator parameters. This is much more efficient

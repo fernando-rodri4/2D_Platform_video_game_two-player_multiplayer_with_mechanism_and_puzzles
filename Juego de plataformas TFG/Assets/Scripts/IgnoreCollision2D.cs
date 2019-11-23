@@ -3,7 +3,7 @@
 public class IgnoreCollision2D : MonoBehaviour
 {
     /// <summary>
-    /// Reference to the collider of both players.
+    /// Reference to the colliders that we want to be ignored.
     /// </summary>
     [SerializeField] Collider2D collider_ = null, otherCollider = null;
 
@@ -11,13 +11,11 @@ public class IgnoreCollision2D : MonoBehaviour
     {
         if(collider_ == null || otherCollider == null)
         {
-            Destroy(this);
             Debug.LogError("Error with IgnoreCollision2D script component " + this);
+            Destroy(this);
+            return;
         }
-    }
 
-    void Update()
-    {
         Physics2D.IgnoreCollision(collider_, otherCollider);
     }
 }

@@ -17,8 +17,9 @@ public class DropElement : MonoBehaviour
     {
         if (plrMove == null)
 		{
-			Destroy(this);
-            Debug.LogError("Error with PlayerMovement script component " + this);
+            Debug.LogError("Error with DropElement script component " + this);
+            Destroy(this);
+            return;
 		}
     }
 

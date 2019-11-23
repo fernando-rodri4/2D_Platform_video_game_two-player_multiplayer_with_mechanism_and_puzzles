@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Mass of the item being carried.
     /// </summary>
-    [SerializeField] float carryElementMass;
+    float carryElementMass;
 
     void Awake()
 	{
@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(this);
             Debug.LogError("Error with PlayerMovement script components " + this);
+            return;
         }
 
         // Get the integer hashes of the Animator parameters. This is much more efficient
@@ -102,6 +103,12 @@ public class PlayerMovement : MonoBehaviour
         {
             CarryPosition();
         }
+
+        // Deactivate carry animation if it is falling.
+        if (isCarry && animator.GetFloat(fallParamID) < -0.01)
+        {
+            CarryPosition();
+        }
     }
 
     void FixedUpdate()
@@ -110,12 +117,6 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, isJump);
 
         isJump = false;
-
-        // Deactivate carry animation if it is falling.
-        if(isCarry && animator.GetFloat(fallParamID) < -0.01)
-        {
-            CarryPosition();
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
