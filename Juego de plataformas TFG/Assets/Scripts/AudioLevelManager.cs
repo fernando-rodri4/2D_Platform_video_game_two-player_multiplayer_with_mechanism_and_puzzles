@@ -75,6 +75,7 @@ public class AudioLevelManager : MonoBehaviour
         //Set the clip for music audio, tell it to loop, and then tell it to play
         musicSource.clip = musicClip;
         musicSource.loop = true;
+        musicSource.volume = 1;
         musicSource.Play();
     }
 

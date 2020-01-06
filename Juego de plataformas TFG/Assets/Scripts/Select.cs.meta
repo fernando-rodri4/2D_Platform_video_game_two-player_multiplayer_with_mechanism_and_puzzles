@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 9a8a0aab7a75d174eacdcf5f1f7f494e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chica: {fileID: 410819187423641063, guid: 3424f409078ed6e44854f324617d511e, type: 3}
+  - chico: {fileID: 410819187423641063, guid: 32eacdbd92f8efd42a5c1e52a0c9f5bd, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
