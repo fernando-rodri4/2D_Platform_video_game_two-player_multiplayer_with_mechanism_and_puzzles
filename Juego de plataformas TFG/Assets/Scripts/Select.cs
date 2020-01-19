@@ -5,8 +5,11 @@ using UnityEngine;
 public class Select : MonoBehaviour
 {
 
-    public GameObject chica;
-    public GameObject chico;
+    public GameObject girl;
+    public GameObject boy;
+
+    public GameObject elect1;
+    public GameObject elect2;
 
     SpriteRenderer SR;
     public bool over;
@@ -20,13 +23,19 @@ public class Select : MonoBehaviour
 
     void OnMouseDown() {
 
-            if(chica.activeSelf){
-                chica.SetActive(false);
-                chico.SetActive(true);
+            if(girl.activeSelf){
+                girl.SetActive(false);
+                boy.SetActive(true);
+
+                elect1.SetActive(false);
+                elect2.SetActive(true);
             }
-            else if(chico.activeSelf){
-                chica.SetActive(true);
-                chico.SetActive(false);
+            else if(boy.activeSelf){
+                girl.SetActive(true);
+                boy.SetActive(false);
+
+                elect1.SetActive(true);
+                elect2.SetActive(false);
             }
     }
 
