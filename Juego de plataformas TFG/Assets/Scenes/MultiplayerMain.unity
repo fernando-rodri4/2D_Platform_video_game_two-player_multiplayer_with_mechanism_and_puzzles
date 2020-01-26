@@ -465,7 +465,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -843,7 +843,8 @@ AudioSource:
   m_GameObject: {fileID: 1159413795}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8238335497145638349, guid: a2a307c2420888a44804c68ab9d9e611,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 01ac3636e763b364baa3c7dfc37082e0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MultiplayerCloacas.unity
     guid: 3468f3111d263ec43bb8f2e049b95ceb
+  - enabled: 1
+    path: Assets/Scenes/OptionMain.unity
+    guid: a1f2db6d21b4f4c459abbd6aad8200f0
   m_configObjects: {}
