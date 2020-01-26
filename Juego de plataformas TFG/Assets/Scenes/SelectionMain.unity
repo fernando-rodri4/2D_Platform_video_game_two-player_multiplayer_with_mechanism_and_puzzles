@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0060858, y: -0.0040435}
-  m_SizeDelta: {x: 2235.8, y: 927.44}
+  m_AnchoredPosition: {x: 0.0085754, y: 0.0074921}
+  m_SizeDelta: {x: 1933.1, y: 1072.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93924511
 MonoBehaviour:
@@ -323,7 +323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1910, y: 463.72}
+  m_AnchoredPosition: {x: 1637, y: 475.75}
   m_SizeDelta: {x: 413.7, y: 160.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &100408296
@@ -525,7 +525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 324, y: 446.18}
+  m_AnchoredPosition: {x: 283, y: 452}
   m_SizeDelta: {x: 413.7, y: 160.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271043812
@@ -1530,11 +1530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   girl: {fileID: 417680738}
   boy: {fileID: 94599625}
-  elect: {fileID: 0}
-  girlCharacter: {fileID: 4165397342012106368, guid: 0042e8800ae4e12478dc971439a15b69,
-    type: 3}
-  boyCharacter: {fileID: 9077507531794033073, guid: 848ff7b838c90214bab14df67d87573a,
-    type: 3}
+  elect: 0
 --- !u!4 &1362730020
 Transform:
   m_ObjectHideFlags: 0

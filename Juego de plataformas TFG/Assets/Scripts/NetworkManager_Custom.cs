@@ -71,8 +71,8 @@ public class NetworkManager_Custom : NetworkManager
 
     void SetupOtherSceneButtons(){
 
-        GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("ButtonDisconnect").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
+        GameObject.Find("QuitButton").GetComponent<Button>().onClick.RemoveAllListeners();
+        GameObject.Find("QuitButton").GetComponent<Button>().onClick.AddListener(NetworkManager.singleton.StopHost);
     }
 
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader) {
