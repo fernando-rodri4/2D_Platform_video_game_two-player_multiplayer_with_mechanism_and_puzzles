@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9077507530886987711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.077, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9077507531794033072}
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9077507531472126074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07700348, y: 0.946, z: 0}
+  m_LocalPosition: {x: 0, y: 2.039, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9077507531794033072}
@@ -158,6 +158,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -182,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: 1014593393
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3809830640834585704, guid: ca444bd1437aabc41954746df70ec3dc,
+  m_Sprite: {fileID: -1439595775203483902, guid: ca444bd1437aabc41954746df70ec3dc,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -247,8 +248,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011091918, y: -0.049889088}
-  m_Size: {x: 0.60781616, y: 2.054068}
+  m_Offset: {x: -0.011091918, y: 1.02}
+  m_Size: {x: 0.60781616, y: 2.04}
   m_Direction: 0
 --- !u!70 &9077507531794033081
 CapsuleCollider2D:
@@ -263,8 +264,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011091918, y: -0.049889088}
-  m_Size: {x: 0.60781616, y: 2.054068}
+  m_Offset: {x: -0.011091918, y: 1.02}
+  m_Size: {x: 0.60781616, y: 2.04}
   m_Direction: 0
 --- !u!114 &9077507531794033082
 MonoBehaviour:
@@ -300,8 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider_: {fileID: 9077507531794033080}
-  otherCollider: {fileID: 4165397342012106391, guid: 0042e8800ae4e12478dc971439a15b69,
-    type: 3}
+  otherColliders: []
 --- !u!114 &8731447152665731938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider_: {fileID: 9077507531794033080}
-  otherCollider: {fileID: 9077507531794033080}
+  otherColliders: []
 --- !u!114 &9077507531794033076
 MonoBehaviour:
   m_ObjectHideFlags: 0

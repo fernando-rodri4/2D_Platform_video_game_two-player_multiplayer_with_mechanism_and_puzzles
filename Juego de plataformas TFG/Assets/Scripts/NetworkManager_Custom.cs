@@ -9,7 +9,6 @@ public class NetworkManager_Custom : NetworkManager
 {
     public int chosenCharacter = 0;
     public GameObject[] characters;
-
     Select select = null;
 
     void Start(){
@@ -39,7 +38,7 @@ public class NetworkManager_Custom : NetworkManager
 
     void SetIPAddress(){
 
-        string ipAddress = GameObject.Find("InputFieldIPAddress").transform.FindChild("Text").GetComponent<Text>().text;
+        string ipAddress = GameObject.Find("InputFieldIPAddress").transform.Find("Text").GetComponent<Text>().text;
         NetworkManager.singleton.networkAddress = ipAddress;
     }
 
@@ -76,22 +75,22 @@ public class NetworkManager_Custom : NetworkManager
     }
 
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader) {
- 
+
         NetworkMessage message = extraMessageReader.ReadMessage<NetworkMessage>();
         int selectedClass = message.chosenClass;
         Debug.Log("server add with message " + selectedClass);
- 
+
         GameObject player;
         Transform startPos = GetStartPosition();
- 
-        if(startPos != null)
+
+        if (startPos != null)
         {
-            player = Instantiate(characters[selectedClass], startPos.position,startPos.rotation)as GameObject;
+            player = Instantiate(characters[selectedClass], startPos.position, startPos.rotation) as GameObject;
         }
         else
         {
             player = Instantiate(characters[selectedClass], Vector3.zero, Quaternion.identity) as GameObject;
- 
+
         }
  
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
@@ -110,5 +109,4 @@ public class NetworkManager_Custom : NetworkManager
     {
         //base.OnClientSceneChanged(conn);
     }
-    
 }

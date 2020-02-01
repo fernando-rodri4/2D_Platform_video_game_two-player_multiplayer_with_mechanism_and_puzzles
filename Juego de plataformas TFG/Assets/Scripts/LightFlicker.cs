@@ -11,7 +11,7 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class LightFlicker : MonoBehaviour
 {
-    Light2D localLight = null;		//Reference to the light component
+    UnityEngine.Experimental.Rendering.Universal.Light2D localLight = null;		//Reference to the light component
     float intensity;        //The collective intensity of the light component
     float offset;			//An offset so all flickers are different
     bool isVisible = false;
@@ -31,7 +31,7 @@ public class LightFlicker : MonoBehaviour
 	void Start()
     {
 		//Get a reference to the Light component on the child game object
-		localLight = GetComponentInChildren<Light2D>();
+		localLight = GetComponentInChildren<UnityEngine.Experimental.Rendering.Universal.Light2D>();
 
         if (localLight == null)
         {

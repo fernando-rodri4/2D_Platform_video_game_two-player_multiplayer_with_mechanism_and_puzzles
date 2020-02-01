@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4165397341457389862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.077, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4165397342012106383}
@@ -88,6 +88,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -111,7 +112,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014593393
   m_SortingLayer: -2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -863012215747988573, guid: 94b8391344a8d5048af4b5db749d3b40,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -177,8 +178,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011091918, y: -0.049889088}
-  m_Size: {x: 0.60781616, y: 2.054068}
+  m_Offset: {x: -0.011091918, y: 1.02}
+  m_Size: {x: 0.60781616, y: 2.04}
   m_Direction: 0
 --- !u!70 &4165397342012106376
 CapsuleCollider2D:
@@ -187,14 +188,14 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4165397342012106368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011091918, y: -0.049889088}
-  m_Size: {x: 0.60781616, y: 2.054068}
+  m_Offset: {x: -0.011091918, y: 1.02}
+  m_Size: {x: 0.60781616, y: 2.04}
   m_Direction: 0
 --- !u!114 &4165397342012106377
 MonoBehaviour:
@@ -230,8 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider_: {fileID: 4165397342012106391}
-  otherCollider: {fileID: 9077507531794033080, guid: 848ff7b838c90214bab14df67d87573a,
-    type: 3}
+  otherColliders: []
 --- !u!114 &-7366579778238649038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider_: {fileID: 4165397342012106391}
-  otherCollider: {fileID: 4165397342012106391}
+  otherColliders: []
 --- !u!114 &4165397342012106379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4165397342200973895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07700348, y: 0.946, z: 0}
+  m_LocalPosition: {x: 0, y: 2.0383, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4165397342012106383}

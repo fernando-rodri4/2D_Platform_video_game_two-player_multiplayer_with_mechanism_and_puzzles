@@ -3,6 +3,9 @@
 // the UILevelManager.
 using UnityEngine;
 using System.Collections.Generic;
+using Cinemachine;
+using UnityEngine.Networking;
+
 public sealed class LevelManager : MonoBehaviour
 {
     LevelManager() { }
@@ -13,6 +16,16 @@ public sealed class LevelManager : MonoBehaviour
     /// scripts access this one through this instance.
     /// </summary>
     public static LevelManager Instance = null;
+
+    /// <summary>
+    /// Reference to the CinemachineVirtualCamera component that control the camera
+    /// </summary>
+    public CinemachineVirtualCamera cinemachineVC = null;
+
+    /// <summary>
+    /// Player that I controll
+    /// </summary>
+    GameObject player = null;
 
     /// <summary>
     /// The collection of scene thieves
@@ -59,6 +72,11 @@ public sealed class LevelManager : MonoBehaviour
         if (isGameOver)
             return;
 
+        if (cinemachineVC.Follow == null)
+        {
+            SetCameraCinemachine();
+        }
+
         //Update the total game time and tell the UI Manager to update
         totalGameTime += Time.deltaTime;
     }
@@ -99,5 +117,32 @@ public sealed class LevelManager : MonoBehaviour
 
         //Tell the UIManager to update the thief text
         StartCoroutine(UILevelManager.Instance.UpdateThiefUI(numThieves));
+    }
+
+    void SetCameraCinemachine()
+    {
+        var players = ClientScene.localPlayers;
+
+        for (int i = 0; i < players.Count && cinemachineVC.Follow == null; i++)
+        {
+            if (players[i].gameObject.GetComponent<NetworkIdentity>().hasAuthority)
+            {
+                player = players[i].gameObject;
+
+                cinemachineVC.LookAt = players[i].gameObject.transform;
+                cinemachineVC.Follow = players[i].gameObject.transform;
+            }
+        }
+
+        foreach (var actualPlayer in players)
+        {
+            foreach (var otherPlayer in players)
+            {
+                if (actualPlayer != otherPlayer)
+                {
+                    Physics2D.IgnoreCollision(actualPlayer.gameObject.GetComponent<Collider2D>(), otherPlayer.gameObject.GetComponent<Collider2D>());
+                }
+            }
+        }
     }
 }
