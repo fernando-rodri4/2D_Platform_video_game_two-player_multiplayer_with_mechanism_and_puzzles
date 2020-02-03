@@ -1,18 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RestartObject : MonoBehaviour
 {
-    public GameObject respawn;
-    public string tag = "";
+    /// <summary>
+    /// Reference the respawn position.
+    /// </summary>
+    [SerializeField] GameObject respawn = null;
 
-    void OnTriggerEnter2D(Collider2D other)
+    /// <summary>
+    /// Reference to the tag to collider.
+    /// </summary>
+    [SerializeField] string _tag = "";
+
+    void Start()
     {
-        if(other.tag == tag)
+        if (respawn == null || _tag == "")
         {
-            other.transform.position = respawn.transform.position;
+            Destroy(this);
+            Debug.LogError("Error with RestartObject script components " + this);
+            return;
         }
     }
-    
+
+    /// <summary>
+    /// Change the other position to the respawn position
+    /// </summary>
+    /// <param name="other">The other Collider2D involved in this collision.</param>
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag(_tag))
+        {
+            other.transform.position = respawn.transform.position;
+            other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        }
+    }
 }

@@ -1,0 +1,1639 @@
+fileFormatVersion: 2
+guid: 94b8391344a8d5048af4b5db749d3b40
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -863012215747988573
+    second: Personaje hermana_0
+  - first:
+      213: -4110244306842686080
+    second: Personaje hermana_1
+  - first:
+      213: -3373523000546354687
+    second: Personaje hermana_2
+  - first:
+      213: 7601046507061683584
+    second: Personaje hermana_3
+  - first:
+      213: 9100409765667404445
+    second: Personaje hermana_4
+  - first:
+      213: -7810643955060114277
+    second: Personaje hermana_5
+  - first:
+      213: 8305116941396238170
+    second: Personaje hermana_6
+  - first:
+      213: 3536472940294703446
+    second: Personaje hermana_7
+  - first:
+      213: 1790883329902067607
+    second: Personaje hermana_8
+  - first:
+      213: -4905772095665669106
+    second: Personaje hermana_35
+  - first:
+      213: 5425257801202551837
+    second: Personaje hermana_35
+  - first:
+      213: -4447798102002503722
+    second: Personaje hermana_35
+  - first:
+      213: 3880306301800579044
+    second: Personaje hermana_35
+  - first:
+      213: 6043966179713505119
+    second: Personaje hermana_35
+  - first:
+      213: 3599991162990650351
+    second: Personaje hermana_35
+  - first:
+      213: -8020004161201091421
+    second: Personaje hermana_35
+  - first:
+      213: 6910239110708433363
+    second: Personaje hermana_35
+  - first:
+      213: -3609721279516994763
+    second: Personaje hermana_35
+  - first:
+      213: -3640211522699835996
+    second: Personaje hermana_44
+  - first:
+      213: -5744844516390042022
+    second: Personaje hermana_35
+  - first:
+      213: 4747386275344179258
+    second: Personaje hermana_44
+  - first:
+      213: 5975352428865140942
+    second: Personaje hermana_9
+  - first:
+      213: 6173270506600170813
+    second: Personaje hermana_35
+  - first:
+      213: -4752048287694926474
+    second: Personaje hermana_44
+  - first:
+      213: -8713778308900723269
+    second: Personaje hermana_9
+  - first:
+      213: -6156279456247813775
+    second: Personaje hermana_35
+  - first:
+      213: -3336305038891549561
+    second: Personaje hermana_44
+  - first:
+      213: -6324631546795423202
+    second: Personaje hermana_9
+  - first:
+      213: -4232985025625874372
+    second: Personaje hermana_35
+  - first:
+      213: 7175424469043409847
+    second: Personaje hermana_44
+  - first:
+      213: -2455425308006996760
+    second: Personaje hermana_9
+  - first:
+      213: 1033078854005087449
+    second: Personaje hermana_35
+  - first:
+      213: 7395499323254023192
+    second: Personaje hermana_32
+  - first:
+      213: -8993921427008939167
+    second: Personaje hermana_44
+  - first:
+      213: 417350032252938999
+    second: Personaje hermana_9
+  - first:
+      213: 162283159690382624
+    second: Personaje hermana_18
+  - first:
+      213: 1984842138057526808
+    second: Personaje hermana_35
+  - first:
+      213: 3940515043568349401
+    second: Personaje hermana_32
+  - first:
+      213: -7045731004031199993
+    second: Personaje hermana_44
+  - first:
+      213: 4078892239569156402
+    second: Personaje hermana_9
+  - first:
+      213: -6289939508119046185
+    second: Personaje hermana_18
+  - first:
+      213: 4105543012973023366
+    second: Personaje hermana_35
+  - first:
+      213: 8804615359611325839
+    second: Personaje hermana_32
+  - first:
+      213: -6382726985012982681
+    second: Personaje hermana_44
+  - first:
+      213: -7348630753641074234
+    second: Personaje hermana_47
+  - first:
+      213: 2261422058580048309
+    second: Personaje hermana_9
+  - first:
+      213: -2748807685331659018
+    second: Personaje hermana_18
+  - first:
+      213: -1322384144446925296
+    second: Personaje hermana_21
+  - first:
+      213: 8733789081591774841
+    second: Personaje hermana_35
+  - first:
+      213: 3129527034285805244
+    second: Personaje hermana_32
+  - first:
+      213: -8595992493314394503
+    second: Personaje hermana_44
+  - first:
+      213: -7337896250076993143
+    second: Personaje hermana_47
+  - first:
+      213: 5425257801202551837
+    second: Personaje hermana_10
+  - first:
+      213: -4447798102002503722
+    second: Personaje hermana_11
+  - first:
+      213: 3880306301800579044
+    second: Personaje hermana_12
+  - first:
+      213: 6043966179713505119
+    second: Personaje hermana_13
+  - first:
+      213: 3599991162990650351
+    second: Personaje hermana_14
+  - first:
+      213: -8020004161201091421
+    second: Personaje hermana_15
+  - first:
+      213: 6910239110708433363
+    second: Personaje hermana_16
+  - first:
+      213: -3609721279516994763
+    second: Personaje hermana_17
+  - first:
+      213: -5744844516390042022
+    second: Personaje hermana_19
+  - first:
+      213: 4747386275344179258
+    second: Personaje hermana_20
+  - first:
+      213: 6173270506600170813
+    second: Personaje hermana_22
+  - first:
+      213: -4752048287694926474
+    second: Personaje hermana_23
+  - first:
+      213: -8713778308900723269
+    second: Personaje hermana_24
+  - first:
+      213: -6156279456247813775
+    second: Personaje hermana_25
+  - first:
+      213: -3336305038891549561
+    second: Personaje hermana_26
+  - first:
+      213: -6324631546795423202
+    second: Personaje hermana_27
+  - first:
+      213: -4232985025625874372
+    second: Personaje hermana_28
+  - first:
+      213: 7175424469043409847
+    second: Personaje hermana_29
+  - first:
+      213: -2455425308006996760
+    second: Personaje hermana_30
+  - first:
+      213: 1033078854005087449
+    second: Personaje hermana_31
+  - first:
+      213: -8993921427008939167
+    second: Personaje hermana_33
+  - first:
+      213: 417350032252938999
+    second: Personaje hermana_34
+  - first:
+      213: 1984842138057526808
+    second: Personaje hermana_36
+  - first:
+      213: 3940515043568349401
+    second: Personaje hermana_37
+  - first:
+      213: -7045731004031199993
+    second: Personaje hermana_38
+  - first:
+      213: 4078892239569156402
+    second: Personaje hermana_39
+  - first:
+      213: -6289939508119046185
+    second: Personaje hermana_40
+  - first:
+      213: 4105543012973023366
+    second: Personaje hermana_41
+  - first:
+      213: 8804615359611325839
+    second: Personaje hermana_42
+  - first:
+      213: -6382726985012982681
+    second: Personaje hermana_43
+  - first:
+      213: 2261422058580048309
+    second: Personaje hermana_45
+  - first:
+      213: -2748807685331659018
+    second: Personaje hermana_46
+  - first:
+      213: 8733789081591774841
+    second: Personaje hermana_48
+  - first:
+      213: 3129527034285805244
+    second: Personaje hermana_49
+  - first:
+      213: -8595992493314394503
+    second: Personaje hermana_50
+  - first:
+      213: -7337896250076993143
+    second: Personaje hermana_51
+  - first:
+      213: -3655051754066729763
+    second: Personaje hermana_0
+  - first:
+      213: 6841589190080225169
+    second: Personaje hermana_1
+  - first:
+      213: 6596165228838717248
+    second: Personaje hermana_2
+  - first:
+      213: -6119777830752494842
+    second: Personaje hermana_3
+  - first:
+      213: 5024019474417647553
+    second: Personaje hermana_4
+  - first:
+      213: 7014968528953371781
+    second: Personaje hermana_5
+  - first:
+      213: -5483349944519866675
+    second: Personaje hermana_6
+  - first:
+      213: -2734323202231287493
+    second: Personaje hermana_7
+  - first:
+      213: 5061184727647224411
+    second: Personaje hermana_8
+  - first:
+      213: -8798114064526130068
+    second: Personaje hermana_9
+  - first:
+      213: 7478851128012598007
+    second: Personaje hermana_10
+  - first:
+      213: -7023685696146376422
+    second: Personaje hermana_11
+  - first:
+      213: -7805069209271620293
+    second: Personaje hermana_12
+  - first:
+      213: -1160597252536034362
+    second: Personaje hermana_13
+  - first:
+      213: -4776386345336678251
+    second: Personaje hermana_14
+  - first:
+      213: -8939707616106966691
+    second: Personaje hermana_15
+  - first:
+      213: -4780747587926623094
+    second: Personaje hermana_16
+  - first:
+      213: -8196285324753580934
+    second: Personaje hermana_17
+  - first:
+      213: 5991268920402601273
+    second: Personaje hermana_18
+  - first:
+      213: 7765069095122669986
+    second: Personaje hermana_19
+  - first:
+      213: -3480031275667427187
+    second: Personaje hermana_20
+  - first:
+      213: -7683872595835197473
+    second: Personaje hermana_21
+  - first:
+      213: -1347924952267214197
+    second: Personaje hermana_22
+  - first:
+      213: 7970196066101590512
+    second: Personaje hermana_23
+  - first:
+      213: -7638613298084227893
+    second: Personaje hermana_24
+  - first:
+      213: -6805469468875537496
+    second: Personaje hermana_25
+  - first:
+      213: 5339560592535907913
+    second: Personaje hermana_26
+  - first:
+      213: -7202139064130264136
+    second: Personaje hermana_27
+  - first:
+      213: 318177472249923122
+    second: Personaje hermana_28
+  - first:
+      213: 8877010290339286938
+    second: Personaje hermana_29
+  - first:
+      213: -7142262887723580586
+    second: Personaje hermana_30
+  - first:
+      213: -8326719713759869308
+    second: Personaje hermana_31
+  - first:
+      213: 19386825106475939
+    second: Personaje hermana_32
+  - first:
+      213: 4904110661208061821
+    second: Personaje hermana_33
+  - first:
+      213: -9177796406264951568
+    second: Personaje hermana_34
+  - first:
+      213: 5018750086628074537
+    second: Personaje hermana_35
+  - first:
+      213: 8718412806267862765
+    second: Personaje hermana_36
+  - first:
+      213: 6121705267908634254
+    second: Personaje hermana_37
+  - first:
+      213: -7403604444236011456
+    second: Personaje hermana_38
+  - first:
+      213: -1452554761490440022
+    second: Personaje hermana_39
+  - first:
+      213: -7240544414723585392
+    second: Personaje hermana_40
+  - first:
+      213: 358000261956815842
+    second: Personaje hermana_41
+  - first:
+      213: -6331427890352059169
+    second: Personaje hermana_42
+  - first:
+      213: -8545074396774693736
+    second: Personaje hermana_43
+  - first:
+      213: -2502031455774067374
+    second: Personaje hermana_44
+  - first:
+      213: -7212257968382685660
+    second: Personaje hermana_45
+  - first:
+      213: 6537560334946914608
+    second: Personaje hermana_46
+  - first:
+      213: 4799717790653226372
+    second: Personaje hermana_47
+  - first:
+      213: 7057836087917808884
+    second: Personaje hermana_48
+  - first:
+      213: -5975026955499729947
+    second: Personaje hermana_49
+  - first:
+      213: 8088976273356621025
+    second: Personaje hermana_50
+  - first:
+      213: 2843271921668752696
+    second: Personaje hermana_51
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 26
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Personaje hermana_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd42f238bc5a64dc0800000000000000
+      internalID: -3655051754066729763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f52edbe1532fe50800000000000000
+      internalID: 6841589190080225169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_2
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04707b0e3594a8b50800000000000000
+      internalID: 6596165228838717248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_3
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60bdfa5ac7e221ba0800000000000000
+      internalID: -6119777830752494842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_4
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cffe45f717e8b540800000000000000
+      internalID: 5024019474417647553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_5
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c6fcec5bc2a5160800000000000000
+      internalID: 7014968528953371781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_6
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc64cb9074a37e3b0800000000000000
+      internalID: -5483349944519866675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_7
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 336
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3145edd88bbd0ad0800000000000000
+      internalID: -2734323202231287493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b528b0ac1b0fc3640800000000000000
+      internalID: 5061184727647224411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_9
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c644d8a6fd1d6e580800000000000000
+      internalID: -8798114064526130068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa683de9773ac760800000000000000
+      internalID: 7478851128012598007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_11
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19f33b821bd68e90800000000000000
+      internalID: -7023685696146376422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_12
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3da60e38e2dea390800000000000000
+      internalID: -7805069209271620293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_13
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb9b4ba2fab4efe0800000000000000
+      internalID: -1160597252536034362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_14
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5985e20ecedd6bdb0800000000000000
+      internalID: -4776386345336678251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_15
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 280
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51171aa947cfe380800000000000000
+      internalID: -8939707616106966691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8cf3d4f56f57adb0800000000000000
+      internalID: -4780747587926623094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_17
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7cc0544ce1f04e80800000000000000
+      internalID: -8196285324753580934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_18
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9356f6a0753452350800000000000000
+      internalID: 5991268920402601273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_19
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1962f633113cb60800000000000000
+      internalID: 7765069095122669986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_20
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d80f7962ef174bfc0800000000000000
+      internalID: -3480031275667427187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_21
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd762e1c5966d5590800000000000000
+      internalID: -7683872595835197473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_22
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b823a34c5653b4de0800000000000000
+      internalID: -1347924952267214197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_23
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 224
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f9733e1813db9e60800000000000000
+      internalID: 7970196066101590512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc45d1f2da13ef590800000000000000
+      internalID: -7638613298084227893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_25
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a348e1339d1e81a0800000000000000
+      internalID: -6805469468875537496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_26
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ee6c6911ee91a40800000000000000
+      internalID: 5339560592535907913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_27
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b32d830eacdc0c90800000000000000
+      internalID: -7202139064130264136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_28
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2360df8a9b46a6400800000000000000
+      internalID: 318177472249923122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_29
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f092f93d9713b70800000000000000
+      internalID: 8877010290339286938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_30
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653c7c4beb591ec90800000000000000
+      internalID: -7142262887723580586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_31
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 168
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486c915898c817c80800000000000000
+      internalID: -8326719713759869308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab4bc7f630e44000800000000000000
+      internalID: 19386825106475939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_33
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d77338cc9a6ee0440800000000000000
+      internalID: 4904110661208061821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_34
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc88b76bcae1a080800000000000000
+      internalID: -9177796406264951568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_35
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9246de10d9e26a540800000000000000
+      internalID: 5018750086628074537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_36
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deeffc251460ef870800000000000000
+      internalID: 8718412806267862765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_37
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86e459c18aa4f450800000000000000
+      internalID: 6121705267908634254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_38
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0482fc3ebfc114990800000000000000
+      internalID: -7403604444236011456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_39
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 112
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa06f80f32d77dbe0800000000000000
+      internalID: -1452554761490440022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a46f3873b648b90800000000000000
+      internalID: -7240544414723585392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_41
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ebce6b675fd7f400800000000000000
+      internalID: 358000261956815842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_42
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdc809a01ef3228a0800000000000000
+      internalID: -6331427890352059169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_43
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89485f02c1cc96980800000000000000
+      internalID: -8545074396774693736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_44
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 255bbb5b5aff64dd0800000000000000
+      internalID: -2502031455774067374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_45
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ec1160799e8eb90800000000000000
+      internalID: -7212257968382685660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_46
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 031d136bc741aba50800000000000000
+      internalID: 6537560334946914608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_47
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 56
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d120e86e50c9240800000000000000
+      internalID: 4799717790653226372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc0647278872f160800000000000000
+      internalID: 7057836087917808884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_49
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eb0e0a14a0741da0800000000000000
+      internalID: -5975026955499729947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_50
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 0
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e40cf93011d14070800000000000000
+      internalID: 8088976273356621025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Personaje hermana_51
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 0
+        width: 41
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83588ea9fb4557720800000000000000
+      internalID: 2843271921668752696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

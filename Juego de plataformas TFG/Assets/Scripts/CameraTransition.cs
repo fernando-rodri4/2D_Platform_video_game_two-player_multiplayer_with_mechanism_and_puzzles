@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Assertions;
-using Cinemachine;
+﻿using UnityEngine;
 
     /// <summary>
     /// The script is based on the video of Hektor Profe in Youtube.
@@ -12,8 +8,7 @@ public class CameraTransition : MonoBehaviour
     /// <summary>
     /// To control whether or not the transition begins.
     /// </summary>
-    [HideInInspector]
-    public bool start = false;
+    bool start = false;
 
     /// <summary>
     /// To control whether the transition is inbound or outbound.
@@ -28,14 +23,11 @@ public class CameraTransition : MonoBehaviour
     /// <summary>
     /// 1 second transition.
     /// </summary>
-    [HideInInspector]
-    public float fadeTime = 1f;
+    readonly float fadeTime = 1f;
 
-    public CinemachineConfiner cineConfi;
-
-    public PolygonCollider2D polygonCollider;
-
+    /// <summary>
     // Draw a square with opacity on the screen simulating a transition.
+    /// </summary>
     void OnGUI(){
 
         // If the transition does not start we leave the event directly.
@@ -74,23 +66,34 @@ public class CameraTransition : MonoBehaviour
         }
     }
 
+    /// <summary>
     // Method to activate the input transition.
+    /// </summary>
     public void FadeIn()
     {
         start = true;
         isFadeIn = true;
     }
 
+    /// <summary>
     // Method to activate the output transition.
+    /// </summary>
     public void FadeOut()
     {
         isFadeIn = false;
     }
 
-    // Change confiner of the camera
-    public void ChangeConfiner()
+    /// <summary>
+    /// Return if the transition animation is start
+    /// </summary>
+    /// <returns>start</returns>
+    public bool IsStart()
     {
-        cineConfi.m_BoundingShape2D = polygonCollider;
-        cineConfi.InvalidatePathCache();
+        return start;
+    }
+
+    public float GetFadeTime()
+    {
+        return fadeTime;
     }
 }

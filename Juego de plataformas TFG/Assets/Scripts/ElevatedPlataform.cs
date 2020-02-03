@@ -1,37 +1,55 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ElevatedPlataform : MonoBehaviour
 {
     /// <summary>
     /// Reference to the PressStud script that control the platform.
     /// </summary>
-    public PressStud button;
+    [SerializeField] PressStud button = null;
 
-    /// <summary>
-    /// Reference to the Sprite Renderer component.
-    /// </summary>
-    [SerializeField]
-    float finalPos;
+    [SerializeField] float finalPos = 0;
     float initialPos;
 
     void Start()
     {
-        // Get the initial position
+        if (button == null)
+        {
+            Debug.LogError("Error with ElevatedPlatform script component " + this);
+            Destroy(this);
+            return;
+        }
+
+        // Get the initial position.
         initialPos = transform.position.y;
     }
 
-    // Platform rises or falls depending on the status of the controller button
-    void Update()
+    /// <summary>
+    // Platform rises or falls depending on the status of the controller button.
+    /// </summary>
+    void FixedUpdate()
     {
-        if(button.isButtonActivate() && transform.position.y < finalPos)
+        bool isButtonActivate = button.IsButtonActivate();
+
+        if(!isButtonActivate && transform.position.y == initialPos)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.03f, transform.position.z);
+            return;
         }
-        else if(!button.isButtonActivate() && transform.position.y > initialPos)
+
+        if (isButtonActivate && transform.position.y < finalPos)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.03f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.03125f, transform.position.z);
+        }
+        else if(isButtonActivate && transform.position.y > finalPos)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.03125f, transform.position.z);
+        }
+        else if(!isButtonActivate && transform.position.y > initialPos)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.03125f, transform.position.z);
+        }
+        else if(!isButtonActivate && transform.position.y < initialPos)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.03125f, transform.position.z);
         }
     }
 }
