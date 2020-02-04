@@ -106,7 +106,7 @@ public class MultiPlayerMovement : NetworkBehaviour
         }
 
         // If press carry button, call CarryPosition method.
-        if (Input.GetButtonDown("Carry") && canMove && horizontalMove == 0 && animator.GetFloat(fallParamID) == 0)
+        if (Input.GetButtonDown("Carry2") && canMove && horizontalMove == 0 && animator.GetFloat(fallParamID) == 0)
         {
             CarryPosition();
         }
@@ -150,7 +150,7 @@ public class MultiPlayerMovement : NetworkBehaviour
         // Calculate the player speed
         if(canMove)
         {
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+            horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
         }
         else
         {
@@ -166,7 +166,7 @@ public class MultiPlayerMovement : NetworkBehaviour
     /// </summary>
     void CarryPosition()
     {
-        if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
+        if (Input.GetButtonDown("Carry2") && elementToCarry != null && !isCarry)
         {
             TakeObject();
         }
@@ -176,7 +176,7 @@ public class MultiPlayerMovement : NetworkBehaviour
         controller.EnableCarryCollider(isCarry);
         animator.SetBool(carryParamID, isCarry);
 
-        if (Input.GetButtonDown("Carry") && carriedElement != null && !isCarry)
+        if (Input.GetButtonDown("Carry2") && carriedElement != null && !isCarry)
         {
             DropObject(5f);
         }

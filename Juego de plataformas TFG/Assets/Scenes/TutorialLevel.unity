@@ -2308,7 +2308,7 @@ GameObject:
   - component: {fileID: 402061887}
   - component: {fileID: 402061886}
   m_Layer: 0
-  m_Name: LevelManger
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21847,8 +21847,8 @@ GameObject:
   - component: {fileID: 756922832}
   - component: {fileID: 756922831}
   - component: {fileID: 756922830}
-  - component: {fileID: 756922829}
   - component: {fileID: 756922828}
+  - component: {fileID: 756922829}
   m_Layer: 9
   m_Name: Personaje hermano
   m_TagString: Player
@@ -21869,7 +21869,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider_: {fileID: 756922832}
-  otherColliders: []
+  otherColliders:
+  - {fileID: 0}
 --- !u!114 &756922829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21879,7 +21880,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 756922827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acaa88a78dd0cd846ba2b807f15cb740, type: 3}
+  m_Script: {fileID: 11500000, guid: 01d3cb433be1b5f4e92b71039ee2e3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
@@ -43270,7 +43271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2150ea9a1ad284fadeb19932b0a1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 8300000, guid: a8787344a3d00b14baace014409e4a5d, type: 3}
+  musicClip: {fileID: 8300000, guid: bca57c21ef104334ca34c9a39b949abd, type: 3}
   thiefCaptureClip: {fileID: 8300000, guid: 30781e910b40480489949facb5f782f5, type: 3}
   typeSentenceAudio: {fileID: 8300000, guid: 549a26f0f33a3514a9183e849e005f9c, type: 3}
   jumpClip: {fileID: 8300000, guid: 7df05bede5953cf4083c9750698c4b7c, type: 3}
@@ -44923,7 +44924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider_: {fileID: 1829658503}
-  otherColliders: []
+  otherColliders:
+  - {fileID: 0}
 --- !u!70 &1829658510
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -45013,7 +45015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834552517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.279383, y: -1.1866387, z: -10}
+  m_LocalPosition: {x: -10.327821, y: -1.1866387, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1582591305}

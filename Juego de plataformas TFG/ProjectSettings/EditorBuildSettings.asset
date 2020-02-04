@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/PrincipalMain.unity
     guid: 44621e1c34cb6944593b7fef952f4c23
   - enabled: 1
+    path: Assets/Scenes/ModeMain.unity
+    guid: 2fba2b3835cdda1499ba053a56e0a147
+  - enabled: 1
+    path: Assets/Scenes/TutorialLevel.unity
+    guid: ea041f3c1293d9c428f772723c35ea90
+  - enabled: 1
     path: Assets/Scenes/SelectionMain.unity
     guid: 275f2c2e9b04f154abcae47b07bf545c
   - enabled: 1
