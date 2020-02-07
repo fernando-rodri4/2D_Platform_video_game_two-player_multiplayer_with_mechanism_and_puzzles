@@ -42195,6 +42195,21 @@ PrefabInstance:
       propertyPath: otherCollider
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7196667719405203333, guid: 84aca6959136f704b8f2dcef79996e6e,
+        type: 3}
+      propertyPath: m_TransformSyncMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196667719405203333, guid: 84aca6959136f704b8f2dcef79996e6e,
+        type: 3}
+      propertyPath: m_RotationSyncCompression
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196667719405203333, guid: 84aca6959136f704b8f2dcef79996e6e,
+        type: 3}
+      propertyPath: m_SyncSpin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7524968971446050413, guid: 84aca6959136f704b8f2dcef79996e6e,
         type: 3}
       propertyPath: m_ServerOnly
