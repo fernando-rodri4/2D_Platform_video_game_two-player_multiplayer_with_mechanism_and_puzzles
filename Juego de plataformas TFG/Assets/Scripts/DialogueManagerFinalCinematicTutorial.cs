@@ -117,5 +117,11 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
             title.color = new Vector4(1, 1, 1, i);
             yield return new WaitForSeconds(0.1f);
         }
+
+        yield return new WaitForSeconds(2);
+
+        gameTitle.SetActive(false);
+
+        LevelManager.Instance.PlayerWin();
     }
 }

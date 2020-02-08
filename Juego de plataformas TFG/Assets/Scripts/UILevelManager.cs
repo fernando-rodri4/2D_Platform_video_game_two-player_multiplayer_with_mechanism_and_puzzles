@@ -16,7 +16,7 @@ public class UILevelManager : MonoBehaviour
     public static UILevelManager Instance = null;
 
     /// <summary>
-    /// Text element showing number of thieves captured.
+    /// Text element that shows number of thieves captured.
     /// </summary>
     [SerializeField] TextMeshProUGUI thiefText = null;
 
@@ -24,6 +24,26 @@ public class UILevelManager : MonoBehaviour
     /// Thief text container.
     /// </summary>
     [SerializeField] RectTransform thiefCount = null;
+
+    /// <summary>
+    /// The text element that shows the time required to complete the level.
+    /// </summary>
+    [SerializeField] TextMeshProUGUI totalTime = null;
+
+    /// <summary>
+    /// Text element that shows the number of puzzles completed.
+    /// </summary>
+    [SerializeField] TextMeshProUGUI puzzlesCompleted = null;
+
+    /// <summary>
+    /// Text element that shows number of thieves captured.
+    /// </summary>
+    [SerializeField] TextMeshProUGUI thievesCaptured = null;
+
+    /// <summary>
+    /// Final panel with stats
+    /// </summary>
+    [SerializeField] GameObject finalPanel = null;
 
     bool isThiefTextActive = false;
 
@@ -44,7 +64,7 @@ public class UILevelManager : MonoBehaviour
 
     void Start()
     {
-        if (thiefText == null || thiefCount == null)
+        if (thiefText == null || thiefCount == null || totalTime == null || puzzlesCompleted == null || thievesCaptured == null || finalPanel == null)
         {
             Debug.LogError("Error with UILevelManager script component " + this);
             Destroy(this);
@@ -127,5 +147,14 @@ public class UILevelManager : MonoBehaviour
 
         //Establecemos nuestro texto en blanco
         text.color = color1;
+    }
+
+    public void SetStatistics(string time, string puzzles, string thieves)
+    {
+        totalTime.text = time;
+        puzzlesCompleted.text = puzzles;
+        thievesCaptured.text = thieves;
+
+        finalPanel.SetActive(true);
     }
 }

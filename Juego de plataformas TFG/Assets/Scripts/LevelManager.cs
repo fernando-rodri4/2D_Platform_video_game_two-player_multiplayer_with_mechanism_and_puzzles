@@ -70,7 +70,9 @@ public sealed class LevelManager : MonoBehaviour
     {
         //If the game is over, exit
         if (isGameOver)
+        {
             return;
+        }
 
         if (cinemachineVC.Follow == null)
         {
@@ -144,5 +146,21 @@ public sealed class LevelManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void PlayerWin()
+    {
+        isGameOver = true;
+
+        int minutes = (int)(totalGameTime / 60);
+        float seconds = totalGameTime % 60f;
+
+        int thievesTotal = numThieves + thieves.Count;
+        string thiefText = numThieves + "/" + thievesTotal;
+
+        UILevelManager.Instance.SetStatistics(minutes.ToString("00") + ":" + seconds.ToString("00"), 0.ToString(), thiefText);
     }
 }
