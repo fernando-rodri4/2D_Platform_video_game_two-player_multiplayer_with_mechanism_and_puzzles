@@ -47,6 +47,10 @@ public class UILevelManager : MonoBehaviour
 
     bool isThiefTextActive = false;
 
+    int thiefCountPosition = 127;
+
+    float thiefCountSpeed = 2.54f;
+
     void Awake()
     {
         //If an UILevelManager exists and it is not this...
@@ -74,18 +78,18 @@ public class UILevelManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isThiefTextActive && thiefCount.position.x == -127)
+        if (!isThiefTextActive && thiefCount.position.x == -thiefCountPosition)
         {
             return;
         }
 
-        if (isThiefTextActive && thiefCount.position.x < 127)
+        if (isThiefTextActive && thiefCount.position.x < thiefCountPosition)
         {
-            thiefCount.position = new Vector3(thiefCount.position.x + 2.54f, thiefCount.position.y, thiefCount.position.z); //1.984375f
+            thiefCount.position = new Vector3(thiefCount.position.x + thiefCountSpeed, thiefCount.position.y, thiefCount.position.z);
         }
-        else if (!isThiefTextActive && thiefCount.position.x > -127)
+        else if (!isThiefTextActive && thiefCount.position.x > -thiefCountPosition)
         {
-            thiefCount.position = new Vector3(thiefCount.position.x - 2.54f, thiefCount.position.y, thiefCount.position.z);
+            thiefCount.position = new Vector3(thiefCount.position.x - thiefCountSpeed, thiefCount.position.y, thiefCount.position.z);
         }
     }
 

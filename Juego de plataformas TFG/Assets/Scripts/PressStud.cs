@@ -20,7 +20,7 @@ public class PressStud : MonoBehaviour
     /// <summary>
     /// How many elements collide with the button, minus 1.
     /// </summary>
-    int isEnter = 0;
+    int extraInside = 0;
 
     void Awake()
     {
@@ -56,7 +56,7 @@ public class PressStud : MonoBehaviour
         }
         else
         {
-            isEnter++;
+            extraInside++;
         }
     }
 
@@ -66,7 +66,7 @@ public class PressStud : MonoBehaviour
     /// <param name="col">The col Collider2D involved in this collision.</param>
     void OnTriggerExit2D(Collider2D col)
     {
-        if(isEnter == 0)
+        if(extraInside == 0)
         {
             spRen.sprite = spriteUp;
             
@@ -74,7 +74,7 @@ public class PressStud : MonoBehaviour
         }
         else
         {
-            isEnter--;
+            extraInside--;
         }
     }
 

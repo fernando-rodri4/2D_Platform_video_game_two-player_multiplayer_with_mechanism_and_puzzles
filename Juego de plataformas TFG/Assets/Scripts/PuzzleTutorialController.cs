@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class PuzzleTutorialController : MonoBehaviour
 {
@@ -56,9 +57,6 @@ public class PuzzleTutorialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("cambiar ontrigger");
-
-
         if (picturesBackground == null || pictures == null || activeLadder == null)
         {
             Debug.LogError("Error with PuzzleTutorialController script component " + this);
@@ -72,14 +70,25 @@ public class PuzzleTutorialController : MonoBehaviour
         players = new List<GameObject>();
 
         //Active the first image for each player
-        Debug.Log("cambiar");
-        if (true)//eres jugador 1 cambiar
+        if (ClientScene.localPlayers != null)
         {
-            pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
-        }
-        else
-        {
-            pictures[activeForPlayer2].localScale = new Vector3(1, 1, 1);
+            var players = ClientScene.localPlayers;
+
+            foreach (var player in players)
+            {
+                if (player.gameObject.GetComponent<NetworkIdentity>().hasAuthority)
+                {
+                    if (player.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
+                    {
+                        pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
+                    }
+                    else
+                    {
+                        pictures[activeForPlayer2].localScale = new Vector3(1, 1, 1);
+                    }
+                    return;
+                }
+            }
         }
     }
 
@@ -114,7 +123,7 @@ public class PuzzleTutorialController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer /*&& !players.Contains(collision.gameObject) && Input.GetButtonDown("Enter")*/)
+        if (collision.gameObject.layer == playerLayer && !players.Contains(collision.gameObject) /*&& Input.GetButtonDown("Enter")*/) //Todo: Intentar poner confirmación de jugador
         {
             players.Add(collision.gameObject);
         }
@@ -139,20 +148,20 @@ public class PuzzleTutorialController : MonoBehaviour
     /// </summary>
     void Rotate()
     {
-        if (Input.GetButtonDown("RotateRight") /*&& eres el jugador 1*/)
+        if ((Input.GetButtonDown("RotateRight") && players[0].GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter"))
         {
             pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateRight();
         }
-        else if (Input.GetButtonDown("RotateRight") /*&&eres el jugador 2*/)
+        else if ((Input.GetButtonDown("RotateRight") && players[0].GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter")) //Todo:cambiar a enter2
         {
             pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateRight();
         }
 
-        if (Input.GetButtonDown("RotateLeft") /*&& eres el jugador 1*/)
+        if ((Input.GetButtonDown("RotateLeft") && players[0].GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter"))
         {
             pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateLeft();
         }
-        else if (Input.GetButtonDown("RotateLeft") /*&&eres el jugador 2*/)
+        else if ((Input.GetButtonDown("RotateLeft") && players[0].GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter")) //Todo:cambiar a enter2
         {
             pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateLeft();
         }
@@ -163,8 +172,7 @@ public class PuzzleTutorialController : MonoBehaviour
     /// </summary>
     void NextPicture()
     {
-        Debug.Log("cambiar");
-        if (Input.GetButtonDown("Enter") /* && eres el jugador 1*/)
+        if ((Input.GetButtonDown("Enter") && players[0].GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter"))
         {
             pictures[activeForPlayer1].localScale = new Vector3(0.96f, 0.96f, 1);
 
@@ -183,7 +191,7 @@ public class PuzzleTutorialController : MonoBehaviour
 
             pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
         }
-        else if (Input.GetButtonDown("Enter") /* && eres el jugador 2*/)
+        else if ((Input.GetButtonDown("Enter") && players[0].GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter")) //Todo:cambiar a enter2
         {
             pictures[activeForPlayer2].localScale = new Vector3(0.96f, 0.96f, 1);
 

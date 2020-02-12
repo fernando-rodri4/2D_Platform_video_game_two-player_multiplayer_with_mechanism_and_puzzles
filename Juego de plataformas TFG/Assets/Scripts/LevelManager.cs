@@ -23,11 +23,6 @@ public sealed class LevelManager : MonoBehaviour
     public CinemachineVirtualCamera cinemachineVC = null;
 
     /// <summary>
-    /// Player that I controll
-    /// </summary>
-    GameObject player = null;
-
-    /// <summary>
     /// The collection of scene thieves
     /// </summary>
     List<Thief> thieves;
@@ -129,21 +124,8 @@ public sealed class LevelManager : MonoBehaviour
         {
             if (players[i].gameObject.GetComponent<NetworkIdentity>().hasAuthority)
             {
-                player = players[i].gameObject;
-
                 cinemachineVC.LookAt = players[i].gameObject.transform;
                 cinemachineVC.Follow = players[i].gameObject.transform;
-            }
-        }
-
-        foreach (var actualPlayer in players)
-        {
-            foreach (var otherPlayer in players)
-            {
-                if (actualPlayer != otherPlayer)
-                {
-                    Physics2D.IgnoreCollision(actualPlayer.gameObject.GetComponent<Collider2D>(), otherPlayer.gameObject.GetComponent<Collider2D>());
-                }
             }
         }
     }

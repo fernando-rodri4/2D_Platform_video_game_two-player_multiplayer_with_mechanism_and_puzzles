@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Thief : MonoBehaviour
 {
@@ -44,8 +45,9 @@ public class Thief : MonoBehaviour
         collisionEnter = true;
 
         //The thief has been touched by the Player, so instantiate an smokeParticles prefab
-        //at this location and rotation
-        Instantiate(smokeParticles, transform.position, transform.rotation);
+        //at this location and rotation and destroy the smokeParticles gameObject when pass 1.5 seconds
+        GameObject instantiatedSmoke = Instantiate(smokeParticles, transform.position, transform.rotation);
+        Destroy(instantiatedSmoke, 1.5f);
 
         //Tell audio manager to play orb collection audio
         AudioLevelManager.Instance.PlayThiefCollectionAudio();

@@ -28,9 +28,6 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
     {
         base.Start();
 
-        Debug.Log("cambiar ontrigger");
-
-
         if (image == null || text == null || gameTitle == null || images[0] == null || images[1] == null )
         {
             Debug.LogError("Error with DialogueManagerFinalCinematicTutorial script component " + this);
@@ -49,8 +46,7 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
         {
             return;
         }
-
-        if (players.Count == 2 && Input.GetButtonDown("Enter") && isDialogueStart)
+        else if (players.Count == 2 && Input.GetButtonDown("Enter") && isDialogueStart)
         {
             DisplayNextSentence();
         }
@@ -73,7 +69,7 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer /*&& !players.Contains(collision.gameObject) && Input.GetButtonDown("Enter")*/)
+        if (collision.gameObject.layer == playerLayer && !players.Contains(collision.gameObject)/* && Input.GetButtonDown("Enter")*/)   //Todo: Intentar poner confirmación de jugador
         {
             players.Add(collision.gameObject);
 
@@ -118,6 +114,7 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
             yield return new WaitForSeconds(0.1f);
         }
 
+        //Indicate that the level has been won / completed
         yield return new WaitForSeconds(2);
 
         gameTitle.SetActive(false);

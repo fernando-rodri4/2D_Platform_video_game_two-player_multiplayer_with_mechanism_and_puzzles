@@ -39,7 +39,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4165397342012106383}
-  - component: {fileID: 4165397342012106382}
   - component: {fileID: 4165397342012106388}
   - component: {fileID: 4165397342012106389}
   - component: {fileID: 4165397342012106390}
@@ -48,9 +47,9 @@ GameObject:
   - component: {fileID: 4165397342012106376}
   - component: {fileID: 4165397342012106377}
   - component: {fileID: 4165397342012106378}
-  - component: {fileID: -7366579778238649038}
+  - component: {fileID: 1383836585171685015}
   - component: {fileID: 4165397342012106379}
-  - component: {fileID: 4165397342012106381}
+  - component: {fileID: -2375735229833630346}
   m_Layer: 9
   m_Name: Personaje hermana
   m_TagString: Player
@@ -74,28 +73,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4165397342012106382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165397342012106368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d6c522af31447398568cc65334232b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 2
-  m_SendInterval: 0.0625
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!212 &4165397342012106388
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -274,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider_: {fileID: 4165397342012106391}
   otherColliders: []
---- !u!114 &-7366579778238649038
+--- !u!114 &1383836585171685015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,11 +260,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4165397342012106368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64dc5c72c35db0c46803b1242d943f69, type: 3}
+  m_Script: {fileID: 11500000, guid: acaa88a78dd0cd846ba2b807f15cb740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider_: {fileID: 4165397342012106391}
-  otherColliders: []
+  canMove: 1
+  id: -1
+  runSpeed: 21
 --- !u!114 &4165397342012106379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +299,7 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &4165397342012106381
+--- !u!114 &-2375735229833630346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,11 +308,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4165397342012106368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6427889a1a22748a367eea7d9b43bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 13d6c522af31447398568cc65334232b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
-  runSpeed: 21
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!1 &4165397342200973895
 GameObject:
   m_ObjectHideFlags: 0

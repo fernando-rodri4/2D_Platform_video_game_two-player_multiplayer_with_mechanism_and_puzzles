@@ -118,9 +118,8 @@ GameObject:
   - component: {fileID: 9077507531794033081}
   - component: {fileID: 9077507531794033082}
   - component: {fileID: 9077507531794033083}
-  - component: {fileID: 8731447152665731938}
   - component: {fileID: 9077507531794033076}
-  - component: {fileID: 9077507531794033078}
+  - component: {fileID: -7523055004755319408}
   m_Layer: 9
   m_Name: Personaje hermano
   m_TagString: Player
@@ -344,20 +343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider_: {fileID: 9077507531794033080}
   otherColliders: []
---- !u!114 &8731447152665731938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9077507531794033073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64dc5c72c35db0c46803b1242d943f69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collider_: {fileID: 9077507531794033080}
-  otherColliders: []
 --- !u!114 &9077507531794033076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +376,7 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &9077507531794033078
+--- !u!114 &-7523055004755319408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,8 +385,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9077507531794033073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6427889a1a22748a367eea7d9b43bb, type: 3}
+  m_Script: {fileID: 11500000, guid: acaa88a78dd0cd846ba2b807f15cb740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  id: -1
   runSpeed: 21

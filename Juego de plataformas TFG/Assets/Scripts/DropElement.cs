@@ -6,20 +6,16 @@ public class DropElement : MonoBehaviour
     /// Reference to the PlayerMovement script.
     /// </summary>
     PlayerMovement plrMove = null;
-    MultiPlayerMovement multiPlrMove = null;
 
     void Awake()
     {
         plrMove = GetComponentInParent<PlayerMovement>();
-
-        multiPlrMove = GetComponentInParent<MultiPlayerMovement>();
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (plrMove == null && multiPlrMove == null)
+        if (plrMove == null)
 		{
             Debug.LogError("Error with DropElement script component " + this);
             Destroy(this);
@@ -37,10 +33,6 @@ public class DropElement : MonoBehaviour
         if (plrMove != null)
         {
             plrMove.ResetRBObject();
-        }
-        else
-        {
-            multiPlrMove.ResetRBObject();
         }
     }
 }

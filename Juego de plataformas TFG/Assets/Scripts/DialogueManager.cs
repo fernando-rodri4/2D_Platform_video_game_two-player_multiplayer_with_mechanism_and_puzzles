@@ -78,17 +78,16 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-
-        if (playerEnter != null && Input.GetButtonDown("Enter") && isDialogueStart)
+        else if (Input.GetButtonDown("Enter") && isDialogueStart)
         {
             DisplayNextSentence();
         }
-        else if (playerEnter != null && Input.GetButtonDown("Enter") && !isDialogueStart)
+        else if (Input.GetButtonDown("Enter") && !isDialogueStart)
         {
             playerEnter.GetComponent<PlayerMovement>().canMove = false;
 
             dialoguePanel.SetActive(true);
-            displayText.fontSize = textSize;
+            displayText.fontSize = textSize;    //TODO:Revisar si funciona con el cambio de tamaño de pantalla o poner autosize
             StartDialogue();
             isDialogueStart = true;
         }

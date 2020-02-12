@@ -21,7 +21,7 @@ public class WarpTransition : MonoBehaviour
     /// <summary>
     /// Player that collider with warp point
     /// </summary>
-    GameObject player;
+    GameObject player0, player1;
 
     void Awake()
     {
@@ -32,8 +32,6 @@ public class WarpTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Cambiar para permitir transportar a los dos personajes cuando cada uno le de a enter");
-
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
     }
@@ -41,11 +39,30 @@ public class WarpTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Enter") && player != null)
+        if (Input.GetButtonDown("Enter"))
         {
-            player.GetComponent<PlayerMovement>().canMove = false;
+            if (player0 != null)
+            {
+                player0.GetComponent<PlayerMovement>().canMove = false;
 
-            StartCoroutine(TransportPlayer());
+                if (numberTransport == 0)
+                {
+                    gameObject.SetActive(false);
+                }
+
+                StartCoroutine(TransportPlayer(player0));
+            }
+            else if(player1 != null)
+            {
+                player1.GetComponent<PlayerMovement>().canMove = false;
+
+                if (numberTransport == 0)
+                {
+                    gameObject.SetActive(false);
+                }
+
+                StartCoroutine(TransportPlayer(player1));
+            }
         }
     }
 
@@ -55,7 +72,14 @@ public class WarpTransition : MonoBehaviour
         //efficient than string comparisons using Tags
         if (collision.gameObject.layer == playerLayer)
         {
-            player = collision.gameObject;
+            if (collision.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
+            {
+                player0 = collision.gameObject;
+            }
+            else
+            {
+                player1 = collision.gameObject;
+            }
         }
     }
 
@@ -65,14 +89,21 @@ public class WarpTransition : MonoBehaviour
         //efficient than string comparisons using Tags
         if (collision.gameObject.layer == playerLayer)
         {
-            player = null;
+            if (collision.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
+            {
+                player0 = null;
+            }
+            else
+            {
+                player1 = null;
+            }
         }
     }
 
     /// <summary>
     /// Transport the player from one point to another with a camera animation.
     /// </summary>
-    IEnumerator TransportPlayer()
+    IEnumerator TransportPlayer(GameObject player)
     {
         cameraTrans.FadeIn();
 
@@ -80,11 +111,6 @@ public class WarpTransition : MonoBehaviour
 
         // Transport the player to the exit.
         player.transform.position = transform.GetChild(0).transform.position;
-
-        if (numberTransport == 0)
-        {
-            gameObject.SetActive(false);
-        }
 
         cameraTrans.FadeOut();
 

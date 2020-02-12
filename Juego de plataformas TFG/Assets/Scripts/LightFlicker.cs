@@ -7,14 +7,14 @@
 /// </summary>
 
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.LWRP;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class LightFlicker : MonoBehaviour
 {
-    UnityEngine.Experimental.Rendering.Universal.Light2D localLight = null;		//Reference to the light component
-    float intensity;        //The collective intensity of the light component
-    float offset;			//An offset so all flickers are different
-    bool isVisible = false;
+    Light2D localLight = null;		//Reference to the light component
+    float intensity;                //The collective intensity of the light component
+    float offset;			        //An offset so all flickers are different
+    bool isVisible = false;         //Indicate if this light is visible
 
     [SerializeField] float amount = 0f;	    //The amount of light flicker
     [SerializeField] float speed = 0f;		//The speed of the flicker
@@ -24,14 +24,12 @@ public class LightFlicker : MonoBehaviour
 		//If this is a mobile platform, remove this script
 		if(Application.isMobilePlatform)
 			Destroy(this);
-
-        return;
 	}
 
 	void Start()
     {
 		//Get a reference to the Light component on the child game object
-		localLight = GetComponentInChildren<UnityEngine.Experimental.Rendering.Universal.Light2D>();
+		localLight = GetComponentInChildren<Light2D>();
 
         if (localLight == null)
         {

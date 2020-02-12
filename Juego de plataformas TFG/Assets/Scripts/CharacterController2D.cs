@@ -81,13 +81,13 @@ public class CharacterController2D : MonoBehaviour
 		// Only control the player if grounded or airControl is turned on.
 		if (m_Grounded || m_AirControl)
 		{
-			if (m_Rigidbody2D.simulated == false)
+			if (m_Rigidbody2D.simulated == false && (move != 0 || jump))
 			{
 				m_Rigidbody2D.simulated = true;
-			}
+            }
 
-			// Move the character by finding the target velocity.
-			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+            // Move the character by finding the target velocity.
+            Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 			// and then smoothing it out and applying it to the character.
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_MovementSmoothing);
 
@@ -107,8 +107,8 @@ public class CharacterController2D : MonoBehaviour
 		// If the player should jump...
 		if (m_Grounded && jump)
 		{
-			// add a vertical force to the player.
-			m_Grounded = false;
+            // add a vertical force to the player.
+            m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             AudioLevelManager.Instance.PlayJumpAudio(isSister);
 		}

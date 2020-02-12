@@ -12,8 +12,21 @@ public class IgnoreCollision2D : MonoBehaviour
 
     void Awake()
     {
-        //Create out collection to hold the thieves
-        otherColliders = new List<Collider2D>();
+        if (otherColliders.Count == 0)
+        {
+            //Create out collection to hold the thieves
+            otherColliders = new List<Collider2D>();
+        }
+    }
+    void Start()
+    {
+        if (otherColliders.Count != 0)
+        {
+            foreach (var otherCollider in otherColliders)
+            {
+                Physics2D.IgnoreCollision(collider_, otherCollider);
+            }
+        }
     }
 
     void Update()

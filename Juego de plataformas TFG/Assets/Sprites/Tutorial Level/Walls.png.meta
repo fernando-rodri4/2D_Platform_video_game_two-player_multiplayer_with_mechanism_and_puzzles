@@ -137,6 +137,9 @@ TextureImporter:
   - first:
       213: 268413752586945317
     second: Walls_44
+  - first:
+      213: 3993399513889448215
+    second: Walls_45
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1185,6 +1188,27 @@ TextureImporter:
       bones: []
       spriteID: 6f32c08a3470b124b9a36dae9e6fd75c
       internalID: 268413752586945317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walls_45
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711299f23b76b6730800000000000000
+      internalID: 3993399513889448215
       vertices: []
       indices: 
       edges: []

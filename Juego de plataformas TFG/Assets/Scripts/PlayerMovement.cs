@@ -1,75 +1,72 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     /// <summary>
     /// Reference to CharacterController2D script.
     /// </summary>
-    CharacterController2D controller = null;
+    protected CharacterController2D controller = null;
 
     /// <summary>
     /// Reference to the animator component.
     /// </summary>
-    Animator animator = null;
+    protected Animator animator = null;
 
     /// <summary>
     /// Player or box GameObject that collides with player.
     /// </summary>
-    GameObject elementToCarry = null;
+    protected GameObject elementToCarry = null;
 
     /// <summary>
     /// Element that player carry.
     /// </summary>
-    GameObject carriedElement = null;
+    protected GameObject carriedElement = null;
 
     /// <summary>
     /// Indicates if player can move
     /// </summary>
-    public bool canMove;
+    [HideInInspector] public bool canMove = true;
+
+    [SerializeField] protected int id = -1;
 
     /// <summary>
     /// Player speed.
     /// </summary>
-    float horizontalMove = 0f;
+    protected float horizontalMove = 0f;
 
     /// <summary>
     /// Check if the player is jumping or not.
     /// </summary>
-    bool isJump = false;
+    protected bool isJump = false;
 
     /// <summary>
     /// Check if the player is in a position to carry something or not.
     /// </summary>
-    bool isCarry = false;
+    protected bool isCarry = false;
 
     /// <summary>
     /// Reference to the animator parameters.
     /// </summary>
-	int speedParamID;
-    int carryParamID;
-    int fallParamID;
+	protected int speedParamID;
+    protected int carryParamID;
+    protected int fallParamID;
 
     /// <summary>
     /// Run speed.
     /// </summary>
-    [SerializeField] float runSpeed = 40f;
+    [SerializeField] protected float runSpeed = 40f;
 
-    /// <summary>
-    /// Mass of the item being carried.
-    /// </summary>
-    float carryElementMass;
-
-    void Awake()
-	{
+    protected void Awake()
+    {
         // Get reference to the animator component.
-		animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController2D>();
     }
 
-	void Start()
-	{
-        if(controller == null || animator == null)
+    protected void Start()
+    {
+        if (controller == null || animator == null)
         {
             Destroy(this);
             Debug.LogError("Error with PlayerMovement script components " + this);
@@ -78,12 +75,24 @@ public class PlayerMovement : MonoBehaviour
 
         // Get the integer hashes of the Animator parameters. This is much more efficient
         // than passing string into the animator.
-		speedParamID = Animator.StringToHash("Speed");
+        speedParamID = Animator.StringToHash("Speed");
         carryParamID = Animator.StringToHash("IsCarry");
         fallParamID = Animator.StringToHash("VelocityY");
-	}
 
-    void Update()
+        if (GetComponent<NetworkIdentity>() != null)
+        {
+            if (GetComponent<NetworkIdentity>().isServer) 
+            {
+                id = 0;
+            }
+            else
+            {
+                id = 1;
+            }
+        }
+    }
+
+    protected void Update()
     {
         MovePlayer();
 
@@ -92,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isJump = true;
 
-            if(isCarry)
+            if (isCarry)
             {
                 CarryPosition();
             }
@@ -111,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         // Call the "Move" function.
         controller.Move(horizontalMove * Time.fixedDeltaTime, isJump);
@@ -119,17 +128,17 @@ public class PlayerMovement : MonoBehaviour
         isJump = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Box") || other.CompareTag("Player"))
+        if (other.CompareTag("Box") || other.CompareTag("Player"))
         {
             elementToCarry = other.gameObject;
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    protected void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Box") || other.CompareTag("Player"))
+        if (other.CompareTag("Box") || other.CompareTag("Player"))
         {
             elementToCarry = null;
         }
@@ -138,16 +147,21 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Calculate and perform player movement.
     /// </summary>
-    void MovePlayer()
+    protected void MovePlayer()
     {
         // Calculate the player speed
-        if(canMove)
+        if (canMove)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+            if (carriedElement != null)
+            {
+                horizontalMove *= 0.8f;
+            }
         }
         else
         {
-             horizontalMove = 0;
+            horizontalMove = 0;
         }
 
         // Say the animator to activate the running animation.
@@ -157,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Perform the actions to pick up or drop an object and fit the animation to carry.
     /// </summary>
-    void CarryPosition()
+    protected void CarryPosition()
     {
         if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
         {
@@ -179,36 +193,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void TakeObject()
+    protected void TakeObject()
     {
         elementToCarry.transform.SetParent(this.transform);
         elementToCarry.transform.position = transform.GetChild(1).transform.position;
 
         Rigidbody2D rb = elementToCarry.GetComponent<Rigidbody2D>();
         rb.simulated = false;
-        carryElementMass = rb.mass;
-        rb.mass = 0;
 
         carriedElement = elementToCarry;
     }
 
-    void DropObject(float thrust)
+    protected void DropObject(float thrust)
     {
         carriedElement.transform.parent = null;
-        
+
         Rigidbody2D rb = carriedElement.GetComponent<Rigidbody2D>();
         rb.simulated = true;
-        rb.mass = carryElementMass;
 
         carriedElement = null;
 
-        if(controller.GetFacingRight())
+        if (controller.GetFacingRight())
         {
-            rb.AddForce(Vector3.right * (thrust * rb.mass), ForceMode2D .Impulse);
+            rb.AddForce(Vector3.right * (thrust * rb.mass), ForceMode2D.Impulse);
         }
         else
         {
-            rb.AddForce(Vector3.left * (thrust * rb.mass), ForceMode2D .Impulse);
+            rb.AddForce(Vector3.left * (thrust * rb.mass), ForceMode2D.Impulse);
         }
     }
 
@@ -217,15 +228,19 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void ResetRBObject()
     {
-        if(carriedElement != null)
+        if (carriedElement != null)
         {
             carriedElement.transform.parent = null;
-            
+
             Rigidbody2D rb = carriedElement.GetComponent<Rigidbody2D>();
             rb.simulated = true;
-            rb.mass = carryElementMass;
 
             carriedElement = null;
         }
+    }
+
+    public int GetId()
+    {
+        return id;
     }
 }
