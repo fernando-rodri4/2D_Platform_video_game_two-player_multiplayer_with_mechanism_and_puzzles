@@ -42,14 +42,14 @@ GameObject:
   - component: {fileID: 4165397342012106388}
   - component: {fileID: 4165397342012106389}
   - component: {fileID: 4165397342012106390}
-  - component: {fileID: 4165397342012106380}
   - component: {fileID: 4165397342012106391}
   - component: {fileID: 4165397342012106376}
   - component: {fileID: 4165397342012106377}
   - component: {fileID: 4165397342012106378}
-  - component: {fileID: 1383836585171685015}
-  - component: {fileID: 4165397342012106379}
-  - component: {fileID: -2375735229833630346}
+  - component: {fileID: 8606887166460170100}
+  - component: {fileID: 2061916257616773278}
+  - component: {fileID: 6019342201231524176}
+  - component: {fileID: -4472633632120280839}
   m_Layer: 9
   m_Name: Personaje hermana
   m_TagString: Player
@@ -164,26 +164,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4165397342012106380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165397342012106368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e18e15ed5495c434d969378156376a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 4165397342012106390}
-  m_ParameterSendBits: 31
-  param0: 
-  param1: 
-  param2: 
-  param3: 
-  param4: 
-  param5: 
 --- !u!70 &4165397342012106391
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -251,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider_: {fileID: 4165397342012106391}
   otherColliders: []
---- !u!114 &1383836585171685015
+--- !u!114 &8606887166460170100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,7 +246,7 @@ MonoBehaviour:
   canMove: 1
   id: -1
   runSpeed: 21
---- !u!114 &4165397342012106379
+--- !u!114 &2061916257616773278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,7 +279,27 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &-2375735229833630346
+--- !u!114 &6019342201231524176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165397342012106368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18e15ed5495c434d969378156376a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 4165397342012106390}
+  m_ParameterSendBits: 31
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
+--- !u!114 &-4472633632120280839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 2
-  m_SendInterval: 0.1
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 3
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
