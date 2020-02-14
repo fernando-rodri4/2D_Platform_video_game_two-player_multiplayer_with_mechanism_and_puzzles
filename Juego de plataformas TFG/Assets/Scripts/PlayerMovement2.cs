@@ -62,7 +62,7 @@ public class PlayerMovement2 : PlayerMovement
     {
         if (Input.GetButtonDown("Carry2") && elementToCarry != null && !isCarry)
         {
-            TakeObject();
+            RpcTakeObject();
         }
 
         // Switch the carry, collider and animation state.
@@ -72,11 +72,11 @@ public class PlayerMovement2 : PlayerMovement
 
         if (Input.GetButtonDown("Carry2") && carriedElement != null && !isCarry)
         {
-            DropObject(5f);
+            RpcDropObject(5f);
         }
         else if (carriedElement != null && !isCarry)
         {
-            DropObject(0f);
+            RpcDropObject(0f);
         }
     }
 }
