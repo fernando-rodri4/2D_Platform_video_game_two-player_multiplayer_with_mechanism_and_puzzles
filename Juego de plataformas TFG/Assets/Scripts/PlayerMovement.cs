@@ -94,6 +94,15 @@ public class PlayerMovement : NetworkBehaviour
 
     protected void Update()
     {
+
+        if(GetComponent<NetworkIdentity>() != null){
+
+            if(!isLocalPlayer){
+
+                return;
+            }
+        }
+
         MovePlayer();
 
         // If press jump button, activate jumping animation and deactivate carry animation if it is playing.
