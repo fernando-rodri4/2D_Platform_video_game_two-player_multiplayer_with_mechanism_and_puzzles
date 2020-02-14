@@ -100,6 +100,22 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
         DisplayNextSentenceFuncionality();
     }
 
+    new void DisplayNextSentenceFuncionality()
+    {
+        if (displayText.text == activeSentence || displayText.text == "")
+        {
+            button.SetActive(false);
+
+            activeSentence = sentences.Dequeue();
+
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = StartCoroutine(TypeTheSentence(activeSentence));
+        }
+    }
+
     IEnumerator AppearTitle()
     {
         yield return new WaitForSeconds(7);
