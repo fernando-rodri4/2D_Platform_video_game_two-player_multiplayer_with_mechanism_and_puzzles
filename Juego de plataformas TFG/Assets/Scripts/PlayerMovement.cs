@@ -181,7 +181,7 @@ public class PlayerMovement : NetworkBehaviour
     /// </summary>
     protected void CarryPosition()
     {
-        if (GetComponent<NetworkIdentity>() != null || isServer)
+        if (GetComponent<NetworkIdentity>() == null || isServer)
         {
             if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
             {
@@ -269,10 +269,17 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
+    [Command]
+    public void CmdResetRBObject()
+    {
+        RpcResetRBObject();
+    }
+
     /// <summary>
     /// When the object leaves the player's collider, its rigidbody is restored.
     /// </summary>
-    public void ResetRBObject()
+    [ClientRpc]
+    public void RpcResetRBObject()
     {
         if (carriedElement != null)
         {
@@ -288,5 +295,10 @@ public class PlayerMovement : NetworkBehaviour
     public int GetId()
     {
         return id;
+    }
+
+    public bool GetIsServer()
+    {
+        return isServer;
     }
 }

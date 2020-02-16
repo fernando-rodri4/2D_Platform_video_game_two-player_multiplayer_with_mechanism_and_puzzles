@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Networking;
 
 public class IgnoreCollision2D : MonoBehaviour
 {
@@ -10,11 +9,12 @@ public class IgnoreCollision2D : MonoBehaviour
     [SerializeField] Collider2D collider_ = null;
     [SerializeField] List<Collider2D> otherColliders = null;
 
+    bool isCollisionIgnored = false;
+
     void Awake()
     {
         if (otherColliders.Count == 0)
         {
-            //Create out collection to hold the thieves
             otherColliders = new List<Collider2D>();
         }
     }
@@ -31,22 +31,28 @@ public class IgnoreCollision2D : MonoBehaviour
 
     void Update()
     {
-        if (otherColliders.Count == 0)
+
+        if (!isCollisionIgnored)
         {
-            var players = ClientScene.localPlayers;
+            var players = GameObject.FindGameObjectsWithTag("Player");
 
-            foreach (var player in players)
+            if (players.Length == 2)
             {
-                if (player.gameObject.GetComponent<Collider2D>() != collider_)
+                foreach (var player in players)
                 {
-                    otherColliders.Add(player.gameObject.GetComponent<Collider2D>());
+                    if (player.gameObject.GetComponent<Collider2D>() != collider_)
+                    {
+                        otherColliders.Add(player.gameObject.GetComponent<Collider2D>());
+                    }
                 }
-            }
 
-            foreach (var otherCollider in otherColliders)
-            {
-                Physics2D.IgnoreCollision(collider_, otherCollider);
+                foreach (var otherCollider in otherColliders)
+                {
+                    Physics2D.IgnoreCollision(collider_, otherCollider);
+                }
+
+                isCollisionIgnored = true;
             }
-        }
+        } 
     }
 }

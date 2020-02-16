@@ -8,30 +8,7 @@ public class SettingMenu : MonoBehaviour
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
 
-    [SerializeField] RectTransform sliderMusic, sliderSound;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    Vector2 music = new Vector2(1, 1);
-    Vector2 sound = new Vector2(1, 1);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    bool fullScreen = true;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    int resolution = 1;
-
     Resolution[] resolutions;
-
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
 
     void Start()
     {
@@ -62,14 +39,10 @@ public class SettingMenu : MonoBehaviour
 
     public void SetVolumeMusic(float volume)
     {
-        music = sliderMusic.anchorMax;
-
         audioMixer.SetFloat("musicVolume", volume);
     }
     public void SetVolumeSounds(float volume)
     {
-        sound = sliderSound.anchorMax;
-
         audioMixer.SetFloat("playerVolume", volume);
         audioMixer.SetFloat("voiceVolume", volume);
         audioMixer.SetFloat("effectVolume", volume);
@@ -77,25 +50,12 @@ public class SettingMenu : MonoBehaviour
 
     public void SetFullscreen(bool isFullscreen)
     {
-        fullScreen = isFullscreen;
-
         Screen.fullScreen = isFullscreen;
     }
 
     public void SetResolution(int resolutionIndex)
-    {
-        this.resolution = resolutionIndex;
-        
+    {        
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
-
-    void Update()
-    {
-        if (sliderMusic.anchorMax != music)
-        {
-            sliderMusic.anchorMax = music;
-            sliderSound.anchorMax = sound;
-        }
     }
 }
