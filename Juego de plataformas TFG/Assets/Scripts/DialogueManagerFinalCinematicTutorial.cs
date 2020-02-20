@@ -88,6 +88,7 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
     {
         if (sentences.Count <= 0 && displayText.text == activeSentence)
         {
+            LevelManager.Instance.SetGameOverTrue();
             dialoguePanel.SetActive(false);
 
             ActivateCamera.Instance.EnableCamera(1);
