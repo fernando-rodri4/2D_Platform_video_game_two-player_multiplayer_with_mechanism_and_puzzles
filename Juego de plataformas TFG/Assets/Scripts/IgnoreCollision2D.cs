@@ -26,6 +26,8 @@ public class IgnoreCollision2D : MonoBehaviour
             {
                 Physics2D.IgnoreCollision(collider_, otherCollider);
             }
+
+            isCollisionIgnored = true;
         }
     }
 
