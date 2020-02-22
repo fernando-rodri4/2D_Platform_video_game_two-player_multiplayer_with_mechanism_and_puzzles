@@ -47,7 +47,8 @@ public class UILevelManager : MonoBehaviour
 
     bool isThiefTextActive = false;
 
-    int thiefCountPosition = 127;
+    float initialThiefCountPosition = -1086.8f;
+    float finalThiefCountPosition = -830.8f;
 
     float thiefCountSpeed = 2.54f;
 
@@ -78,18 +79,21 @@ public class UILevelManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isThiefTextActive && thiefCount.position.x == -thiefCountPosition)
+        //Debug.Log(thiefCount.localPosition);
+        //-1086.8 -  -830.8
+        
+        if (!isThiefTextActive && thiefCount.localPosition.x == initialThiefCountPosition)
         {
             return;
         }
 
-        if (isThiefTextActive && thiefCount.position.x < thiefCountPosition)
+        if (isThiefTextActive && thiefCount.localPosition.x < finalThiefCountPosition)
         {
-            thiefCount.position = new Vector3(thiefCount.position.x + thiefCountSpeed, thiefCount.position.y, thiefCount.position.z);
+            thiefCount.localPosition = new Vector3(thiefCount.localPosition.x + thiefCountSpeed, thiefCount.localPosition.y, thiefCount.localPosition.z);
         }
-        else if (!isThiefTextActive && thiefCount.position.x > -thiefCountPosition)
+        else if (!isThiefTextActive && thiefCount.localPosition.x > initialThiefCountPosition)
         {
-            thiefCount.position = new Vector3(thiefCount.position.x - thiefCountSpeed, thiefCount.position.y, thiefCount.position.z);
+            thiefCount.localPosition = new Vector3(thiefCount.localPosition.x - thiefCountSpeed, thiefCount.localPosition.y, thiefCount.localPosition.z);
         }
     }
 

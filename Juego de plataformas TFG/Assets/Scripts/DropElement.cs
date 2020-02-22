@@ -33,7 +33,11 @@ public class DropElement : MonoBehaviour
     {
         if (plrMove != null)
         {
-            if (GetComponent<NetworkIdentity>() == null || plrMove.GetIsServer())
+            if (GetComponent<NetworkIdentity>() == null)
+            {
+                plrMove.ResetRBObject();
+            }
+            else if(plrMove.GetIsServer())
             {
                 plrMove.RpcResetRBObject();
             }

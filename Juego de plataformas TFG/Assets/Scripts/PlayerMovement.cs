@@ -181,7 +181,28 @@ public class PlayerMovement : NetworkBehaviour
     /// </summary>
     protected void CarryPosition()
     {
-        if (GetComponent<NetworkIdentity>() == null || isServer)
+        if (GetComponent<NetworkIdentity>() == null)
+        {
+            if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
+            {
+                TakeObject();
+            }
+
+            // Switch the carry, collider and animation state.
+            isCarry = !isCarry;
+            controller.EnableCarryCollider(isCarry);
+            animator.SetBool(carryParamID, isCarry);
+
+            if (Input.GetButtonDown("Carry") && carriedElement != null && !isCarry)
+            {
+                DropObject(5f);
+            }
+            else if (carriedElement != null && !isCarry)
+            {
+                DropObject(0f);
+            }
+        }
+        else if(isServer)
         {
             if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
             {
@@ -225,20 +246,7 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    [Command]
-    void CmdTakeObject()
-    {
-        RpcTakeObject();
-    }
-
-    [Command]
-    void CmdDropObject(float thrust)
-    {
-        RpcDropObject(thrust);
-    }
-
-    [ClientRpc]
-    protected void RpcTakeObject()
+    protected void TakeObject()
     {
         elementToCarry.transform.SetParent(this.transform);
         elementToCarry.transform.position = transform.GetChild(1).transform.position;
@@ -249,8 +257,7 @@ public class PlayerMovement : NetworkBehaviour
         carriedElement = elementToCarry;
     }
 
-    [ClientRpc]
-    protected void RpcDropObject(float thrust)
+    protected void DropObject(float thrust)
     {
         carriedElement.transform.parent = null;
 
@@ -269,17 +276,10 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    [Command]
-    public void CmdResetRBObject()
-    {
-        RpcResetRBObject();
-    }
-
     /// <summary>
     /// When the object leaves the player's collider, its rigidbody is restored.
     /// </summary>
-    [ClientRpc]
-    public void RpcResetRBObject()
+    public void ResetRBObject()
     {
         if (carriedElement != null)
         {
@@ -291,6 +291,44 @@ public class PlayerMovement : NetworkBehaviour
             carriedElement = null;
         }
     }
+
+    [Command]
+    void CmdTakeObject()
+    {
+        RpcTakeObject();
+    }
+
+    [Command]
+    void CmdDropObject(float thrust)
+    {
+        RpcDropObject(thrust);
+    }
+
+    [ClientRpc]
+    protected void RpcTakeObject()
+    {
+        TakeObject();
+    }
+
+    [ClientRpc]
+    protected void RpcDropObject(float thrust)
+    {
+        DropObject(thrust);
+    }
+
+    [Command]
+    public void CmdResetRBObject()
+    {
+        RpcResetRBObject();
+    }
+
+    [ClientRpc]
+    public void RpcResetRBObject()
+    {
+        ResetRBObject();
+    }
+
+
 
     public int GetId()
     {

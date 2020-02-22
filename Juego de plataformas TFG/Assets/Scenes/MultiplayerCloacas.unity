@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1979,7 +1979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.37859946, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.14900208, y: 0.30000305}
+  m_AnchoredPosition: {x: 0.14898682, y: 0.30000305}
   m_SizeDelta: {x: 0.30000305, y: -0.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253083254
@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 52.05
+  m_fontSize: 52.5
   m_fontSizeBase: 56.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3191,7 +3191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5599,7 +5599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.067, y: 0.83900005}
   m_AnchorMax: {x: 0.92100006, y: 0.9722962}
-  m_AnchoredPosition: {x: -0.67993164, y: 0.25598145}
+  m_AnchoredPosition: {x: -0.6801758, y: 0.25598145}
   m_SizeDelta: {x: -1.36, y: -47.862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &527549619
@@ -6313,10 +6313,10 @@ RectTransform:
   m_Father: {fileID: 1582289869}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -127, y: -119.84009}
-  m_SizeDelta: {x: 254.27, y: 58.8}
+  m_AnchorMin: {x: 0, y: 0.86044455}
+  m_AnchorMax: {x: 0.13247916, y: 0.91644454}
+  m_AnchoredPosition: {x: -254.00024, y: 0.15991211}
+  m_SizeDelta: {x: -0.7299957, y: -1.199997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &618164138
 MonoBehaviour:
@@ -26260,7 +26260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -40210,10 +40210,10 @@ RectTransform:
   m_Father: {fileID: 1582289869}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -540}
+  m_SizeDelta: {x: 0, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1093180831
 GameObject:
@@ -44396,7 +44396,7 @@ MonoBehaviour:
   m_text: The thieves's city
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e436ddbfd8e215245b55f3f627c9f93d, type: 2}
-  m_sharedMaterial: {fileID: -442589776646614482, guid: 543684ba96ac8b749bbdad23f0f5d175,
+  m_sharedMaterial: {fileID: -9122746515307206408, guid: e436ddbfd8e215245b55f3f627c9f93d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -48823,6 +48823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 5935408145273998015, guid: 86d778b2e100675429fad78c5f02f29c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86d778b2e100675429fad78c5f02f29c, type: 3}
 --- !u!1 &1927390654 stripped
@@ -48907,8 +48912,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.50786567, y: 1}
-  m_AnchoredPosition: {x: 0.010002136, y: -28.970003}
-  m_SizeDelta: {x: 0.01999998, y: 57.94}
+  m_AnchoredPosition: {x: 0.010009766, y: 0.000030517578}
+  m_SizeDelta: {x: 0.02, y: -0.000045776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1960276566
 MonoBehaviour:
@@ -48928,10 +48933,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2759625832949664974, guid: f13b860579c48984ead1ced4cdabb885,
-    type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 184950751378207249, guid: fffcc5430a9be8d49b45c58a3919a57e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 1
   m_FillAmount: 0.5
