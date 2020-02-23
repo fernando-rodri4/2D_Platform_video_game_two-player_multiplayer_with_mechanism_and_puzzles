@@ -145,4 +145,9 @@ public sealed class LevelManager : MonoBehaviour
 
         UILevelManager.Instance.SetStatistics(minutes.ToString("00") + ":" + seconds.ToString("00"), 0.ToString(), thiefText);
     }
+
+    public void SetGameOverTrue()
+    {
+        isGameOver = true;
+    }
 }

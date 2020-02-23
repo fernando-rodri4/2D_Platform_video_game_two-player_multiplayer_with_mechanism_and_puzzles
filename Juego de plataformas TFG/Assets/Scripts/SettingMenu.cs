@@ -54,7 +54,7 @@ public class SettingMenu : MonoBehaviour
     }
 
     public void SetResolution(int resolutionIndex)
-    {
+    {        
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }

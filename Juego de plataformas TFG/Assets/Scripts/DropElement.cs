@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public class DropElement : MonoBehaviour
 {
@@ -32,7 +33,18 @@ public class DropElement : MonoBehaviour
     {
         if (plrMove != null)
         {
-            plrMove.ResetRBObject();
+            if (GetComponent<NetworkIdentity>() == null)
+            {
+                plrMove.ResetRBObject();
+            }
+            else if(plrMove.GetIsServer())
+            {
+                plrMove.RpcResetRBObject();
+            }
+            else
+            {
+                plrMove.CmdResetRBObject();
+            }
         }
     }
 }

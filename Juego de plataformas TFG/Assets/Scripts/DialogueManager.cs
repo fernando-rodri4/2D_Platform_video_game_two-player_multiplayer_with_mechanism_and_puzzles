@@ -49,7 +49,7 @@ public class DialogueManager : MonoBehaviour
 
     protected bool isDialogueStart = false;
     
-    Coroutine coroutine = null;
+    protected Coroutine coroutine = null;
 
     public Dialogue dialogue;
 
@@ -156,7 +156,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    IEnumerator TypeTheSentence(string sentence)
+    protected IEnumerator TypeTheSentence(string sentence)
     {
         displayText.text = "";
 
