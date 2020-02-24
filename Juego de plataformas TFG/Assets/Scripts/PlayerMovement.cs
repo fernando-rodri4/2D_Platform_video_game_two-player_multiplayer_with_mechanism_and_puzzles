@@ -21,7 +21,7 @@ public class PlayerMovement : NetworkBehaviour
     /// <summary>
     /// Element that player carry.
     /// </summary>
-    protected GameObject carriedElement = null;
+    public GameObject carriedElement = null;
 
     /// <summary>
     /// Indicates if player can move
@@ -44,6 +44,11 @@ public class PlayerMovement : NetworkBehaviour
     /// Check if the player is in a position to carry something or not.
     /// </summary>
     protected bool isCarry = false;
+
+    /// <summary>
+    /// Check if player press carry button
+    /// </summary>
+    protected bool carryButton = false;
 
     /// <summary>
     /// Reference to the animator parameters.
@@ -118,14 +123,16 @@ public class PlayerMovement : NetworkBehaviour
         // If press carry button, call CarryPosition method.
         if (Input.GetButtonDown("Carry") && canMove && horizontalMove == 0 && animator.GetFloat(fallParamID) == 0)
         {
+            carryButton = true;
+
             CarryPosition();
         }
 
-        // Deactivate carry animation if it is falling.
+        /*// Deactivate carry animation if it is falling.
         if (isCarry && animator.GetFloat(fallParamID) < -0.01)
         {
             CarryPosition();
-        }
+        }*/
     }
 
     protected void FixedUpdate()
@@ -146,7 +153,7 @@ public class PlayerMovement : NetworkBehaviour
 
     protected void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Box") || other.CompareTag("Player"))
+        if ((other.CompareTag("Box") || other.CompareTag("Player"))  && other.gameObject == elementToCarry)
         {
             elementToCarry = null;
         }
@@ -183,18 +190,21 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (GetComponent<NetworkIdentity>() == null)
         {
-            if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
+            if (carryButton && elementToCarry != null && !isCarry)
             {
+                carryButton = false;
+
                 TakeObject();
             }
 
-            // Switch the carry, collider and animation state.
             isCarry = !isCarry;
             controller.EnableCarryCollider(isCarry);
             animator.SetBool(carryParamID, isCarry);
 
-            if (Input.GetButtonDown("Carry") && carriedElement != null && !isCarry)
+            if (carryButton && carriedElement != null && !isCarry)
             {
+                carryButton = false;
+
                 DropObject(5f);
             }
             else if (carriedElement != null && !isCarry)
@@ -204,18 +214,21 @@ public class PlayerMovement : NetworkBehaviour
         }
         else if(isServer)
         {
-            if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
+            if (carryButton && elementToCarry != null && !isCarry)
             {
+                carryButton = false;
+
                 RpcTakeObject();
             }
 
-            // Switch the carry, collider and animation state.
             isCarry = !isCarry;
-            controller.EnableCarryCollider(isCarry);
+            RpcStatus(isCarry);
             animator.SetBool(carryParamID, isCarry);
 
-            if (Input.GetButtonDown("Carry") && carriedElement != null && !isCarry)
+            if (carryButton && carriedElement != null && !isCarry)
             {
+                carryButton = false;
+
                 RpcDropObject(5f);
             }
             else if (carriedElement != null && !isCarry)
@@ -225,18 +238,21 @@ public class PlayerMovement : NetworkBehaviour
         }
         else if(isClient)
         {
-            if (Input.GetButtonDown("Carry") && elementToCarry != null && !isCarry)
+            if (carryButton && elementToCarry != null && !isCarry)
             {
+                carryButton = false;
+
                 CmdTakeObject();
             }
 
-            // Switch the carry, collider and animation state.
             isCarry = !isCarry;
-            controller.EnableCarryCollider(isCarry);
+            CmdStatus(isCarry);
             animator.SetBool(carryParamID, isCarry);
 
-            if (Input.GetButtonDown("Carry") && carriedElement != null && !isCarry)
+            if (carryButton && carriedElement != null && !isCarry)
             {
+                carryButton = false;
+
                 CmdDropObject(5f);
             }
             else if (carriedElement != null && !isCarry)
@@ -255,6 +271,8 @@ public class PlayerMovement : NetworkBehaviour
         rb.simulated = false;
 
         carriedElement = elementToCarry;
+
+        elementToCarry = null;
     }
 
     protected void DropObject(float thrust)
@@ -289,7 +307,32 @@ public class PlayerMovement : NetworkBehaviour
             rb.simulated = true;
 
             carriedElement = null;
+
+            if (GetComponent<NetworkIdentity>() == null)
+            {
+                isCarry = !isCarry;
+                controller.EnableCarryCollider(isCarry);
+                animator.SetBool(carryParamID, isCarry);
+            }
+            else if (isServer)
+            {
+                isCarry = !isCarry;
+                RpcStatus(isCarry);
+                animator.SetBool(carryParamID, isCarry);
+            }
+            else if (isClient)
+            {
+                isCarry = !isCarry;
+                CmdStatus(isCarry);
+                animator.SetBool(carryParamID, isCarry);
+            }
         }
+    }
+
+    protected void Status(bool carry)
+    {
+        // Switch the carry, collider and animation state.
+        controller.EnableCarryCollider(carry);
     }
 
     [Command]
@@ -328,7 +371,17 @@ public class PlayerMovement : NetworkBehaviour
         ResetRBObject();
     }
 
+    [Command]
+    protected void CmdStatus(bool carry)
+    {
+        RpcStatus(carry);
+    }
 
+    [ClientRpc]
+    protected void RpcStatus(bool carry)
+    {
+        Status(carry);
+    }
 
     public int GetId()
     {

@@ -31,6 +31,11 @@ public class DropElement : MonoBehaviour
     /// <param name="other">The Collision2D data associated with this collision.</param>
     void OnCollisionExit2D(Collision2D other)
     {
+        if (other.gameObject != plrMove.carriedElement.gameObject)
+        {
+            return;
+        }
+
         if (plrMove != null)
         {
             if (GetComponent<NetworkIdentity>() == null)

@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerMovement2 : PlayerMovement
 {
     new void Update()
     {
         MovePlayer();
-        
+
         // If press jump button, activate jumping animation and deactivate carry animation if it is playing.
         if (Input.GetButtonDown("Jump2") && canMove)
         {
             isJump = true;
 
-            if(isCarry)
+            if (isCarry)
             {
                 CarryPosition();
             }
@@ -21,6 +20,8 @@ public class PlayerMovement2 : PlayerMovement
         // If press carry button, call CarryPosition method.
         if (Input.GetButtonDown("Carry2") && canMove && horizontalMove == 0 && animator.GetFloat(fallParamID) == 0)
         {
+            carryButton = true;
+
             CarryPosition();
         }
 
@@ -37,7 +38,7 @@ public class PlayerMovement2 : PlayerMovement
     new void MovePlayer()
     {
         // Calculate the player speed
-        if(canMove)
+        if (canMove)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
 
@@ -48,7 +49,7 @@ public class PlayerMovement2 : PlayerMovement
         }
         else
         {
-             horizontalMove = 0;
+            horizontalMove = 0;
         }
 
         // Say the animator to activate the running animation.
@@ -60,18 +61,21 @@ public class PlayerMovement2 : PlayerMovement
     /// </summary>
     new void CarryPosition()
     {
-        if (Input.GetButtonDown("Carry2") && elementToCarry != null && !isCarry)
+        if (carryButton && elementToCarry != null && !isCarry)
         {
+            carryButton = false;
+
             TakeObject();
         }
 
-        // Switch the carry, collider and animation state.
         isCarry = !isCarry;
         controller.EnableCarryCollider(isCarry);
         animator.SetBool(carryParamID, isCarry);
 
-        if (Input.GetButtonDown("Carry2") && carriedElement != null && !isCarry)
+        if (carryButton && carriedElement != null && !isCarry)
         {
+            carryButton = false;
+
             DropObject(5f);
         }
         else if (carriedElement != null && !isCarry)
