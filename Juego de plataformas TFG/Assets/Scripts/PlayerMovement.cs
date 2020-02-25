@@ -43,7 +43,7 @@ public class PlayerMovement : NetworkBehaviour
     /// <summary>
     /// Check if the player is in a position to carry something or not.
     /// </summary>
-    protected bool isCarry = false;
+    public bool isCarry = false;
 
     /// <summary>
     /// Check if player press carry button
@@ -156,6 +156,21 @@ public class PlayerMovement : NetworkBehaviour
         if ((other.CompareTag("Box") || other.CompareTag("Player"))  && other.gameObject == elementToCarry)
         {
             elementToCarry = null;
+        }
+        else if (other.CompareTag("Hands"))
+        {
+            if (GetComponent<NetworkIdentity>() == null)
+            {
+                ResetRBObject(other.gameObject);
+            }
+            else if (isServer)
+            {
+                RpcResetRBObject(other.gameObject);
+            }
+            else if (isClient)
+            {
+                CmdResetRBObject(other.gameObject);
+            }
         }
     }
 
@@ -297,36 +312,12 @@ public class PlayerMovement : NetworkBehaviour
     /// <summary>
     /// When the object leaves the player's collider, its rigidbody is restored.
     /// </summary>
-    public void ResetRBObject()
+    public void ResetRBObject(GameObject other)
     {
-        if (carriedElement != null)
-        {
-            carriedElement.transform.parent = null;
+        transform.parent = null;
 
-            Rigidbody2D rb = carriedElement.GetComponent<Rigidbody2D>();
-            rb.simulated = true;
-
-            carriedElement = null;
-
-            if (GetComponent<NetworkIdentity>() == null)
-            {
-                isCarry = !isCarry;
-                controller.EnableCarryCollider(isCarry);
-                animator.SetBool(carryParamID, isCarry);
-            }
-            else if (isServer)
-            {
-                isCarry = !isCarry;
-                RpcStatus(isCarry);
-                animator.SetBool(carryParamID, isCarry);
-            }
-            else if (isClient)
-            {
-                isCarry = !isCarry;
-                CmdStatus(isCarry);
-                animator.SetBool(carryParamID, isCarry);
-            }
-        }
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.simulated = true;
     }
 
     protected void Status(bool carry)
@@ -360,18 +351,6 @@ public class PlayerMovement : NetworkBehaviour
     }
 
     [Command]
-    public void CmdResetRBObject()
-    {
-        RpcResetRBObject();
-    }
-
-    [ClientRpc]
-    public void RpcResetRBObject()
-    {
-        ResetRBObject();
-    }
-
-    [Command]
     protected void CmdStatus(bool carry)
     {
         RpcStatus(carry);
@@ -381,6 +360,18 @@ public class PlayerMovement : NetworkBehaviour
     protected void RpcStatus(bool carry)
     {
         Status(carry);
+    }
+
+    [ClientRpc]
+    protected void RpcResetRBObject(GameObject other)
+    {
+        ResetRBObject(other);
+    }
+
+    [Command]
+    protected void CmdResetRBObject(GameObject other)
+    {
+        RpcResetRBObject(other);
     }
 
     public int GetId()

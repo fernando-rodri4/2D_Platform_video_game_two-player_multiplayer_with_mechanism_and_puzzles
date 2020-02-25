@@ -8,6 +8,7 @@ TagManager:
   - Box
   - elect1
   - elect2
+  - Hands
   layers:
   - Default
   - TransparentFX
