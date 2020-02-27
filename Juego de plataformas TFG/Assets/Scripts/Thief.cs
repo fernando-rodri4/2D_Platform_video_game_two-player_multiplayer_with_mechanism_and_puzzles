@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Thief : MonoBehaviour
 {
@@ -7,6 +6,19 @@ public class Thief : MonoBehaviour
     /// The visual effects when the thief is captured
     /// </summary>
     [SerializeField] GameObject smokeParticles = null;
+
+    /// <summary>
+	/// Speed and radius vision of the thief
+	/// </summary>
+	public float visionRadius = 5;
+    public float scapeRadius = 3;
+    public float speed = 2;
+
+    /// <summary>
+	/// position of the thief
+	/// </summary>
+	Vector3 initialPosition;
+    Vector3 target;
 
     /// <summary>
     /// The layer the player game object is on
@@ -29,6 +41,9 @@ public class Thief : MonoBehaviour
 
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
+
+        //Save the thief's position
+        initialPosition = transform.position;
 
         LevelManager.Instance.RegisterThief(this);
     }
@@ -57,5 +72,47 @@ public class Thief : MonoBehaviour
 
         //Deactivate this thief to hide it and prevent further collection
         gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+
+        //Save an array of players by the tag
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        //Check that there are 2 players
+        if (players.Length == 2)
+        {
+
+            //If the distance is smaller than the visionRadius, player will be the new target
+            float distance = Vector3.Distance(players[0].transform.position, transform.position);
+            float distance2 = Vector3.Distance(players[1].transform.position, transform.position);
+            if (distance < visionRadius) target = players[0].transform.position;
+            if (distance2 < visionRadius) target = players[1].transform.position;
+
+            //If distances of players are smaller than the scapeRadius, the thief stop
+            if (distance < scapeRadius && distance2 < scapeRadius)
+            {
+                target = transform.position;
+            }
+
+            if (target == players[0].transform.position || target == players[1].transform.position) {
+                //Move the thief against the player
+                float fixedSpeed = -1 * speed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, target, fixedSpeed);
+            }
+
+            Debug.DrawLine(transform.position, target, Color.white);
+        }
+    }
+
+    //Show the radius vision of the thief
+    void OnDrawGizmos() {
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, visionRadius);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, scapeRadius);
     }
 }
