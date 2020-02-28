@@ -691,8 +691,8 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: "Uno no puede realizar todo solo y hay veces en las que debes de confiar
-        y pedir apoyo a alguien m\xE1s."
+      value: "Deb\xE9is trabajar juntos para superar las pruebas del misterioso hombre
+        y poder restaurar todo a la normalidad."
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 44.55
+  m_fontSize: 52.5
   m_fontSizeBase: 56.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2386,7 +2386,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -2403,6 +2403,26 @@ PrefabInstance:
       propertyPath: button
       value: 
       objectReference: {fileID: 2776168765516825650}
+    - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Al ver c\xF3mo la gente lo trat\xF3 y se aprovech\xF3 de \xE9l, decidi\xF3
+        vengarse rob\xE1ndoles todo su conocimiento. El pueblo se descontrol\xF3
+        y el hombre se hizo el due\xF1o de la ciudad."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "Dos hermanos Indis y Eru, decidieron ir a hablar con \xE9l para que
+        volviera todo a la normalidad, pero el misterioso hombre les present\xF3
+        una serie de pruebas que deb\xEDan superar antes de hablar con \xE9l y confirmar
+        que no eran como los dem\xE1s."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
+        type: 3}
+      propertyPath: textSize
+      value: 34.15
+      objectReference: {fileID: 0}
     - target: {fileID: 1344643906574201022, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: m_Name
@@ -4677,7 +4697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122.89728, y: -0.82293034, z: -10}
+  m_LocalPosition: {x: 279.05026, y: -14.845876, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40609,7 +40629,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 34.6
+      value: 35.7
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574201022, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -40795,8 +40815,8 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: "Uno no puede realizar todo solo y hay veces en las que debes de confiar
-        y pedir apoyo a alguien m\xE1s."
+      value: "Deb\xE9is trabajar juntos para superar las pruebas del misterioso hombre
+        y poder restaurar todo a la normalidad."
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -41490,15 +41510,14 @@ MonoBehaviour:
   dialoguePanel: {fileID: 1087354407}
   button: {fileID: 2776168765516825650}
   displayText: {fileID: 527549619}
-  textSize: 34
+  textSize: 36.65
   typingSpeed: 0.04
   dialogue:
     name: 
     sentences:
-    - "Hab\xE9is logrado superar todas mis pruebas, estoy muy orgulloso de vosotros,
-      por delante se os presenta una gran aventura con muchos desaf\xEDos y obst\xE1culos,
-      pero conf\xEDo en vosotros y s\xE9 que ser\xE9is capaces de superarlos y recordad
-      que deb\xE9is apoyaros siempre y confiad el uno en el otro."
+    - "Hab\xE9is logrado superar mis pruebas, pero esto ha hecho m\xE1s que empezar,
+      por delante se os presentan muchos desaf\xEDos y obst\xE1culos. Al final de
+      todos ellos os espero. Fd. El hombre misterioso"
   image: {fileID: 1311903528}
   text: {fileID: 1318086201}
   images:
@@ -42450,6 +42469,18 @@ PrefabInstance:
       propertyPath: button
       value: 
       objectReference: {fileID: 2776168765516825650}
+    - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Hace mucho tiempo, al pueblo de Eldar lleg\xF3 un misterioso hombre.\r\nEste
+        hombre se encarg\xF3 de ense\xF1ar y ayudar a la gente del pueblo, pero los
+        habitantes se aprovecharon de su bondad."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
+        type: 3}
+      propertyPath: textSize
+      value: 34.15
+      objectReference: {fileID: 0}
     - target: {fileID: 1344643906574201022, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: m_Name
@@ -45798,7 +45829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829658500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 123.19, y: -2.87, z: 0}
+  m_LocalPosition: {x: 279.3, y: -16.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1565829740}
@@ -46004,7 +46035,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834552517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 122.89762, y: -2.2566385, z: -10}
+  m_LocalPosition: {x: 279.0506, y: -16.286638, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1582591305}
@@ -47241,7 +47272,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 40
+      value: 41.65
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574201022, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}

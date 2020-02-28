@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     GameObject playerEnter;
 
-    [SerializeField] protected float textSize = -1;
+    [SerializeField] protected float textSize = 10;
 
     /// <summary>
     /// Write speed
