@@ -87,7 +87,7 @@ public class DialogueManager : MonoBehaviour
             playerEnter.GetComponent<PlayerMovement>().canMove = false;
 
             dialoguePanel.SetActive(true);
-            displayText.fontSize = textSize;    //TODO:Revisar si funciona con el cambio de tamaño de pantalla o poner autosize
+            displayText.fontSize = textSize;
             StartDialogue();
             isDialogueStart = true;
         }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScenesController : MonoBehaviour
 {
@@ -14,4 +15,5 @@ public class ScenesController : MonoBehaviour
     {
         Application.Quit();        
     }
+
 }

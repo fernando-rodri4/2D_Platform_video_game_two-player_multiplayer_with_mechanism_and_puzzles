@@ -7,7 +7,7 @@ public class SettingMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
-
+    public Toggle fullResolution;
     public Slider music, sounds;
 
     List <Resolution> resolutionsList = new List<Resolution>();
@@ -16,55 +16,84 @@ public class SettingMenu : MonoBehaviour
     {
         int currentResolutionIndex = -1;
         
-        for(int i = 0; i < resolutionDropdown.options.Count && currentResolutionIndex == -1; i++)
+        for(int i = 0; i < resolutionDropdown.options.Count; i++)
         {
-            string currentResolution = Screen.currentResolution.width + " x " + Screen.currentResolution.height;
+            //////////////Create instance of Resolution struct
+            int wid, hei;
+
+            wid = int.Parse(resolutionDropdown.options[i].text.Substring(0, resolutionDropdown.options[i].text.IndexOf("x") - 1));
+            
+            try
+            {
+                hei = int.Parse(resolutionDropdown.options[i].text.Substring(resolutionDropdown.options[i].text.IndexOf("x") + 2, 4));
+            }
+            catch
+            {
+                hei = int.Parse(resolutionDropdown.options[i].text.Substring(resolutionDropdown.options[i].text.IndexOf("x") + 2, 3));
+            }
 
             Resolution resolution = new Resolution
             {
-                width = Screen.currentResolution.width,
-                height = Screen.currentResolution.height
-            };
+                width = wid,
+                
+                height = hei
 
+            };
+            ///////////////////
+            
             resolutionsList.Add(resolution);
 
-            if (resolutionDropdown.options[i].text == currentResolution)
+            if (resolutionsList[i].width == PlayerPrefs.GetInt("resolutionWidht", 1920) &&
+               resolutionsList[i].height == PlayerPrefs.GetInt("resolutionHeight", 1080) && currentResolutionIndex == -1)
             {
                 currentResolutionIndex = i;
             }
         }
 
+        if (currentResolutionIndex == -1)
+        {
+            currentResolutionIndex = 0;
+        }
+
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-        float vol = 0f;
+        fullResolution.isOn = bool.Parse(PlayerPrefs.GetString("fullScreen", "false"));
+        
+        music.value = PlayerPrefs.GetFloat("musicVolume", 0);
 
-        audioMixer.GetFloat("musicVolume", out vol);
-        music.value = vol;
-
-         audioMixer.GetFloat("playerVolume", out vol);
-        sounds.value = vol;
+        sounds.value = PlayerPrefs.GetFloat("soundVolume", 0);
     }
 
     public void SetVolumeMusic(float volume)
     {
         audioMixer.SetFloat("musicVolume", volume);
+
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
     public void SetVolumeSounds(float volume)
     {
         audioMixer.SetFloat("playerVolume", volume);
         audioMixer.SetFloat("voiceVolume", volume);
         audioMixer.SetFloat("effectVolume", volume);
+
+        PlayerPrefs.SetFloat("soundVolume", volume);
     }
 
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+
+        PlayerPrefs.SetString("fullScreen", isFullscreen.ToString());
     }
 
     public void SetResolution(int resolutionIndex)
-    {        
+    {
         Resolution resolution = resolutionsList[resolutionIndex];
+
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+
+        PlayerPrefs.SetInt("resolutionWidht", resolution.width);
+        PlayerPrefs.SetInt("resolutionHeight", resolution.height);
     }
 }
