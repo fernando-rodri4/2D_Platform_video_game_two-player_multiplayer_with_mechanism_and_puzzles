@@ -39,6 +39,14 @@ public class AudioLevelManager : MonoBehaviour
 
     void Awake()
     {
+        //Destroy the music of the menus
+        GameObject musicMenu = GameObject.Find("MusicMenu");
+
+        if (musicMenu != null)
+        {
+            Destroy(musicMenu);
+        }
+
         //If an AudioLevelManager exists and it is not this...
         if (Instance != null && Instance != this)
         {
