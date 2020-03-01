@@ -174,6 +174,7 @@ public class PuzzleTutorialController : MonoBehaviour
     {
         if ((Input.GetButtonDown("Enter") && players[0].GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter"))
         {
+
             pictures[activeForPlayer1].localScale = new Vector3(0.96f, 0.96f, 1);
 
             if (activeForPlayer1 == 0 || activeForPlayer1 == 5)
@@ -193,6 +194,7 @@ public class PuzzleTutorialController : MonoBehaviour
         }
         else if ((Input.GetButtonDown("Enter") && players[0].GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter")) //Todo:cambiar a enter2
         {
+
             pictures[activeForPlayer2].localScale = new Vector3(0.96f, 0.96f, 1);
 
             if (activeForPlayer2 == 1 || activeForPlayer2 == 4)

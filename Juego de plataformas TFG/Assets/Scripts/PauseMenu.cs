@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
 
+            AudioLevelManager.Instance.PlayButtonAudio();
+
             if(pause){
 
                 Resume();

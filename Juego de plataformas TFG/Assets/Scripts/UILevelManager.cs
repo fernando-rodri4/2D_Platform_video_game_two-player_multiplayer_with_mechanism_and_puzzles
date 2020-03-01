@@ -117,6 +117,8 @@ public class UILevelManager : MonoBehaviour
 
         StartCoroutine(FlickeringText(thiefText, Color.white, Color.red));
 
+        AudioLevelManager.Instance.PlayCollectionAudio();
+
         yield return new WaitForSeconds(2.6f);
 
         isThiefTextActive = false;
