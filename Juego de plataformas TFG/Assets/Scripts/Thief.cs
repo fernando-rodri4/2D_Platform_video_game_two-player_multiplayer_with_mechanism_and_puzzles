@@ -26,9 +26,20 @@ public class Thief : MonoBehaviour
     int playerLayer;
 
     /// <summary>
+    /// Reference to the sprite renderer of the thief
+    /// </summary>
+    SpriteRenderer thiefRenderer;
+
+    /// <summary>
     /// It is true when the player touches the thief, avoids more a collision
     /// </summary>
     bool collisionEnter = false;
+
+    /// <summary>
+    /// Variables to flip the thief
+    /// </summary>
+    float distanceX = 0;
+    bool flipThief = true;
 
     void Start()
     {
@@ -38,6 +49,8 @@ public class Thief : MonoBehaviour
             Debug.LogError("Error with Thief script components " + this);
             return;
         }
+
+        thiefRenderer = GetComponent<SpriteRenderer>();
 
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
@@ -84,11 +97,14 @@ public class Thief : MonoBehaviour
         if (players.Length == 2)
         {
 
+            //The distance of players's position in axis X is smaller than the position of thief
+            distanceX = Input.GetAxis("Horizontal");
+
             //If the distance is smaller than the visionRadius, player will be the new target
             float distance = Vector3.Distance(players[0].transform.position, transform.position);
             float distance2 = Vector3.Distance(players[1].transform.position, transform.position);
-            if (distance < visionRadius) target = players[0].transform.position;
-            if (distance2 < visionRadius) target = players[1].transform.position;
+            if (distance < visionRadius) { target = players[0].transform.position;}
+            if (distance2 < visionRadius){ target = players[1].transform.position;}
 
             //If distances of players are smaller than the scapeRadius, the thief stop
             if (distance < scapeRadius && distance2 < scapeRadius)
@@ -96,10 +112,28 @@ public class Thief : MonoBehaviour
                 target = transform.position;
             }
 
+            //If the target is a player
             if (target == players[0].transform.position || target == players[1].transform.position) {
+
+                //If some of the player is not in the scapeRadius, then the thief can flip to scape
+                if (distance > scapeRadius || distance2 > scapeRadius)
+                {
+
+                    if (distanceX > 0 && flipThief)
+                    {
+                        Flip();
+                    }
+                    else if (distanceX < 0 && !flipThief)
+                    {
+                        Flip();
+                    }
+                }
+
+
                 //Move the thief against the player
                 float fixedSpeed = -1 * speed * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, target, fixedSpeed);
+                
             }
 
             Debug.DrawLine(transform.position, target, Color.white);
@@ -114,5 +148,11 @@ public class Thief : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, scapeRadius);
+    }
+
+    void Flip() 
+    {
+        flipThief = !flipThief;
+        thiefRenderer.flipX = !thiefRenderer.flipX;
     }
 }
