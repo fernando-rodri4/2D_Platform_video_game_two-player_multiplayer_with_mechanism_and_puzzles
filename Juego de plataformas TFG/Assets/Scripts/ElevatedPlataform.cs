@@ -39,7 +39,6 @@ public class ElevatedPlataform : MonoBehaviour
         if (isButtonActivate && transform.position.y < finalPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.03125f, transform.position.z);
-            AudioLevelManager.Instance.PlayElevatorAudio();
         }
         else if(isButtonActivate && transform.position.y > finalPos)
         {
@@ -49,7 +48,6 @@ public class ElevatedPlataform : MonoBehaviour
         else if(!isButtonActivate && transform.position.y > initialPos)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.03125f, transform.position.z);
-            AudioLevelManager.Instance.PlayElevatorAudio();
         }
         else if(!isButtonActivate && transform.position.y < initialPos)
         {

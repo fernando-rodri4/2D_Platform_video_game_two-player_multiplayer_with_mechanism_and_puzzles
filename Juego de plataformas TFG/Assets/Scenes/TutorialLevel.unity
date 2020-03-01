@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5838,7 +5838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 259.57727, y: -14.85039, z: -10}
+  m_LocalPosition: {x: 257.48718, y: -14.850875, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24169,7 +24169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756922827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 264.3, y: -17, z: 0}
+  m_LocalPosition: {x: 260.64, y: -17.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1391870725}
@@ -26469,18 +26469,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ModeMain
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1627457393}
-        m_MethodName: PlayButtonAudio
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: PrincipalMain
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &816680295
@@ -47478,7 +47467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicClip: {fileID: 8300000, guid: bca57c21ef104334ca34c9a39b949abd, type: 3}
   ButtonClip: {fileID: 8300000, guid: 5059d1bd21bee744a9783b0f8719e271, type: 3}
-  ElevatorClip: {fileID: 8300000, guid: e08a27503e9e17b42a55e16b2aecc263, type: 3}
   PuzzleClip: {fileID: 8300000, guid: d8dbd23dff6c8de4489a11aa40a0b6b9, type: 3}
   RotatePuzzleClip: {fileID: 8300000, guid: 24b97e31f0c2747458325437f7afa9d9, type: 3}
   ChangePuzzleClip: {fileID: 8300000, guid: 48112de966d542942b4fe2c964b0ec6a, type: 3}
@@ -49305,7 +49293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829658500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 259.8, y: -16.6, z: 0}
+  m_LocalPosition: {x: 257.71, y: -17.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1565829740}
@@ -49511,7 +49499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834552517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 259.57755, y: -15.986639, z: -10}
+  m_LocalPosition: {x: 257.48755, y: -16.42664, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1582591305}
