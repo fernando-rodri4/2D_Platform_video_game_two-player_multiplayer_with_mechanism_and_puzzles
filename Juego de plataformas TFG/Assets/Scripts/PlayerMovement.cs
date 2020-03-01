@@ -28,7 +28,7 @@ public class PlayerMovement : NetworkBehaviour
     /// </summary>
     [HideInInspector] public bool canMove = true;
 
-    [SerializeField] protected int id = -1;
+    [SerializeField] protected int id = 0;
 
     /// <summary>
     /// Player speed.

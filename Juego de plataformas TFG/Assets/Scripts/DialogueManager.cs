@@ -95,7 +95,7 @@ public class DialogueManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer)
+        if (collision.gameObject.layer == playerLayer && collision.gameObject.GetComponent<PlayerMovement>().isLocalPlayer)
         {
             playerEnter = collision.gameObject;
         }
@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer)
+        if (collision.gameObject.layer == playerLayer && collision.gameObject.GetComponent<PlayerMovement>().isLocalPlayer)
         {
             playerEnter = null;
         }

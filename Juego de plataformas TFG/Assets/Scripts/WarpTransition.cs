@@ -70,7 +70,7 @@ public class WarpTransition : MonoBehaviour
     {
         //If the collider object isn't on the Player layer, exit. This is more 
         //efficient than string comparisons using Tags
-        if (collision.gameObject.layer == playerLayer)
+        if (collision.gameObject.layer == playerLayer && collision.gameObject.GetComponent<PlayerMovement>().isLocalPlayer)
         {
             if (collision.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
             {
@@ -87,7 +87,7 @@ public class WarpTransition : MonoBehaviour
     {
         //If the collider object isn't on the Player layer, exit. This is more 
         //efficient than string comparisons using Tags
-        if (collision.gameObject.layer == playerLayer)
+        if (collision.gameObject.layer == playerLayer && collision.gameObject.GetComponent<PlayerMovement>().isLocalPlayer)
         {
             if (collision.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
             {

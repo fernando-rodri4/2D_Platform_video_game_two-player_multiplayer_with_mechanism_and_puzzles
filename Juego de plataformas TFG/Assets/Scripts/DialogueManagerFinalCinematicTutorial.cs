@@ -57,6 +57,8 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
                 player.GetComponent<PlayerMovement>().canMove = false;
             }
 
+            LevelManager.Instance.SetGameOverTrue();
+
             image.SetActive(false);
             text.SetActive(false);
             
@@ -88,7 +90,6 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
     {
         if (sentences.Count <= 0 && displayText.text == activeSentence)
         {
-            LevelManager.Instance.SetGameOverTrue();
             dialoguePanel.SetActive(false);
 
             ActivateCamera.Instance.EnableCamera(1);

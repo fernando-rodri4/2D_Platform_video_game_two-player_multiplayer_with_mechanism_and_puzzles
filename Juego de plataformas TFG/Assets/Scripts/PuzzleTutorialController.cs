@@ -33,7 +33,9 @@ public class PuzzleTutorialController : MonoBehaviour
     /// </summary>
     int playerLayer;
 
-    List<GameObject> players;
+    List<GameObject> playersList;
+
+    GameObject currentPlayer;
 
     bool isCorrect = false;
 
@@ -67,27 +69,25 @@ public class PuzzleTutorialController : MonoBehaviour
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
 
-        players = new List<GameObject>();
+        playersList = new List<GameObject>();
 
         //Active the first image for each player
-        if (ClientScene.localPlayers != null)
-        {
-            var players = ClientScene.localPlayers;
 
-            foreach (var player in players)
+        var players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (var player in players)
+        {
+            if (player.gameObject.GetComponent<NetworkIdentity>().hasAuthority)
             {
-                if (player.gameObject.GetComponent<NetworkIdentity>().hasAuthority)
+                if (player.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
                 {
-                    if (player.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
-                    {
-                        pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
-                    }
-                    else
-                    {
-                        pictures[activeForPlayer2].localScale = new Vector3(1, 1, 1);
-                    }
-                    return;
+                    pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
                 }
+                else
+                {
+                    pictures[activeForPlayer2].localScale = new Vector3(1, 1, 1);
+                }
+                return;
             }
         }
     }
@@ -95,7 +95,7 @@ public class PuzzleTutorialController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isCorrect || players.Count == 0)
+        if (isCorrect || playersList.Count == 0)
         {
             return;
         }
@@ -104,13 +104,18 @@ public class PuzzleTutorialController : MonoBehaviour
 
         Rotate();
 
-        if (players.Count == 2)
+        if (playersList.Count == 2)
         {
             ActivateCamera.Instance.EnableCamera(0);
 
-            foreach (var player in players)
+            foreach (var player in playersList)
             {
                 player.GetComponent<PlayerMovement>().canMove = false;
+
+                if (player.GetComponent<PlayerMovement>().hasAuthority)
+                {
+                    currentPlayer = player;
+                }
             }
         }
 
@@ -123,15 +128,15 @@ public class PuzzleTutorialController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer && !players.Contains(collision.gameObject) /*&& Input.GetButtonDown("Enter")*/) //Todo: Intentar poner confirmación de jugador
+        if (collision.gameObject.layer == playerLayer && !playersList.Contains(collision.gameObject) /*&& Input.GetButtonDown("Enter")*/) //Todo: Intentar poner confirmación de jugador
         {
-            players.Add(collision.gameObject);
+            playersList.Add(collision.gameObject);
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        players.Remove(collision.gameObject);
+        playersList.Remove(collision.gameObject);
     }
 
     /// <summary>
@@ -148,20 +153,20 @@ public class PuzzleTutorialController : MonoBehaviour
     /// </summary>
     void Rotate()
     {
-        if ((Input.GetButtonDown("RotateRight") && players[0].GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter"))
+        if ((Input.GetButtonDown("RotateRight") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null)
         {
             pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateRight();
         }
-        else if ((Input.GetButtonDown("RotateRight") && players[0].GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter")) //Todo:cambiar a enter2
+        else if ((Input.GetButtonDown("RotateRight") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null) //Todo:cambiar a enter2
         {
             pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateRight();
         }
 
-        if ((Input.GetButtonDown("RotateLeft") && players[0].GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter"))
+        if ((Input.GetButtonDown("RotateLeft") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null)
         {
             pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateLeft();
         }
-        else if ((Input.GetButtonDown("RotateLeft") && players[0].GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter")) //Todo:cambiar a enter2
+        else if ((Input.GetButtonDown("RotateLeft") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null) //Todo:cambiar a enter2
         {
             pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateLeft();
         }
@@ -172,9 +177,8 @@ public class PuzzleTutorialController : MonoBehaviour
     /// </summary>
     void NextPicture()
     {
-        if ((Input.GetButtonDown("Enter") && players[0].GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter"))
+        if ((Input.GetButtonDown("Enter") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null)
         {
-
             pictures[activeForPlayer1].localScale = new Vector3(0.96f, 0.96f, 1);
 
             if (activeForPlayer1 == 0 || activeForPlayer1 == 5)
@@ -192,7 +196,7 @@ public class PuzzleTutorialController : MonoBehaviour
 
             pictures[activeForPlayer1].localScale = new Vector3(1, 1, 1);
         }
-        else if ((Input.GetButtonDown("Enter") && players[0].GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter")) //Todo:cambiar a enter2
+        else if ((Input.GetButtonDown("Enter") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null) //Todo:cambiar a enter2
         {
 
             pictures[activeForPlayer2].localScale = new Vector3(0.96f, 0.96f, 1);
@@ -235,12 +239,12 @@ public class PuzzleTutorialController : MonoBehaviour
 
         ActivateCamera.Instance.DisableCamera(0);
 
-        foreach (var player in players)
+        foreach (var player in playersList)
         {
             player.GetComponent<PlayerMovement>().canMove = true;
         }
 
-        players.Clear();
+        playersList.Clear();
 
         // Active final ladder
         yield return new WaitForSeconds(1f);
