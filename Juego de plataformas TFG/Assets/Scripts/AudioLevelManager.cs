@@ -20,7 +20,6 @@ public class AudioLevelManager : MonoBehaviour
     [SerializeField] AudioClip ButtonClip = null;     //Sounds when you push a button
 
     [Header("Objects")]
-    [SerializeField] AudioClip ElevatorClip = null;     //Sounds when a elevator is up
     [SerializeField] AudioClip PuzzleClip = null;     //Sounds when a puzzle starts
     [SerializeField] AudioClip RotatePuzzleClip = null;     //Sounds when rotate a image of the puzzle
     [SerializeField] AudioClip ChangePuzzleClip = null;     //Sounds when change a image of the puzzle
@@ -155,13 +154,6 @@ public class AudioLevelManager : MonoBehaviour
     {
         //Set the thief sting clip and tell the source to play
         effectSource.clip = ButtonClip;
-        effectSource.Play();
-    }
-
-    public void PlayElevatorAudio()
-    {
-        //Set the thief sting clip and tell the source to play
-        effectSource.clip = ElevatorClip;
         effectSource.Play();
     }
 

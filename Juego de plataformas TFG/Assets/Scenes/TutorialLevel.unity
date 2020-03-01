@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -26469,18 +26469,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ModeMain
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1627457393}
-        m_MethodName: PlayButtonAudio
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: PrincipalMain
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &816680295
@@ -47478,7 +47467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicClip: {fileID: 8300000, guid: bca57c21ef104334ca34c9a39b949abd, type: 3}
   ButtonClip: {fileID: 8300000, guid: 5059d1bd21bee744a9783b0f8719e271, type: 3}
-  ElevatorClip: {fileID: 8300000, guid: e08a27503e9e17b42a55e16b2aecc263, type: 3}
   PuzzleClip: {fileID: 8300000, guid: d8dbd23dff6c8de4489a11aa40a0b6b9, type: 3}
   RotatePuzzleClip: {fileID: 8300000, guid: 24b97e31f0c2747458325437f7afa9d9, type: 3}
   ChangePuzzleClip: {fileID: 8300000, guid: 48112de966d542942b4fe2c964b0ec6a, type: 3}
