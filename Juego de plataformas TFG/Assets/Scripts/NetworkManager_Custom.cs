@@ -135,6 +135,8 @@ public class NetworkManager_Custom : NetworkManager
     public override void OnClientDisconnect(NetworkConnection conn)
     {
         StopClient();
+        Destroy(this.gameObject);
+        Shutdown();
         if (conn.lastError != NetworkError.Ok)
         {
             if (LogFilter.logError) 
