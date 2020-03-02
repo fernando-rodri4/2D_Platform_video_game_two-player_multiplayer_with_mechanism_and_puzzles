@@ -13,6 +13,7 @@ public class NetworkManager_Custom : NetworkManager
 
         select = GameObject.Find("player").GetComponent<Select>();
         chosenCharacter = select.elect;
+        Destroy(select.gameObject);
     }
 
     //subclass for sending network messages
@@ -113,6 +114,7 @@ public class NetworkManager_Custom : NetworkManager
     public override void OnServerDisconnect(NetworkConnection conn)
     {
         NetworkServer.DestroyPlayersForConnection(conn);
+
         if (conn.lastError != NetworkError.Ok)
         {
             if (LogFilter.logError) { Debug.LogError("ServerDisconnected due to error: " + conn.lastError); }
@@ -137,6 +139,7 @@ public class NetworkManager_Custom : NetworkManager
         StopClient();
         Destroy(this.gameObject);
         Shutdown();
+
         if (conn.lastError != NetworkError.Ok)
         {
             if (LogFilter.logError) 
