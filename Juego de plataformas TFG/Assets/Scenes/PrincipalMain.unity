@@ -778,8 +778,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -366.85, y: 215.9}
-  m_SizeDelta: {x: 1105.1, y: 290}
+  m_AnchoredPosition: {x: -384.7, y: 215.9}
+  m_SizeDelta: {x: 1069.4, y: 290}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870217322
 MonoBehaviour:
@@ -812,7 +812,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Thieves's City
+  m_Text: "Indis, Eru y el ladr\xF3n de conocimiento"
 --- !u!222 &870217323
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: MultiplayerMain
+  m_OfflineScene: PrincipalMain
   m_OnlineScene: MultiplayerCloacas
   m_SpawnPrefabs:
   - {fileID: 4165397342012106368, guid: 0042e8800ae4e12478dc971439a15b69, type: 3}
@@ -1101,6 +1101,7 @@ MonoBehaviour:
   characters:
   - {fileID: 4165397342012106368, guid: 0042e8800ae4e12478dc971439a15b69, type: 3}
   - {fileID: 9077507531794033073, guid: 848ff7b838c90214bab14df67d87573a, type: 3}
+  isServer: 0
 --- !u!114 &1605751328
 MonoBehaviour:
   m_ObjectHideFlags: 0

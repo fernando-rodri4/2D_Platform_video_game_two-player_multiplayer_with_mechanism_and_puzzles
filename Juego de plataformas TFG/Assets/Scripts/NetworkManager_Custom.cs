@@ -7,6 +7,7 @@ public class NetworkManager_Custom : NetworkManager
     public int chosenCharacter = 0;
     public GameObject[] characters;
     Select select = null;
+    public bool isServer = false;
 
     void Start(){
 
@@ -21,6 +22,8 @@ public class NetworkManager_Custom : NetworkManager
     }
 
     public void StartupHost(){
+
+        isServer = true;
 
         SetPort();
         NetworkManager.singleton.StartHost();
@@ -104,6 +107,41 @@ public class NetworkManager_Custom : NetworkManager
  
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
-        //base.OnClientSceneChanged(conn);
+        base.OnClientSceneChanged(conn);
+    }
+
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        NetworkServer.DestroyPlayersForConnection(conn);
+        if (conn.lastError != NetworkError.Ok)
+        {
+            if (LogFilter.logError) { Debug.LogError("ServerDisconnected due to error: " + conn.lastError); }
+        }
+        Debug.Log("A client disconnected from the server: " + conn);
+    }
+
+    public override void OnServerReady(NetworkConnection conn)
+    {
+        NetworkServer.SetClientReady(conn);
+        Debug.Log("Client is set to the ready state (ready to receive state updates): " + conn);
+    }
+
+    public override void OnServerRemovePlayer(NetworkConnection conn, PlayerController player)
+    {
+        if (player.gameObject != null)
+            NetworkServer.Destroy(player.gameObject);
+    }
+
+    public override void OnClientDisconnect(NetworkConnection conn)
+    {
+        StopClient();
+        if (conn.lastError != NetworkError.Ok)
+        {
+            if (LogFilter.logError) 
+            {
+                Debug.LogError("ClientDisconnected due to error: " + conn.lastError); 
+            }
+        }
+        Debug.Log("Client disconnected from server: " + conn);
     }
 }

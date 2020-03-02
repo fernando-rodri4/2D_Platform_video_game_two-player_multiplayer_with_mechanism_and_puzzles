@@ -48,7 +48,26 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame(){
 
-        Application.Quit();
+        //Application.Quit();
+
+        NetworkManager_Custom network = (NetworkManager_Custom)FindObjectOfType(typeof(NetworkManager_Custom));
+
+        if (network.isServer)
+        {
+            network.StopClient();
+            network.StopHost();
+            network.StopServer();
+            Destroy(network.gameObject);
+            NetworkManager_Custom.Shutdown();
+
+        }
+        else
+        {
+            network.StopClient();
+            Destroy(network.gameObject);
+            NetworkManager_Custom.Shutdown();
+        }
+
         //SceneManager.LoadScene("PrincipalMain");
         Debug.Log("Quitting game...");
     }
