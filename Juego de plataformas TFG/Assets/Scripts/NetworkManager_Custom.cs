@@ -7,7 +7,6 @@ public class NetworkManager_Custom : NetworkManager
     public int chosenCharacter = 0;
     public GameObject[] characters;
     Select select = null;
-
     void Start(){
 
         select = GameObject.Find("player").GetComponent<Select>();
