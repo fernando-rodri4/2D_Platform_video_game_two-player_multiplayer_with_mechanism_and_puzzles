@@ -76,6 +76,18 @@ public class CharacterController2D : MonoBehaviour
 		animator.SetFloat(fallParamID, m_Rigidbody2D.velocity.y);
 	}
 
+	void Update()
+	{
+		if (animator.GetFloat(directionParamID) <= 0.5)
+		{
+			m_FacingRight = true;
+		}
+		else if (animator.GetFloat(directionParamID) >= 0.5)
+		{
+			m_FacingRight = false;
+		}
+	}
+
 	public void Move(float move, bool jump)
 	{
 		// Only control the player if grounded or airControl is turned on.

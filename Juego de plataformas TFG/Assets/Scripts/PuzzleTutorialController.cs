@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PuzzleTutorialController : MonoBehaviour
+public class PuzzleTutorialController : NetworkBehaviour
 {
     PuzzleTutorialController() { }
 
@@ -41,6 +41,8 @@ public class PuzzleTutorialController : MonoBehaviour
 
     int activeForPlayer1 = 0, activeForPlayer2 = 1;
 
+    GameObject[] picturesAuthority;
+
     void Awake()
     {
         //If an PuzzleTutorialController exists and it is not this...
@@ -54,6 +56,8 @@ public class PuzzleTutorialController : MonoBehaviour
 
         //This is the Instance PuzzleTutorialController and it should persist
         Instance = this;
+
+        picturesAuthority = new GameObject[4] { pictures[1].gameObject, pictures[3].gameObject, pictures[4].gameObject, pictures[6].gameObject };
     }
 
     // Start is called before the first frame update
@@ -116,11 +120,18 @@ public class PuzzleTutorialController : MonoBehaviour
                 {
                     currentPlayer = player;
                 }
+                if (isServer && !player.GetComponent<PlayerMovement>().hasAuthority)
+                {
+                    foreach (var item in picturesAuthority)
+                    {
+                        item.GetComponent<NetworkIdentity>().AssignClientAuthority(player.GetComponent<NetworkIdentity>().clientAuthorityOwner);
+                    }
+                }
             }
         }
 
-        if (pictures[0].rotation.z == 0 && pictures[1].rotation.z == 0 && pictures[2].rotation.z == 0 && pictures[3].rotation.z == 0 &&
-            pictures[4].rotation.z == 0 && pictures[5].rotation.z == 0 && pictures[6].rotation.z == 0 && pictures[7].rotation.z == 0)
+        if ((pictures[0].rotation.z % 360) == 0 && (pictures[1].rotation.z % 360) == 0 && (pictures[2].rotation.z % 360) == 0 && (pictures[3].rotation.z % 360) == 0 &&
+            (pictures[4].rotation.z % 360) == 0 && (pictures[5].rotation.z % 360) == 0 && (pictures[6].rotation.z % 360) == 0 && (pictures[7].rotation.z % 360) == 0)
         {
             StartCoroutine(CompletePuzzle());
         }

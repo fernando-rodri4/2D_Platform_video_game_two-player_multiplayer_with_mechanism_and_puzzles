@@ -217,6 +217,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 4165397341457389861}
   m_CarryEnableCollider: {fileID: 4165397342200973892}
   isSister: 1
+  m_FacingRight: 1
 --- !u!114 &4165397342012106378
 MonoBehaviour:
   m_ObjectHideFlags: 0
