@@ -70,6 +70,8 @@ public class PuzzleTutorialController : NetworkBehaviour
             return;
         }
 
+        //AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.puzzleClip);
+
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
 
@@ -167,19 +169,23 @@ public class PuzzleTutorialController : NetworkBehaviour
         if ((Input.GetButtonDown("RotateRight") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null)
         {
             pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateRight();
+            AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
         }
         else if ((Input.GetButtonDown("RotateRight") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null) //Todo:cambiar a enter2
         {
             pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateRight();
+            AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
         }
 
         if ((Input.GetButtonDown("RotateLeft") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null)
         {
             pictures[activeForPlayer1].GetComponent<TouchRotate>().RotateLeft();
+            AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
         }
         else if ((Input.GetButtonDown("RotateLeft") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 1) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null) //Todo:cambiar a enter2
         {
             pictures[activeForPlayer2].GetComponent<TouchRotate>().RotateLeft();
+            AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
         }
     }
 
@@ -191,6 +197,7 @@ public class PuzzleTutorialController : NetworkBehaviour
         if ((Input.GetButtonDown("Enter") && currentPlayer.GetComponent<PlayerMovement>().GetId() == 0) || Input.GetButtonDown("Enter") && playersList[0].GetComponent<NetworkIdentity>() == null)
         {
             pictures[activeForPlayer1].localScale = new Vector3(0.96f, 0.96f, 1);
+            AudioLevelManager.Instance.PlayChangePuzzleClipAudio();
 
             if (activeForPlayer1 == 0 || activeForPlayer1 == 5)
             {
@@ -211,6 +218,7 @@ public class PuzzleTutorialController : NetworkBehaviour
         {
 
             pictures[activeForPlayer2].localScale = new Vector3(0.96f, 0.96f, 1);
+            AudioLevelManager.Instance.PlayChangePuzzleClipAudio();
 
             if (activeForPlayer2 == 1 || activeForPlayer2 == 4)
             {
@@ -232,6 +240,8 @@ public class PuzzleTutorialController : NetworkBehaviour
     IEnumerator CompletePuzzle()
     {
         yield return new WaitForSeconds(0.5f);
+
+        AudioLevelManager.Instance.PlayPuzzleAudio();
 
         foreach (var picture in pictures)
         {
@@ -260,5 +270,7 @@ public class PuzzleTutorialController : NetworkBehaviour
         // Active final ladder
         yield return new WaitForSeconds(1f);
         activeLadder.SetActive(true);
+
+        AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
     }
 }

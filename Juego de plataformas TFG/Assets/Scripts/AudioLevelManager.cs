@@ -13,8 +13,9 @@ public class AudioLevelManager : MonoBehaviour
     //one in existence. This is often referred to as a "singleton" design pattern.
     public static AudioLevelManager Instance = null;
 
-    [Header("Ambient Audio")]
-    [SerializeField] AudioClip musicClip = null;            //The background music 
+    [Header("Ambient Audio")] //The background music 
+    [SerializeField] public AudioClip musicClip = null;
+    [SerializeField] public AudioClip puzzleClip = null;
 
     [Header("Buttons")]
     [SerializeField] AudioClip ButtonClip = null;     //Sounds when you push a button
@@ -183,5 +184,13 @@ public class AudioLevelManager : MonoBehaviour
         //Set the thief sting clip and tell the source to play
         effectSource.clip = ChangePuzzleClip;
         effectSource.Play();
+    }
+
+    public void PlayChangeClipAudio(AudioClip newAudio)
+    {
+        //Change the clip for music audio and then tell it to play
+        musicSource.Stop();
+        musicSource.clip = newAudio;
+        musicSource.Play();
     }
 }

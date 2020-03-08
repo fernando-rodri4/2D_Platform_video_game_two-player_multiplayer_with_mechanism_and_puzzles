@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 52.5
+  m_fontSize: 70.55
   m_fontSizeBase: 56.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -46609,10 +46609,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicClip: {fileID: 8300000, guid: bca57c21ef104334ca34c9a39b949abd, type: 3}
+  puzzleClip: {fileID: 8300000, guid: 3f1d02262e138af4b9f667d09d4d86a5, type: 3}
   ButtonClip: {fileID: 8300000, guid: 5059d1bd21bee744a9783b0f8719e271, type: 3}
   PuzzleClip: {fileID: 8300000, guid: d8dbd23dff6c8de4489a11aa40a0b6b9, type: 3}
-  RotatePuzzleClip: {fileID: 0}
-  ChangePuzzleClip: {fileID: 0}
+  RotatePuzzleClip: {fileID: 8300000, guid: 24b97e31f0c2747458325437f7afa9d9, type: 3}
+  ChangePuzzleClip: {fileID: 8300000, guid: b1fbb8e692d6de6449f9605f04255fcd, type: 3}
   CollectionClip: {fileID: 8300000, guid: 856f1598e0225d84698b783be235b5b2, type: 3}
   thiefCaptureClip: {fileID: 8300000, guid: 30781e910b40480489949facb5f782f5, type: 3}
   typeSentenceAudio: {fileID: 8300000, guid: 549a26f0f33a3514a9183e849e005f9c, type: 3}
