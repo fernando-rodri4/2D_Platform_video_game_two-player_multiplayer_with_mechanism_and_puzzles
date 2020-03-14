@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 6c88e58737ae77b46924aa306008901a
+guid: 757f7319f0f49df4daea5c97f6869701
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8373834096574393705
-    second: Fondo level 2_0
+      213: 2430044837659909359
+    second: BackgroundLevel2_0
   - first:
-      213: -7298024019976133569
-    second: Fondo level 2_1
+      213: 1839527612254617495
+    second: BackgroundLevel2_1
   - first:
-      213: 1787036355327369825
-    second: Fondo level 2_2
+      213: 4677023864753735341
+    second: BackgroundLevel2_2
   - first:
-      213: -6819020943081543432
-    second: Background level1_0
+      213: -1832117704377707880
+    second: BackgroundLevel2_3
   - first:
-      213: 1060587916840592536
-    second: Background level1_1
+      213: -4712953332490504806
+    second: BackgroundLevel2_0
   - first:
-      213: -6019744121416559713
-    second: Background level1_2
+      213: 7771269238818963161
+    second: BackgroundLevel2_1
+  - first:
+      213: 8635594443571213332
+    second: BackgroundLevel2_2
+  - first:
+      213: 5175499556331064827
+    second: BackgroundLevel2_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -63,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 6
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -128,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background level1_0
+      name: BackgroundLevel2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,20 +142,20 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f8ecabb498fd51a0800000000000000
-      internalID: -6819020943081543432
+      spriteID: a95f8e51ae9389eb0800000000000000
+      internalID: -4712953332490504806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Background level1_1
+      name: BackgroundLevel2_1
       rect:
         serializedVersion: 2
         x: 100
@@ -157,20 +163,20 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 894ea545717f7be00800000000000000
-      internalID: 1060587916840592536
+      spriteID: 9de79b1e23819db60800000000000000
+      internalID: 7771269238818963161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Background level1_2
+      name: BackgroundLevel2_2
       rect:
         serializedVersion: 2
         x: 0
@@ -178,14 +184,35 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9358349d92957ca0800000000000000
-      internalID: -6019744121416559713
+      spriteID: 4143661a46bc7d770800000000000000
+      internalID: 8635594443571213332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundLevel2_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd0e4eec6113d740800000000000000
+      internalID: 5175499556331064827
       vertices: []
       indices: 
       edges: []
