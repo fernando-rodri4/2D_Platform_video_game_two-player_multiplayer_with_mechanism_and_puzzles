@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class WarpTransition : MonoBehaviour
+public class WarpTransition : NetworkBehaviour
 {
     /// <summary>
     /// Reference to the CameraTransition.
@@ -51,6 +52,15 @@ public class WarpTransition : MonoBehaviour
                 }
 
                 StartCoroutine(TransportPlayer(player0));
+
+                if(player0.GetComponent<PlayerMovement>().GetIsServer())
+                {
+                    RpcSubtractTransport();
+                }
+                else
+                {
+                    CmdSubtractTransport();
+                }
             }
             else if(player1 != null)
             {
@@ -62,6 +72,15 @@ public class WarpTransition : MonoBehaviour
                 }
 
                 StartCoroutine(TransportPlayer(player1));
+
+                if (player1.GetComponent<PlayerMovement>().GetIsServer())
+                {
+                    RpcSubtractTransport();
+                }
+                else
+                {
+                    CmdSubtractTransport();
+                }
             }
         }
     }
@@ -115,5 +134,22 @@ public class WarpTransition : MonoBehaviour
         cameraTrans.FadeOut();
 
         player.GetComponent<PlayerMovement>().canMove = true;
+    }
+
+    void SubtractTransport ()
+    {
+        numberTransport--;
+    }
+
+    [ClientRpc]
+    void RpcSubtractTransport()
+    {
+        SubtractTransport();
+    }
+
+    [Command]
+    void CmdSubtractTransport()
+    {
+        RpcSubtractTransport();
     }
 }

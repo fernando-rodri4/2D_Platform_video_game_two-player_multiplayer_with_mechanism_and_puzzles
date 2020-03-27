@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 85090fe5613b582489572689ac7ce140
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2828077047651648745
+    second: Smoke_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -108,7 +111,39 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Smoke_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -14.5, y: 12.5}
+        - {x: -14.5, y: -9.5}
+        - {x: -11.5, y: -12.5}
+        - {x: 10.5, y: -12.5}
+        - {x: 14.5, y: -9.5}
+        - {x: 14.5, y: 10.5}
+        - {x: 13.5, y: 12.5}
+      - - {x: -10.253056, y: -5.1992435}
+        - {x: -10.253056, y: 3.817625}
+        - {x: 3.344967, y: 3.817625}
+        - {x: 3.344967, y: -5.1992435}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e446be47195f3720800000000000000
+      internalID: 2828077047651648745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

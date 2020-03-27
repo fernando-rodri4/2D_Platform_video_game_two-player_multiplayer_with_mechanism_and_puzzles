@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class ScenesController : MonoBehaviour
 {
+    [SerializeField] GameObject group, controls;
+
     // Start is called before the first frame update
     public void changeScene(string name)
     {
@@ -15,6 +17,18 @@ public class ScenesController : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonAudio();
         Application.Quit();        
+    }
+
+    public void EnableControlsMenu()
+    {
+        group.SetActive(false);
+        controls.SetActive(true);
+    }
+
+    public void DisableControlsMenu()
+    {
+        group.SetActive(true);
+        controls.SetActive(false);
     }
 
 }

@@ -64,6 +64,7 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
             
             dialoguePanel.SetActive(true);
             displayText.fontSize = textSize;
+            displayText.text = "";
             StartDialogue();
             isDialogueStart = true;
         }

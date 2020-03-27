@@ -88,6 +88,7 @@ public class DialogueManager : MonoBehaviour
 
             dialoguePanel.SetActive(true);
             displayText.fontSize = textSize;
+            displayText.text = "";
             StartDialogue();
             isDialogueStart = true;
         }
