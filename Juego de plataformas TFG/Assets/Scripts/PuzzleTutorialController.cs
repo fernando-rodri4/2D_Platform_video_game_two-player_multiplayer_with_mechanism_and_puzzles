@@ -41,7 +41,7 @@ public class PuzzleTutorialController : NetworkBehaviour
 
     int activeForPlayer1 = 0, activeForPlayer2 = 1;
 
-    GameObject[] picturesAuthority;
+    [SerializeField] GameObject[] picturesAuthority;
 
     void Awake()
     {
@@ -56,8 +56,6 @@ public class PuzzleTutorialController : NetworkBehaviour
 
         //This is the Instance PuzzleTutorialController and it should persist
         Instance = this;
-
-        picturesAuthority = new GameObject[4] { pictures[1].gameObject, pictures[3].gameObject, pictures[4].gameObject, pictures[6].gameObject };
     }
 
     // Start is called before the first frame update
