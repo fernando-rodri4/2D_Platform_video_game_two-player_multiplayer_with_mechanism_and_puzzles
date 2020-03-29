@@ -39,9 +39,13 @@ public class PuzzleTutorialController : NetworkBehaviour
 
     bool isCorrect = false;
 
+    bool startPuzzle = false;
+
     int activeForPlayer1 = 0, activeForPlayer2 = 1;
 
     [SerializeField] GameObject[] picturesAuthority;
+
+    [SerializeField] GameObject puzzleControls;
 
     void Awake()
     {
@@ -61,7 +65,7 @@ public class PuzzleTutorialController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (picturesBackground == null || pictures == null || activeLadder == null)
+        if (picturesBackground == null || pictures == null || activeLadder == null || puzzleControls == null)
         {
             Debug.LogError("Error with PuzzleTutorialController script component " + this);
             Destroy(this);
@@ -108,9 +112,11 @@ public class PuzzleTutorialController : NetworkBehaviour
 
         Rotate();
 
-        if (playersList.Count == 2)
+        if (playersList.Count == 2 && !startPuzzle)
         {
             ActivateCamera.Instance.EnableCamera(0);
+
+            puzzleControls.SetActive(true);
 
             foreach (var player in playersList)
             {
@@ -128,6 +134,10 @@ public class PuzzleTutorialController : NetworkBehaviour
                     }
                 }
             }
+
+            startPuzzle = true;
+
+            StartCoroutine(FinishControls());
         }
 
         if ((pictures[0].rotation.z % 360) == 0 && (pictures[1].rotation.z % 360) == 0 && (pictures[2].rotation.z % 360) == 0 && (pictures[3].rotation.z % 360) == 0 &&
@@ -233,6 +243,13 @@ public class PuzzleTutorialController : NetworkBehaviour
 
             pictures[activeForPlayer2].localScale = new Vector3(1, 1, 1);
         }
+    }
+
+    IEnumerator FinishControls()
+    {
+        yield return new WaitForSeconds(1f);
+
+        puzzleControls.SetActive(false);
     }
 
     IEnumerator CompletePuzzle()
