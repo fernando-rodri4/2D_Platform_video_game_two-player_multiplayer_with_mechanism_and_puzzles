@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 61.6
+  m_fontSize: 70.55
   m_fontSizeBase: 56.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2913,7 +2913,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIT
+  m_Text: SALIR
 --- !u!222 &310373534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3159,7 +3159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BACK
+  m_Text: VOLVER
 --- !u!222 &342401160
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3236,7 +3236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: FULLSCREEN
+  m_Text: PANTALLA COMPLETA
 --- !u!222 &353782648
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3472,7 +3472,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESUME
+  m_Text: RESUMEN
 --- !u!222 &399577250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3990,7 +3990,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MUSIC
+  m_Text: "M\xDASICA"
 --- !u!222 &409421726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5126,7 +5126,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 600 x 400
+  m_Text: 320 x 240
 --- !u!222 &430595683
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6200,7 +6200,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESOLUTION
+  m_Text: "RESOLUCI\xD3N"
 --- !u!222 &549568377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6362,7 +6362,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: OPTIONS
+  m_Text: OPCIONES
 --- !u!222 &594580258
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27023,7 +27023,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: OPTIONS
+  m_Text: OPCIONES
 --- !u!222 &894867198
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46859,7 +46859,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SOUNDS
+  m_Text: SONIDOS
 --- !u!222 &1567007412
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -47850,7 +47850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1704178053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49155,7 +49155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CONTROLS
+  m_Text: CONTROLES
 --- !u!222 &1798965940
 CanvasRenderer:
   m_ObjectHideFlags: 0

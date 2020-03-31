@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -565,7 +565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LAN Mode
+  m_Text: Modo LAN
 --- !u!222 &477150605
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Two Players
+  m_Text: 2 Jugadores
 --- !u!222 &783364825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1176,6 +1176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978308fa7eb0b21469e4c7ba32f880fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  group: {fileID: 0}
+  controls: {fileID: 0}
 --- !u!114 &1826247879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,7 +1259,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: Volver
 --- !u!222 &1950703527
 CanvasRenderer:
   m_ObjectHideFlags: 0

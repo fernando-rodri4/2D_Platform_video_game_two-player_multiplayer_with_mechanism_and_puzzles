@@ -888,7 +888,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BACK
+  m_Text: VOLVER
 --- !u!222 &678924628
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -965,7 +965,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LOBBY
+  m_Text: JUGAR
 --- !u!222 &747578555
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1388,7 +1388,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SELECT YOUR CHARACTER
+  m_Text: ELIGE TU PERSONAJE
 --- !u!222 &1342707150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1554,6 +1554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978308fa7eb0b21469e4c7ba32f880fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  group: {fileID: 0}
+  controls: {fileID: 0}
 --- !u!114 &1826247878
 MonoBehaviour:
   m_ObjectHideFlags: 0
