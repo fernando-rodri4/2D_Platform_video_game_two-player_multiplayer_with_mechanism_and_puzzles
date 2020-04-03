@@ -24,8 +24,8 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: PuzzleTuberias Camera
-    m_To: CinematicTuberiasCamera
+  - m_From: Player Follow Cam
+    m_To: CinematicFinalCamera
     m_Blend:
       m_Style: 6
       m_Time: 6
@@ -51,17 +51,6 @@ MonoBehaviour:
     m_Blend:
       m_Style: 0
       m_Time: 2
-      m_CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: PuzzleRocas Camera
-    m_To: CinematicRocasCamera
-    m_Blend:
-      m_Style: 6
-      m_Time: 6
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

@@ -36,6 +36,8 @@ public class PuzzleTutorialController : NetworkBehaviour
     List<GameObject> playersList;
 
     GameObject currentPlayer;
+    public GameObject rockList;
+    int sumPosY = 20;
 
     bool isCorrect = false;
 
@@ -252,6 +254,19 @@ public class PuzzleTutorialController : NetworkBehaviour
         puzzleControls.SetActive(false);
     }
 
+    IEnumerator MoveRocks()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
+
+        Vector3 newPosition = rockList.transform.position;
+
+        newPosition.y += sumPosY;
+
+        rockList.transform.position = newPosition;
+    }
+
     IEnumerator CompletePuzzle()
     {
         yield return new WaitForSeconds(0.5f);
@@ -285,6 +300,7 @@ public class PuzzleTutorialController : NetworkBehaviour
         // Active final ladder
         yield return new WaitForSeconds(1f);
         activeLadder.SetActive(true);
+        MoveRocks();
 
         AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
     }
