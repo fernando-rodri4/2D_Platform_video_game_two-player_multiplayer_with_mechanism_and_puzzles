@@ -7,12 +7,15 @@ public class NetworkManager_Custom : NetworkManager
     public int chosenCharacter = 0;
     public GameObject[] characters;
     Select select = null;
+    LevelOption level = null;
     public bool isServer = false;
 
     void Start(){
 
         select = GameObject.Find("player").GetComponent<Select>();
+        level = GameObject.Find("level").GetComponent<LevelOption>();
         chosenCharacter = select.elect;
+        ServerChangeScene(level.elect);
         Destroy(select.gameObject);
     }
 
