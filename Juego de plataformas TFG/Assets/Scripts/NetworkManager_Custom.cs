@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NetworkManager_Custom : NetworkManager
 {
@@ -10,13 +11,16 @@ public class NetworkManager_Custom : NetworkManager
     LevelOption level = null;
     public bool isServer = false;
 
+
+    
     void Start(){
 
         select = GameObject.Find("player").GetComponent<Select>();
         level = GameObject.Find("level").GetComponent<LevelOption>();
         chosenCharacter = select.elect;
-        ServerChangeScene(level.elect);
+        //ServerChangeScene(level.elect);
         Destroy(select.gameObject);
+        NetworkManager.singleton.onlineScene = level.elect;
     }
 
     //subclass for sending network messages

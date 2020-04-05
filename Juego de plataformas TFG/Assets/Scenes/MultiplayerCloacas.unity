@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 70.55
+  m_fontSize: 52.5
   m_fontSizeBase: 56.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -27290,6 +27290,7 @@ MonoBehaviour:
   - {fileID: 1766064986}
   - {fileID: 407596061}
   activeLadder: {fileID: 1427860891}
+  rockList: {fileID: 0}
   picturesAuthority:
   - {fileID: 1820670674}
   - {fileID: 1104839704}
@@ -47850,7 +47851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1704178053
 MonoBehaviour:
   m_ObjectHideFlags: 0
