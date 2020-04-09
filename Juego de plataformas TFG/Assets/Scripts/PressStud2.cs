@@ -1,42 +1,7 @@
 ﻿using UnityEngine;
 
-public class PressStud2 : MonoBehaviour
+public class PressStud2 : Buttons
 {
-    /// <summary>
-    /// Reference to the Sprite Renderer component.
-    /// </summary>
-    SpriteRenderer spRen;
-
-    /// <summary>
-    /// Indicates if the button is pressed or not.
-    /// </summary>
-    bool isActivate = false;
-
-    /// <summary>
-    /// How many elements collide with the button, minus 1.
-    /// </summary>
-    int extraInside = 0;
-
-    void Awake()
-    {
-        // Get reference to the SpriteRenderer.
-        spRen = GetComponent<SpriteRenderer>();
-    }
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
-    void Start()
-    {
-        if (spRen == null)
-        {
-            Debug.LogError("Error with PressStud script components " + this);
-            Destroy(this);
-            return;
-        }
-    }
-
     /// <summary>
     /// When it collides with the button collider, if it is the first collision the button is activated and the sprite is changed if not, a counter is increased.
     /// </summary>
@@ -71,10 +36,5 @@ public class PressStud2 : MonoBehaviour
         {
             extraInside--;
         }
-    }
-
-    public bool IsButtonActivate()
-    {
-        return isActivate;
     }
 }

@@ -5,7 +5,7 @@ public class ElevatedPlataform : MonoBehaviour
     /// <summary>
     /// Reference to the PressStud script that control the platform.
     /// </summary>
-    [SerializeField] PressStud button = null;
+    [SerializeField] Buttons button = null;
 
     [SerializeField] float finalPos = 0;
     float initialPos;

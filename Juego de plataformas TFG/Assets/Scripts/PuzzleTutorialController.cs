@@ -67,7 +67,7 @@ public class PuzzleTutorialController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (picturesBackground == null || pictures == null || activeLadder == null || puzzleControls == null)
+        if (picturesBackground == null || pictures == null || (activeLadder == null && rockList == null ) || puzzleControls == null)
         {
             Debug.LogError("Error with PuzzleTutorialController script component " + this);
             Destroy(this);
