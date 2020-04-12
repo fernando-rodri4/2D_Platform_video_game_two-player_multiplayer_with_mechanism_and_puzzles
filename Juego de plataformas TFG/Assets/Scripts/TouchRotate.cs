@@ -4,7 +4,12 @@ public class TouchRotate : MonoBehaviour
 {
     public void RotateRight()
     {
-        if (!PuzzleTutorialController.Instance.GetIsCorrect())
+        if (PuzzleTutorialController.Instance != null && !PuzzleTutorialController.Instance.GetIsCorrect())
+        {
+            transform.Rotate(0f, 0f, -90f);
+            Debug.LogError("dfe");
+        }
+        else if (PuzzleController.Instance != null && !PuzzleController.Instance.GetIsCorrect())
         {
             transform.Rotate(0f, 0f, -90f);
         }
@@ -12,9 +17,13 @@ public class TouchRotate : MonoBehaviour
 
     public void RotateLeft()
     {
-        if (!PuzzleTutorialController.Instance.GetIsCorrect())
+        if (PuzzleTutorialController.Instance != null && !PuzzleTutorialController.Instance.GetIsCorrect())
         {
             transform.Rotate(0f, 0f, 90f);
+        }
+        else if (PuzzleController.Instance != null && !PuzzleController.Instance.GetIsCorrect())
+        {
+            transform.Rotate(0f, 0f, -90f);
         }
     }
 }

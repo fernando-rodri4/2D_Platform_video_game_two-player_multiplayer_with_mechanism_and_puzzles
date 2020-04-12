@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3628219987695693490}
   - component: {fileID: 8334738982988175240}
   - component: {fileID: 8796346590105133072}
-  m_Layer: 0
-  m_Name: RockLevel2_0
+  m_Layer: 10
+  m_Name: RockLevel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
