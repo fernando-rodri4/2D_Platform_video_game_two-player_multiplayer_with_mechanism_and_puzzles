@@ -24,21 +24,12 @@ public class PuzzleController : NetworkBehaviour
     [SerializeField] Transform[] pictures = null;
 
     /// <summary>
-    /// Box that active final ladder when puzzle is correct
-    /// </summary>
-    [SerializeField] GameObject activeLadder = null;
-
-    /// <summary>
     /// The layer the player game object is on
     /// </summary>
-    int playerLayer;
 
     List<GameObject> playersList;
 
     GameObject currentPlayer;
-    public GameObject rockList;
-    int sumPosY = 20;
-    public int numCamera = 0;
 
     bool isCorrect = false;
 
@@ -49,6 +40,11 @@ public class PuzzleController : NetworkBehaviour
     [SerializeField] GameObject[] picturesAuthority;
 
     [SerializeField] GameObject puzzleControls;
+
+    public GameObject rockList;
+    int playerLayer;
+    int sumPosY = 20;
+    public int numCamera = 0;
 
     void Awake()
     {
@@ -68,7 +64,7 @@ public class PuzzleController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (picturesBackground == null || pictures == null || (activeLadder == null && rockList == null ) || puzzleControls == null)
+        if (picturesBackground == null || pictures == null || rockList == null || puzzleControls == null)
         {
             Debug.LogError("Error with PuzzleController script component " + this);
             Destroy(this);
@@ -270,19 +266,6 @@ public class PuzzleController : NetworkBehaviour
         puzzleControls.SetActive(false);
     }
 
-    IEnumerator MoveRocks()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
-
-        Vector3 newPosition = rockList.transform.position;
-
-        newPosition.y += sumPosY;
-
-        rockList.transform.position = newPosition;
-    }
-
     IEnumerator CompletePuzzle()
     {
         yield return new WaitForSeconds(0.5f);
@@ -315,9 +298,21 @@ public class PuzzleController : NetworkBehaviour
 
         // Active final ladder
         yield return new WaitForSeconds(1f);
-        activeLadder.SetActive(true);
         MoveRocks();
 
         AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
+    }
+
+    IEnumerator MoveRocks()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
+
+        Vector3 newPosition = rockList.transform.position;
+
+        newPosition.y += sumPosY;
+
+        rockList.transform.position = newPosition;
     }
 }

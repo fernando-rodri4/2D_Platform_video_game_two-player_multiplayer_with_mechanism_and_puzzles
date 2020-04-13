@@ -7,7 +7,6 @@ public class TouchRotate : MonoBehaviour
         if (PuzzleTutorialController.Instance != null && !PuzzleTutorialController.Instance.GetIsCorrect())
         {
             transform.Rotate(0f, 0f, -90f);
-            Debug.LogError("dfe");
         }
         else if (PuzzleController.Instance != null && !PuzzleController.Instance.GetIsCorrect())
         {
