@@ -27,9 +27,13 @@ public class PuzzleAzteca : NetworkBehaviour
     public bool checkComplete;
     public bool gameIsComplete;
 
+    bool startPuzzle = false;
+
     public List<GameObject> imageKeyList;   //run from 0 -> list.count
     public List<GameObject> imagePuzzleList;
     public List<GameObject> checkPointList;
+
+    [SerializeField] GameObject puzzleControls;
 
     GameObject[,] imageKeyMatrix;
     GameObject[,] imagePuzzleMatrix;
@@ -133,6 +137,39 @@ public class PuzzleAzteca : NetworkBehaviour
 
         if(gameIsComplete || playersList.Count == 0){
             return;
+        }
+
+        if (playersList.Count == 2 && !startPuzzle)
+        {
+            ActivateCamera.Instance.EnableCamera(2);
+
+            puzzleControls.SetActive(true);
+
+            foreach (var player in playersList)
+            {
+                player.GetComponent<PlayerMovement>().canMove = false;
+
+                if (player.GetComponent<PlayerMovement>().hasAuthority)
+                {
+                    currentPlayer = player;
+                }
+                if (isServer && !player.GetComponent<PlayerMovement>().hasAuthority)
+                {
+                    foreach (var item in picturesAuthority)
+                    {
+                        item.GetComponent<NetworkIdentity>().AssignClientAuthority(player.GetComponent<NetworkIdentity>().clientAuthorityOwner);
+                    }
+                }
+            }
+
+            startPuzzle = true;
+
+            StartCoroutine(FinishControls());
+        }
+
+        if (gameIsComplete)
+        {
+            StartCoroutine(CompletePuzzle());
         }
 
         if(startControl){   //move for image of puzzle
@@ -245,5 +282,45 @@ public class PuzzleAzteca : NetworkBehaviour
         imagePuzzleMatrix[3,1] = imagePuzzleList[11];
         imagePuzzleMatrix[3,2] = imagePuzzleList[9];
         imagePuzzleMatrix[3,3] = imagePuzzleList[13];
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == playerLayer && !playersList.Contains(collision.gameObject) /*&& Input.GetButtonDown("Enter")*/) //Todo: Intentar poner confirmación de jugador
+        {
+            playersList.Add(collision.gameObject);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        playersList.Remove(collision.gameObject);
+    }
+
+    IEnumerator FinishControls()
+    {
+        yield return new WaitForSeconds(1f);
+
+        puzzleControls.SetActive(false);
+    }
+
+    IEnumerator CompletePuzzle()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        AudioLevelManager.Instance.PlayPuzzleAudio();
+
+        gameIsComplete = true;
+
+        ActivateCamera.Instance.DisableCamera(2);
+
+        foreach (var player in playersList)
+        {
+            player.GetComponent<PlayerMovement>().canMove = true;
+        }
+
+        playersList.Clear();
+
+        AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
     }
 }

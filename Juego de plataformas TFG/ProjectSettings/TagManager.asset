@@ -9,6 +9,7 @@ TagManager:
   - elect1
   - elect2
   - Hands
+  - Puzzle
   layers:
   - Default
   - TransparentFX
@@ -57,6 +58,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 4255628491
+    locked: 0
+  - name: Pieces
+    uniqueID: 960140881
     locked: 0
   - name: Default
     uniqueID: 0
