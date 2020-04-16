@@ -6,7 +6,6 @@ using UnityEngine.Networking;
 
 public class PuzzleRocas : NetworkBehaviour
 {
-
     PuzzleRocas() { }
 
     /// <summary>
@@ -29,7 +28,6 @@ public class PuzzleRocas : NetworkBehaviour
 
     bool isCorrect = false;
     bool startPuzzle = false;
-
     int activeForPlayer1 = 0, activeForPlayer2 = 1;
 
     /// <summary>
@@ -37,8 +35,9 @@ public class PuzzleRocas : NetworkBehaviour
     /// </summary>
     [SerializeField] Transform[] pieces = null;
     [SerializeField] GameObject[] piecesAuthority;
-
     [SerializeField] GameObject puzzleControls;
+
+    public int numCamera = 0;
 
     void Awake()
     {
@@ -103,7 +102,7 @@ public class PuzzleRocas : NetworkBehaviour
 
         if (playersList.Count == 2 && !startPuzzle)
         {
-            ActivateCamera.Instance.EnableCamera(1);
+            ActivateCamera.Instance.EnableCamera(numCamera);
 
             puzzleControls.SetActive(true);
 
@@ -202,7 +201,7 @@ public class PuzzleRocas : NetworkBehaviour
 
         isCorrect = true;
 
-        ActivateCamera.Instance.DisableCamera(1);
+        ActivateCamera.Instance.DisableCamera(numCamera);
 
         foreach (var player in playersList)
         {
