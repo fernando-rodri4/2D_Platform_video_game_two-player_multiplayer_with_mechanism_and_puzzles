@@ -18,7 +18,6 @@ public class NetworkManager_Custom : NetworkManager
         select = GameObject.Find("player").GetComponent<Select>();
         level = GameObject.Find("level").GetComponent<LevelOption>();
         chosenCharacter = select.elect;
-        //ServerChangeScene(level.elect);
         Destroy(select.gameObject);
         NetworkManager.singleton.onlineScene = level.elect;
     }

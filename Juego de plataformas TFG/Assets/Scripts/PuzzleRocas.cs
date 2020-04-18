@@ -37,7 +37,7 @@ public class PuzzleRocas : NetworkBehaviour
     [SerializeField] GameObject[] piecesAuthority;
     [SerializeField] GameObject puzzleControls;
 
-    public int numCamera = 0;
+    public int numCamera = 1;
 
     void Awake()
     {
