@@ -33,7 +33,7 @@ public class PuzzleRocas : NetworkBehaviour
     /// <summary>
     /// Puzzle pictures
     /// </summary>
-    [SerializeField] Transform[] pieces = null;
+    [SerializeField] Transform[] pieces;
     [SerializeField] GameObject[] piecesAuthority;
     [SerializeField] GameObject puzzleControls;
 

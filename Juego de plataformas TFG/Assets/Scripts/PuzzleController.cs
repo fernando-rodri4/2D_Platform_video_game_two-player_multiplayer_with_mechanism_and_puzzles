@@ -16,11 +16,6 @@ public class PuzzleController : NetworkBehaviour
     /// <summary>
     /// Puzzle pictures
     /// </summary>
-    [SerializeField] Transform[] picturesBackground = null;
-
-    /// <summary>
-    /// Puzzle pictures
-    /// </summary>
     [SerializeField] Transform[] pictures = null;
 
     /// <summary>
@@ -64,7 +59,7 @@ public class PuzzleController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (picturesBackground == null || pictures == null || rockList == null || puzzleControls == null)
+        if (pictures == null || rockList == null || puzzleControls == null)
         {
             Debug.LogError("Error with PuzzleController script component " + this);
             Destroy(this);
@@ -280,12 +275,6 @@ public class PuzzleController : NetworkBehaviour
         }
 
         isCorrect = true;
-
-        foreach (var picture in picturesBackground)
-        {
-            picture.localScale = new Vector3(1, 1, 1);
-            picture.rotation = Quaternion.Euler(0, 0, 0);
-        }
 
         ActivateCamera.Instance.DisableCamera(numCamera);
 
