@@ -12,7 +12,7 @@ public class Pieces : MonoBehaviour
     void Start()
     {
         rightPosition = transform.position;
-        transform.position = new Vector3(Random.Range(200f, 217f), Random.Range(-215f, -200f), 0);
+        transform.position = new Vector3(Random.Range(200f, 210f), Random.Range(-215f, -200f), 0);
     }
 
     // Update is called once per frame
