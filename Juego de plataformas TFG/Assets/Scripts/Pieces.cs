@@ -1,34 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Pieces : MonoBehaviour
 {
-    private Vector3 rightPosition;
-    public bool inRightPosition;
-    public bool selected;
-    // Start is called before the first frame update
+
+    private Vector2 initialPosition;
+    public Vector2 mousePosition;
+    public Vector2 actualPosition;
+    [SerializeField] private Transform rightPosition;
+    private float deltaX, deltaY;
+    public static bool locked;
+
     void Start()
     {
-        rightPosition = transform.position;
-        transform.position = new Vector3(Random.Range(200f, 210f), Random.Range(-215f, -200f), 0);
+        initialPosition = transform.position;
+        actualPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool isLocked ()
     {
-        if(Vector3.Distance(transform.position, rightPosition) < 0.5f)
+        return locked;
+    }
+
+    private void OnMouseDown() 
+    {   
+        if(!locked)
         {
-            if(!selected)
-            {
-                if(inRightPosition == false)
-                {
-                    transform.position = rightPosition;
-                    inRightPosition = true;
-                    GetComponent<SortingGroup>().sortingOrder = 0;
-                }
-            }
-        }   
+            deltaX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
+            deltaY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
+        }
+    }
+
+    private void OnMouseDrag() 
+    {        
+        if(!locked)
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector2(mousePosition.x - deltaX, mousePosition.y - deltaY);
+            actualPosition = transform.position;
+        }
+    }
+
+    private void OnMouseUp()
+    {        
+        if(Mathf.Abs(transform.position.x - rightPosition.position.x) < 0.5f &&
+           Mathf.Abs(transform.position.y - rightPosition.position.y) < 0.5f)
+        {
+               transform.position = new Vector2(rightPosition.position.x, rightPosition.position.y);
+               locked = true;
+        }
+        else
+        {
+            transform.position = new Vector2(initialPosition.x, initialPosition.y);
+        }
     }
 }

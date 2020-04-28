@@ -14,9 +14,6 @@ public class PuzzleRocas : NetworkBehaviour
     /// </summary>
     public static PuzzleRocas Instance = null;
 
-    public GameObject selectedPiece;
-    int OIL = 1;
-
     /// <summary>
     /// The layer the player game object is on
     /// </summary>
@@ -28,12 +25,13 @@ public class PuzzleRocas : NetworkBehaviour
 
     bool isCorrect = false;
     bool startPuzzle = false;
+    int count = 0;
     int activeForPlayer1 = 0, activeForPlayer2 = 1;
 
     /// <summary>
     /// Puzzle pictures
     /// </summary>
-    [SerializeField] Transform[] pieces;
+    [SerializeField] GameObject[] pieces;
     [SerializeField] GameObject[] piecesAuthority;
     [SerializeField] GameObject puzzleControls;
 
@@ -57,7 +55,7 @@ public class PuzzleRocas : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (pieces == null ||puzzleControls == null)
+        if (pieces == null || puzzleControls == null)
         {
             Debug.LogError("Error with PuzzleRocas script component " + this);
             Destroy(this);
@@ -70,26 +68,6 @@ public class PuzzleRocas : NetworkBehaviour
         playerLayer = LayerMask.NameToLayer("Player");
 
         playersList = new List<GameObject>();
-
-        //Active the first image for each player
-
-        var players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (var player in players)
-        {
-            if (player.gameObject.GetComponent<NetworkIdentity>().hasAuthority)
-            {
-                if (player.gameObject.GetComponent<PlayerMovement>().GetId() == 0)
-                {
-                    pieces[activeForPlayer1].localScale = new Vector3(1, 1, 1);
-                }
-                else
-                {
-                    pieces[activeForPlayer2].localScale = new Vector3(1, 1, 1);
-                }
-                return;
-            }
-        }
     }
 
     // Update is called once per frame
@@ -100,7 +78,7 @@ public class PuzzleRocas : NetworkBehaviour
             return;
         }
 
-        if (playersList.Count == 2 && !startPuzzle)
+        if (playersList.Count == 1 && !startPuzzle)
         {
             ActivateCamera.Instance.EnableCamera(numCamera);
 
@@ -128,39 +106,21 @@ public class PuzzleRocas : NetworkBehaviour
             StartCoroutine(FinishControls());
         }
 
-        if (isCorrect)
+        foreach (var piece in pieces)
+        {
+            if(piece.GetComponent<Pieces>().isLocked())
+            {
+                count++;
+            }
+            else
+            {
+                count = 0;
+            }
+        }
+
+        if(count == 16)
         {
             StartCoroutine(CompletePuzzle());
-        }
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if(hit.collider.gameObject.CompareTag("Puzzle"))
-            {
-                if(!hit.transform.GetComponent<Pieces>().inRightPosition)
-                {
-                    selectedPiece = hit.transform.gameObject;
-                    selectedPiece.GetComponent<Pieces>().selected = true;
-                    selectedPiece.GetComponent<SortingGroup>().sortingOrder = OIL;
-                    OIL++;
-                }
-            }
-        }
-
-        if(Input.GetMouseButtonUp(0))
-        {
-            if(selectedPiece != null)
-            {
-                selectedPiece.GetComponent<Pieces>().selected = false;
-                selectedPiece = null;
-            }
-        }
-
-        if(selectedPiece != null)
-        {
-            Vector3 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            selectedPiece.transform.position = new Vector3(mousePoint.x, mousePoint.y, 0);
         }
     }
 
