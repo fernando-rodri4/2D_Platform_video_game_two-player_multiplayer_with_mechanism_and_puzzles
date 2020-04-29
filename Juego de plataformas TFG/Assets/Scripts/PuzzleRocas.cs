@@ -25,7 +25,6 @@ public class PuzzleRocas : NetworkBehaviour
 
     bool isCorrect = false;
     bool startPuzzle = false;
-    int count = 0;
     int activeForPlayer1 = 0, activeForPlayer2 = 1;
 
     /// <summary>
@@ -35,7 +34,14 @@ public class PuzzleRocas : NetworkBehaviour
     [SerializeField] GameObject[] piecesAuthority;
     [SerializeField] GameObject puzzleControls;
 
+    public Camera mainCamera;
+
     public int numCamera = 1;
+
+    public GameObject rockList;
+    public GameObject waterList;
+    public Vector3 newPosition;
+    Vector3 newPosition2;
 
     void Awake()
     {
@@ -78,8 +84,11 @@ public class PuzzleRocas : NetworkBehaviour
             return;
         }
 
-        if (playersList.Count == 1 && !startPuzzle)
+        if (playersList.Count == 2 && !startPuzzle)
         {
+            Camera.main.orthographic = true;
+            mainCamera.orthographicSize = 10.0f;
+
             ActivateCamera.Instance.EnableCamera(numCamera);
 
             puzzleControls.SetActive(true);
@@ -106,19 +115,12 @@ public class PuzzleRocas : NetworkBehaviour
             StartCoroutine(FinishControls());
         }
 
-        foreach (var piece in pieces)
-        {
-            if(piece.GetComponent<Pieces>().isLocked())
-            {
-                count++;
-            }
-            else
-            {
-                count = 0;
-            }
-        }
-
-        if(count == 16)
+        if(pieces[0].GetComponent<Pieces>().isCorrect() && pieces[1].GetComponent<Pieces>().isCorrect() && pieces[2].GetComponent<Pieces>().isCorrect() &&
+           pieces[3].GetComponent<Pieces>().isCorrect() && pieces[4].GetComponent<Pieces>().isCorrect() && pieces[5].GetComponent<Pieces>().isCorrect() &&
+           pieces[6].GetComponent<Pieces>().isCorrect() && pieces[7].GetComponent<Pieces>().isCorrect() && pieces[8].GetComponent<Pieces>().isCorrect() &&
+           pieces[9].GetComponent<Pieces>().isCorrect() && pieces[10].GetComponent<Pieces>().isCorrect() && pieces[11].GetComponent<Pieces>().isCorrect() &&
+           pieces[12].GetComponent<Pieces>().isCorrect() && pieces[13].GetComponent<Pieces>().isCorrect() && pieces[14].GetComponent<Pieces>().isCorrect() &&
+           pieces[15].GetComponent<Pieces>().isCorrect())
         {
             StartCoroutine(CompletePuzzle());
         }
@@ -161,6 +163,10 @@ public class PuzzleRocas : NetworkBehaviour
 
         isCorrect = true;
 
+        MoveRocks();
+
+        Camera.main.orthographic = false;
+
         ActivateCamera.Instance.DisableCamera(numCamera);
 
         foreach (var player in playersList)
@@ -171,5 +177,15 @@ public class PuzzleRocas : NetworkBehaviour
         playersList.Clear();
 
         AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
+    }
+
+    void MoveRocks()
+    {
+        newPosition2 = rockList.transform.position;
+
+        AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
+
+        rockList.transform.position = newPosition;
+        waterList.transform.position = newPosition2;
     }
 }

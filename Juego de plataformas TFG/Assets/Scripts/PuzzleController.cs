@@ -37,9 +37,11 @@ public class PuzzleController : NetworkBehaviour
     [SerializeField] GameObject puzzleControls;
 
     public GameObject rockList;
+    public GameObject waterList;
     int playerLayer;
-    int sumPosY = 20;
-    public int numCamera = 0;
+    public Vector3 newPosition;
+    Vector3 newPosition2;
+    public int numCamera;
 
     void Awake()
     {
@@ -275,6 +277,8 @@ public class PuzzleController : NetworkBehaviour
         }
 
         isCorrect = true;
+        
+        MoveRocks();
 
         ActivateCamera.Instance.DisableCamera(numCamera);
 
@@ -285,23 +289,16 @@ public class PuzzleController : NetworkBehaviour
 
         playersList.Clear();
 
-        // Active final ladder
-        yield return new WaitForSeconds(1f);
-        MoveRocks();
-
         AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
     }
 
-    IEnumerator MoveRocks()
+    void MoveRocks()
     {
-        yield return new WaitForSeconds(0.5f);
+        newPosition2 = rockList.transform.position;
 
         AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
 
-        Vector3 newPosition = rockList.transform.position;
-
-        newPosition.y += sumPosY;
-
         rockList.transform.position = newPosition;
+        waterList.transform.position = newPosition2;
     }
 }

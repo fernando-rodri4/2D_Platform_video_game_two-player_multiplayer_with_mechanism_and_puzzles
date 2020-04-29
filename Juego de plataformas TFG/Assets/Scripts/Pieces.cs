@@ -1,26 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Pieces : MonoBehaviour
+public class Pieces : NetworkBehaviour
 {
 
     private Vector2 initialPosition;
-    public Vector2 mousePosition;
-    public Vector2 actualPosition;
+    private Vector2 mousePosition;
     [SerializeField] private Transform rightPosition;
-    private float deltaX, deltaY;
-    public static bool locked;
+    public float deltaX, deltaY;
+    public bool locked;
+
 
     void Start()
     {
         initialPosition = transform.position;
-        actualPosition = transform.position;
     }
 
     public bool isLocked ()
     {
         return locked;
+    }
+
+    public bool isCorrect ()
+    {
+        if(Mathf.Abs(transform.position.x - rightPosition.position.x) < 0.5f &&
+           Mathf.Abs(transform.position.y - rightPosition.position.y) < 0.5f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void OnMouseDown() 
@@ -34,12 +47,12 @@ public class Pieces : MonoBehaviour
 
     private void OnMouseDrag() 
     {        
-        if(!locked)
+        if(hasAuthority && !locked)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(mousePosition.x - deltaX, mousePosition.y - deltaY);
-            actualPosition = transform.position;
         }
+        
     }
 
     private void OnMouseUp()
