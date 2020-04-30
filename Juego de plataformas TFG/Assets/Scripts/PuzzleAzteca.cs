@@ -141,6 +141,7 @@ public class PuzzleAzteca : NetworkBehaviour
 
         if (playersList.Count == 2 && !startPuzzle)
         {
+            AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.puzzleClip);
             ActivateCamera.Instance.EnableCamera(2);
 
             puzzleControls.SetActive(true);

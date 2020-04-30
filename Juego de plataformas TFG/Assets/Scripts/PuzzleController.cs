@@ -68,8 +68,6 @@ public class PuzzleController : NetworkBehaviour
             return;
         }
 
-        //AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.puzzleClip);
-
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
 
@@ -110,6 +108,8 @@ public class PuzzleController : NetworkBehaviour
 
         if (playersList.Count == 2 && !startPuzzle)
         {
+
+            AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.puzzleClip);
             ActivateCamera.Instance.EnableCamera(numCamera);
 
             puzzleControls.SetActive(true);
@@ -136,14 +136,13 @@ public class PuzzleController : NetworkBehaviour
             StartCoroutine(FinishControls());
         }
 
-        if ((pictures[0].rotation.z % 360) == 0 && (pictures[1].rotation.z % 360) == 0 && (pictures[2].rotation.z % 360) == 0 && (pictures[3].rotation.z % 360) == 0 &&
-            (pictures[4].rotation.z % 360) == 0 && (pictures[5].rotation.z % 360) == 0 && (pictures[6].rotation.z % 360) == 0 && (pictures[7].rotation.z % 360) == 0 &&
-            (pictures[8].rotation.z % 360) == 0 && (pictures[9].rotation.z % 360) == 0 && (pictures[10].rotation.z % 360) == 0 && (pictures[11].rotation.z % 360) == 0 &&
-            (pictures[12].rotation.z % 360) == 0 && (pictures[13].rotation.z % 360) == 0 && (pictures[14].rotation.z % 360) == 0 && (pictures[15].rotation.z % 360) == 0 &&
-            (pictures[16].rotation.z % 360) == 0 && (pictures[17].rotation.z % 360) == 0 && (pictures[18].rotation.z % 360) == 0 && (pictures[19].rotation.z % 360) == 0 &&
-            (pictures[20].rotation.z % 360) == 0 && (pictures[21].rotation.z % 360) == 0 && (pictures[22].rotation.z % 360) == 0 && (pictures[23].rotation.z % 360) == 0 &&
-            (pictures[24].rotation.z % 360) == 0 && (pictures[25].rotation.z % 360) == 0 && (pictures[26].rotation.z % 360) == 0 && (pictures[27].rotation.z % 360) == 0 &&
-            (pictures[28].rotation.z % 360) == 0 && (pictures[29].rotation.z % 360) == 0 && (pictures[30].rotation.z % 360) == 0)
+        if ((pictures[2].rotation.z % 360) == 0 && (pictures[3].rotation.z % 360) == 0 &&
+            (pictures[4].rotation.z % 360) == 0 && ((pictures[8].rotation.z) <= -90 && (pictures[8].rotation.z) > -95) &&
+            ((pictures[14].rotation.z) <= -90 && (pictures[14].rotation.z) > -95) && ((pictures[19].rotation.z) <= -90 && (pictures[19].rotation.z) > -95) &&
+            (pictures[21].rotation.z % 360) == 0 && (pictures[22].rotation.z % 360) == 270 &&
+            ((pictures[23].rotation.z) <= -90 && (pictures[23].rotation.z) > -95) && (pictures[25].rotation.z % 360) == 0 &&
+            (pictures[26].rotation.z) == -180 && ((pictures[27].rotation.z) >= 90 && (pictures[27].rotation.z) < 95) &&
+            (pictures[28].rotation.z % 360) == 0 && (pictures[29].rotation.z % 360) == 180)
         {
             StartCoroutine(CompletePuzzle());
         }
@@ -209,14 +208,14 @@ public class PuzzleController : NetworkBehaviour
             pictures[activeForPlayer1].localScale = new Vector3(4.09f, 4, 1);
             AudioLevelManager.Instance.PlayChangePuzzleClipAudio();
 
-            if (activeForPlayer1 == 0 || activeForPlayer1 == 2 || activeForPlayer1 == 5 || activeForPlayer1 == 7 ||
-                activeForPlayer1 == 12 || activeForPlayer1 == 14 || activeForPlayer1 == 18 || activeForPlayer1 == 20 ||
-                activeForPlayer1 == 26 || activeForPlayer1 == 28)
+            if (activeForPlayer1 == 0 || activeForPlayer1 == 2 || activeForPlayer1 == 5 ||
+                activeForPlayer1 == 11 || activeForPlayer1 == 13 || activeForPlayer1 == 17 ||
+                activeForPlayer1 == 19 || activeForPlayer1 == 25 || activeForPlayer1 == 27)
             {
                 activeForPlayer1 = (activeForPlayer1 + 2) % pictures.Length;
             }
-            else if (activeForPlayer1 == 4 ||activeForPlayer1 == 16 || activeForPlayer1 == 17 || activeForPlayer1 == 25 ||
-                     activeForPlayer1 == 30)
+            else if (activeForPlayer1 == 4 || activeForPlayer1 == 7 || activeForPlayer1 == 15 ||
+            activeForPlayer1 == 16 || activeForPlayer1 == 24 || activeForPlayer1 == 29)
             {
                 activeForPlayer1 = (activeForPlayer1 + 1) % pictures.Length;
             }
@@ -233,17 +232,17 @@ public class PuzzleController : NetworkBehaviour
             pictures[activeForPlayer2].localScale = new Vector3(4.09f, 4, 1);
             AudioLevelManager.Instance.PlayChangePuzzleClipAudio();
 
-            if (activeForPlayer2 == 1 || activeForPlayer2 == 6 || activeForPlayer2 == 8 ||
-                activeForPlayer2 == 11 || activeForPlayer2 == 13 || activeForPlayer2 == 19 ||
-                activeForPlayer2 == 21 || activeForPlayer2 == 27)
+            if (activeForPlayer2 == 1 || activeForPlayer2 == 10 ||
+                activeForPlayer2 == 12 || activeForPlayer2 == 18 ||
+                activeForPlayer2 == 20 || activeForPlayer2 == 26)
             {
                 activeForPlayer2 = (activeForPlayer2 + 2) % pictures.Length;
             }
-            else if (activeForPlayer2 == 10 || activeForPlayer2 == 23)
+            else if (activeForPlayer2 == 9 || activeForPlayer2 == 22)
             {
                 activeForPlayer2 = (activeForPlayer2 + 1) % pictures.Length;
             }
-            else if (activeForPlayer2 == 15)
+            else if (activeForPlayer2 == 6 || activeForPlayer2 == 14)
             {
                 activeForPlayer2 = (activeForPlayer2 + 4) % pictures.Length;
             }
@@ -268,13 +267,6 @@ public class PuzzleController : NetworkBehaviour
         yield return new WaitForSeconds(0.5f);
 
         AudioLevelManager.Instance.PlayPuzzleAudio();
-
-        foreach (var picture in pictures)
-        {
-            picture.localScale = new Vector3(1, 1, 1);
-
-            yield return new WaitForSeconds(0.5f);
-        }
 
         isCorrect = true;
         

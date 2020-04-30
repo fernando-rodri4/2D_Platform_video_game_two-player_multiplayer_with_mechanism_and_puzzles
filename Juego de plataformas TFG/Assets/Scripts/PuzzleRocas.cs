@@ -89,6 +89,7 @@ public class PuzzleRocas : NetworkBehaviour
             Camera.main.orthographic = true;
             mainCamera.orthographicSize = 10.0f;
 
+            AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.puzzleClip);
             ActivateCamera.Instance.EnableCamera(numCamera);
 
             puzzleControls.SetActive(true);

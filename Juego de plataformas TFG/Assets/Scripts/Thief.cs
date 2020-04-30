@@ -39,7 +39,7 @@ public class Thief : MonoBehaviour
     /// Variables to flip the thief
     /// </summary>
     float distanceX = 0;
-    bool flipThief = true;
+    bool flipThief = false;
 
     void Start()
     {
