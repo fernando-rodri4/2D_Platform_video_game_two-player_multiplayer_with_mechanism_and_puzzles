@@ -137,12 +137,12 @@ public class PuzzleController : NetworkBehaviour
         }
 
         if ((pictures[2].rotation.z % 360) == 0 && (pictures[3].rotation.z % 360) == 0 &&
-            (pictures[4].rotation.z % 360) == 0 && ((pictures[8].rotation.z) <= -90 && (pictures[8].rotation.z) > -95) &&
-            ((pictures[14].rotation.z) <= -90 && (pictures[14].rotation.z) > -95) && ((pictures[19].rotation.z) <= -90 && (pictures[19].rotation.z) > -95) &&
-            (pictures[21].rotation.z % 360) == 0 && (pictures[22].rotation.z % 360) == 270 &&
-            ((pictures[23].rotation.z) <= -90 && (pictures[23].rotation.z) > -95) && (pictures[25].rotation.z % 360) == 0 &&
-            (pictures[26].rotation.z) == -180 && ((pictures[27].rotation.z) >= 90 && (pictures[27].rotation.z) < 95) &&
-            (pictures[28].rotation.z % 360) == 0 && (pictures[29].rotation.z % 360) == 180)
+            (pictures[4].rotation.z % 360) == 0 && ((pictures[8].rotation.z) > -2 && (pictures[8].rotation.z) < 2) &&
+            ((pictures[14].rotation.z) > -2 && (pictures[14].rotation.z) < 2) && ((pictures[19].rotation.z) > -2 && (pictures[19].rotation.z) < 2) &&
+            ((pictures[21].rotation.z) > -2 && (pictures[21].rotation.z) < 2) && ((pictures[22].rotation.z) > -2 && (pictures[22].rotation.z) < 2) &&
+            ((pictures[23].rotation.z) > -2 && (pictures[23].rotation.z) < 2) && (pictures[25].rotation.z % 360) == 0 &&
+            ((pictures[26].rotation.z) > -2 && (pictures[26].rotation.z) < 2) && ((pictures[27].rotation.z) > -1 && (pictures[27].rotation.z) < 0) &&
+            (pictures[28].rotation.z % 360) == 0 && ((pictures[29].rotation.z) > -2 && (pictures[29].rotation.z) < 2))
         {
             StartCoroutine(CompletePuzzle());
         }
