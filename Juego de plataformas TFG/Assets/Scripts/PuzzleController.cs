@@ -142,7 +142,7 @@ public class PuzzleController : NetworkBehaviour
             ((pictures[21].rotation.z) > -2 && (pictures[21].rotation.z) < 2) && ((pictures[22].rotation.z) > -2 && (pictures[22].rotation.z) < 2) &&
             ((pictures[23].rotation.z) > -2 && (pictures[23].rotation.z) < 2) && (pictures[25].rotation.z % 360) == 0 &&
             ((pictures[26].rotation.z) > -2 && (pictures[26].rotation.z) < 2) && ((pictures[27].rotation.z) > -1 && (pictures[27].rotation.z) < 0) &&
-            (pictures[28].rotation.z % 360) == 0 && ((pictures[29].rotation.z) > -2 && (pictures[29].rotation.z) < 2))
+            (pictures[28].rotation.z % 360) == 0 && (pictures[29].rotation.z) == 1)
         {
             StartCoroutine(CompletePuzzle());
         }
