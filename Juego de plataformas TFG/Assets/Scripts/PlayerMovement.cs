@@ -28,6 +28,9 @@ public class PlayerMovement : NetworkBehaviour
     /// </summary>
     [HideInInspector] public bool canMove = true;
 
+    /// <summary>
+    /// Id that indicate if the player is server or client
+    /// </summary>
     [SerializeField] protected int id = 0;
 
     /// <summary>
@@ -69,6 +72,9 @@ public class PlayerMovement : NetworkBehaviour
         controller = GetComponent<CharacterController2D>();
     }
 
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     protected void Start()
     {
         if (controller == null || animator == null)
@@ -84,6 +90,7 @@ public class PlayerMovement : NetworkBehaviour
         carryParamID = Animator.StringToHash("IsCarry");
         fallParamID = Animator.StringToHash("VelocityY");
 
+        //Set the id of the player
         if (GetComponent<NetworkIdentity>() != null)
         {
             if (GetComponent<NetworkIdentity>().isServer) 
@@ -143,6 +150,9 @@ public class PlayerMovement : NetworkBehaviour
         isJump = false;
     }
 
+    /// <summary>
+    /// Select the gameObject to carry
+    /// </summary>
     protected void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Box") || other.CompareTag("Player"))
@@ -277,6 +287,9 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Take the object that was selected to carry
+    /// </summary>
     protected void TakeObject()
     {
         elementToCarry.transform.SetParent(this.transform);
@@ -290,6 +303,9 @@ public class PlayerMovement : NetworkBehaviour
         elementToCarry = null;
     }
 
+    /// <summary>
+    /// Drop the gameObject that was carried
+    /// </summary>
     protected void DropObject(float thrust)
     {
         carriedElement.transform.parent = null;
@@ -326,6 +342,7 @@ public class PlayerMovement : NetworkBehaviour
         controller.EnableCarryCollider(carry);
     }
 
+    //Functions that make the synchronization between server and client
     [Command]
     void CmdTakeObject()
     {

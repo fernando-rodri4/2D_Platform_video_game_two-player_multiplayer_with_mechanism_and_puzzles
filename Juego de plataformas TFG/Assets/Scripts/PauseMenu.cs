@@ -2,7 +2,7 @@
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool pause = false;
+    public static bool pause = false;   //If the game is paused or not
     public GameObject pauseMenu;
     public GameObject optionsMenu;
 
@@ -11,7 +11,9 @@ public class PauseMenu : MonoBehaviour
         Pause();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame.
+    /// </summary>
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
@@ -29,6 +31,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resume the pause and can continue with the game
+    /// </summary>
     public void Resume(){
 
         pauseMenu.SetActive(false);
@@ -36,6 +41,9 @@ public class PauseMenu : MonoBehaviour
         pause = false;        
     }
 
+    /// <summary>
+    /// Pause the game
+    /// </summary>
     public void Pause(){
 
         pauseMenu.SetActive(true);
@@ -44,6 +52,9 @@ public class PauseMenu : MonoBehaviour
         pause = true;
     }
 
+    /// <summary>
+    /// Show the options of the menu
+    /// </summary>
     public void LoadOptions(){
 
         pauseMenu.SetActive(false);
@@ -51,6 +62,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    /// <summary>
+    /// Quit the game
+    /// </summary>
     public void QuitGame(){
 
         //Application.Quit();

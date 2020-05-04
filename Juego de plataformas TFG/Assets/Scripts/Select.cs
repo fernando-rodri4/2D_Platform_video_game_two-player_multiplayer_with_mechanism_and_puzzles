@@ -3,14 +3,19 @@ using System.Linq;
 
 public class Select : MonoBehaviour
 {
+    //Options to select
     public GameObject girl;
     public GameObject boy;
 
-    public int elect;
+    public int elect;   //Player elected
 
+    //Instances
     GameObject network;
     GameObject skin;
     
+    /// <summary>
+    /// Destroy duplicated instances
+    /// </summary>
     void Awake()
     {
         network = GameObject.Find("NetworkManager");
@@ -24,12 +29,18 @@ public class Select : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         elect = 0;
         DontDestroyOnLoad(this.gameObject);
     }
 
+    /// <summary>
+    /// Change the view of the player selected
+    /// </summary>
     public void OnMouseDown() 
     {
         if(girl.activeSelf)

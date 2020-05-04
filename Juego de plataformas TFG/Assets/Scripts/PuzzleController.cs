@@ -22,26 +22,32 @@ public class PuzzleController : NetworkBehaviour
     /// The layer the player game object is on
     /// </summary>
 
+    /// <summary>
+    /// List of players
+    /// </summary>
     List<GameObject> playersList;
 
+    /// <summary>
+    /// Player that is playing
+    /// </summary>
     GameObject currentPlayer;
 
-    bool isCorrect = false;
+    bool isCorrect = false; //If the puzzle is correct or not
 
-    bool startPuzzle = false;
+    bool startPuzzle = false;   //If puzzle has started
 
-    int activeForPlayer1 = 0, activeForPlayer2 = 1;
+    int activeForPlayer1 = 0, activeForPlayer2 = 1; //Initial piece for each player
 
-    [SerializeField] GameObject[] picturesAuthority;
+    [SerializeField] GameObject[] picturesAuthority;    //Pieces with authority
 
-    [SerializeField] GameObject puzzleControls;
+    [SerializeField] GameObject puzzleControls; //Controls of the puzzle
 
     public GameObject rockList;
     public GameObject waterList;
     int playerLayer;
-    public Vector3 newPosition;
-    Vector3 newPosition2;
-    public int numCamera;
+    public Vector3 newPosition; //New position for the rocks
+    Vector3 newPosition2;   //New position for the water
+    public int numCamera;   //Number of the enabled camera for the puzzle
 
     void Awake()
     {
@@ -106,6 +112,7 @@ public class PuzzleController : NetworkBehaviour
 
         Rotate();
 
+        //Prepare the puzzle
         if (playersList.Count == 2 && !startPuzzle)
         {
 
@@ -136,6 +143,7 @@ public class PuzzleController : NetworkBehaviour
             StartCoroutine(FinishControls());
         }
 
+        //If the puzzle is correct, call CompletePuzzle function
         if ((pictures[2].rotation.z % 360) == 0 && (pictures[3].rotation.z % 360) == 0 &&
             (pictures[4].rotation.z % 360) == 0 && ((pictures[8].rotation.z) > -2 && (pictures[8].rotation.z) < 2) &&
             ((pictures[14].rotation.z) > -2 && (pictures[14].rotation.z) < 2) && ((pictures[19].rotation.z) > -2 && (pictures[19].rotation.z) < 2) &&
@@ -255,6 +263,9 @@ public class PuzzleController : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Disable the controls of the puzzle
+    /// </summary>
     IEnumerator FinishControls()
     {
         yield return new WaitForSeconds(1f);
@@ -262,6 +273,9 @@ public class PuzzleController : NetworkBehaviour
         puzzleControls.SetActive(false);
     }
 
+    /// <summary>
+    /// If puzzle is completed, activate a mechanism and continue with the map
+    /// </summary>
     IEnumerator CompletePuzzle()
     {
         yield return new WaitForSeconds(0.5f);
@@ -284,6 +298,9 @@ public class PuzzleController : NetworkBehaviour
         AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
     }
 
+    /// <summary>
+    /// Activate a mechanism that will move rocks to cross a lake
+    /// </summary>
     void MoveRocks()
     {
         newPosition2 = rockList.transform.position;

@@ -15,7 +15,7 @@ public class Thief : MonoBehaviour
     public float speed = 2;
 
     /// <summary>
-	/// position of the thief
+	/// Position of the thief
 	/// </summary>
 	Vector3 initialPosition;
     Vector3 target;
@@ -41,6 +41,9 @@ public class Thief : MonoBehaviour
     float distanceX = 0;
     bool flipThief = false;
 
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         if (smokeParticles == null)
@@ -140,7 +143,9 @@ public class Thief : MonoBehaviour
         }
     }
 
-    //Show the radius vision of the thief
+    /// <summary>
+    /// Show the radius vision of the thief
+    /// </summary>
     void OnDrawGizmos() {
 
         Gizmos.color = Color.red;
@@ -150,6 +155,9 @@ public class Thief : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, scapeRadius);
     }
 
+    /// <summary>
+    /// Flip the X position of the thief
+    /// </summary>
     void Flip() 
     {
         flipThief = !flipThief;

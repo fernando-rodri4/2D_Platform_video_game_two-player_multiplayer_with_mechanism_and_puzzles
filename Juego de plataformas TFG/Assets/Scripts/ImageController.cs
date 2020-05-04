@@ -1,26 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class ImageController : MonoBehaviour
+public class ImageController : NetworkBehaviour
 {
-    PuzzleAzteca puzzAzt;
-    public GameObject target;
-    public bool startMove = false;
 
-    // Start is called before the first frame update
+    PuzzleAzteca puzzAzt;   //Instace of PuzzleAzteca
+    public GameObject target;   //Target to move the image
+    public bool startMove = false;  //If can move the image or not
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
     void Start()
     {
         GameObject pA = GameObject.Find("PuzzleAzteca");
         puzzAzt = pA.GetComponent<PuzzleAzteca>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame.
+    /// </summary>
     void Update()
     {
-        if(startMove){
+        if(hasAuthority && startMove){  //If has authority and can move the image
             startMove = false;
-            this.transform.position = target.transform.position;    //move to new position
+            transform.position = target.transform.position;    //move to new position
             puzzAzt.checkComplete=true;
         }
         

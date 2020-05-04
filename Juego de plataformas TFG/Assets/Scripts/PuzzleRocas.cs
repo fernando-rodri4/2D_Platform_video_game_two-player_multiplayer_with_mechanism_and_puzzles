@@ -19,29 +19,35 @@ public class PuzzleRocas : NetworkBehaviour
     /// </summary>
     int playerLayer;
 
+    /// <summary>
+    /// List of the players
+    /// </summary>
     List<GameObject> playersList;
 
+    /// <summary>
+    /// Player that is playing
+    /// </summary>
     GameObject currentPlayer;
 
-    bool isCorrect = false;
-    bool startPuzzle = false;
-    int activeForPlayer1 = 0, activeForPlayer2 = 1;
+    bool isCorrect = false; //If the puzzle is correct or not
+    bool startPuzzle = false;   //If the puzzle is started or not
+    int activeForPlayer1 = 0, activeForPlayer2 = 1; //Indicate the initial pieces
 
     /// <summary>
-    /// Puzzle pictures
+    /// Puzzle pieces
     /// </summary>
     [SerializeField] GameObject[] pieces;
     [SerializeField] GameObject[] piecesAuthority;
-    [SerializeField] GameObject puzzleControls;
+    [SerializeField] GameObject puzzleControls; //Controls of the puzzle
 
-    public Camera mainCamera;
+    public Camera mainCamera;   //Main camera that is enabled for the puzzle
 
-    public int numCamera = 1;
+    public int numCamera = 1;   //Number of camera that is enabled
 
     public GameObject rockList;
     public GameObject waterList;
-    public Vector3 newPosition;
-    Vector3 newPosition2;
+    public Vector3 newPosition; //New position of the rocks
+    Vector3 newPosition2;   //New position of the water
 
     void Awake()
     {
@@ -58,7 +64,9 @@ public class PuzzleRocas : NetworkBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         if (pieces == null || puzzleControls == null)
@@ -67,8 +75,6 @@ public class PuzzleRocas : NetworkBehaviour
             Destroy(this);
             return;
         }
-
-        //AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.puzzleClip);
 
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
@@ -84,6 +90,7 @@ public class PuzzleRocas : NetworkBehaviour
             return;
         }
 
+        //Prepare the puzzle
         if (playersList.Count == 2 && !startPuzzle)
         {
             Camera.main.orthographic = true;
@@ -94,6 +101,8 @@ public class PuzzleRocas : NetworkBehaviour
 
             puzzleControls.SetActive(true);
 
+
+            //Give authority to the pieces
             foreach (var player in playersList)
             {
                 player.GetComponent<PlayerMovement>().canMove = false;
@@ -116,6 +125,7 @@ public class PuzzleRocas : NetworkBehaviour
             StartCoroutine(FinishControls());
         }
 
+        //If it is correct, call CompletePuzzle functions
         if(pieces[0].GetComponent<Pieces>().isCorrect() && pieces[1].GetComponent<Pieces>().isCorrect() && pieces[2].GetComponent<Pieces>().isCorrect() &&
            pieces[3].GetComponent<Pieces>().isCorrect() && pieces[4].GetComponent<Pieces>().isCorrect() && pieces[5].GetComponent<Pieces>().isCorrect() &&
            pieces[6].GetComponent<Pieces>().isCorrect() && pieces[7].GetComponent<Pieces>().isCorrect() && pieces[8].GetComponent<Pieces>().isCorrect() &&
@@ -149,6 +159,9 @@ public class PuzzleRocas : NetworkBehaviour
         return isCorrect;
     }
 
+    /// <summary>
+    /// Disabled the controls of the puzzle
+    /// </summary>
     IEnumerator FinishControls()
     {
         yield return new WaitForSeconds(1f);
@@ -156,6 +169,9 @@ public class PuzzleRocas : NetworkBehaviour
         puzzleControls.SetActive(false);
     }
 
+    /// <summary>
+    /// If puzzle is completed, active a mechanism and continue with the map
+    /// </summary>
     IEnumerator CompletePuzzle()
     {
         yield return new WaitForSeconds(0.5f);
@@ -180,6 +196,9 @@ public class PuzzleRocas : NetworkBehaviour
         AudioLevelManager.Instance.PlayChangeClipAudio(AudioLevelManager.Instance.musicClip);
     }
 
+    /// <summary>
+    /// Activate the mechanism that will move rocks to cross a lake
+    /// </summary>
     void MoveRocks()
     {
         newPosition2 = rockList.transform.position;

@@ -2,6 +2,10 @@
 
 public class TouchRotate : MonoBehaviour
 {
+
+    /// <summary>
+    /// Rotate the image to the right
+    /// </summary>
     public void RotateRight()
     {
         if (PuzzleTutorialController.Instance != null && !PuzzleTutorialController.Instance.GetIsCorrect())
@@ -14,6 +18,9 @@ public class TouchRotate : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Rotate the image to the left
+    /// </summary>
     public void RotateLeft()
     {
         if (PuzzleTutorialController.Instance != null && !PuzzleTutorialController.Instance.GetIsCorrect())

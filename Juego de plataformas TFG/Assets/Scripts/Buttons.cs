@@ -38,7 +38,6 @@ public class Buttons : MonoBehaviour
             return;
         }
     }
-
     public bool IsButtonActivate()
     {
         return isActivate;

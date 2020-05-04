@@ -4,12 +4,16 @@ using System.Linq;
 public class LevelOption : MonoBehaviour
 {
 
-    public string elect;
+    public string elect;    //Level elected
 
+    //Instances
     GameObject network;
     GameObject skin;
     GameObject level;
     
+    /// <summary>
+    /// //In this method destroy duplicated instances
+    /// </summary>
     void Awake()
     {
         network = GameObject.Find("NetworkManager");
@@ -25,12 +29,18 @@ public class LevelOption : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// In this method we prepare the gameObject to still on load
+    /// </summary>
     void Start()
     {
         elect = "";
         DontDestroyOnLoad(this.gameObject);
     }
 
+    /// <summary>
+    /// This method gets the level elected from the name 
+    /// </summary>
     public void GetLevel(string name)
     {
         
