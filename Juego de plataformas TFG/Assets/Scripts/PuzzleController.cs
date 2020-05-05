@@ -74,6 +74,8 @@ public class PuzzleController : NetworkBehaviour
             return;
         }
 
+        LevelManager.Instance.RegisterPuzzle();
+
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
 
@@ -278,6 +280,8 @@ public class PuzzleController : NetworkBehaviour
     /// </summary>
     IEnumerator CompletePuzzle()
     {
+        LevelManager.Instance.CompletedPuzzle();
+
         yield return new WaitForSeconds(0.5f);
 
         AudioLevelManager.Instance.PlayPuzzleAudio();
