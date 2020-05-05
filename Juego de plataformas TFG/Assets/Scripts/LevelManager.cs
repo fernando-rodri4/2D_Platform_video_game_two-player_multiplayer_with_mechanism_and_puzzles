@@ -33,6 +33,16 @@ public sealed class LevelManager : MonoBehaviour
     int numThieves = 0;
 
     /// <summary>
+    /// Number of puzzles in level
+    /// </summary>
+    int totalPuzzles = 0;
+
+    /// <summary>
+    /// Number of puzzles completed in level 
+    /// </summary>
+    int completedPuzzles = 0;
+
+    /// <summary>
     /// Length of the total game time
     /// </summary>
     float totalGameTime;
@@ -116,6 +126,26 @@ public sealed class LevelManager : MonoBehaviour
         StartCoroutine(UILevelManager.Instance.UpdateThiefUI(numThieves));
     }
 
+    public void RegisterPuzzle()
+    {
+        //If there is no current LevelManager, exit
+        if (Instance == null)
+            return;
+
+        //Add one to the level's puzzle counter
+        totalPuzzles++;
+    }
+
+    public void CompletedPuzzle()
+    {
+        //If there is no current LevelManager, exit
+        if (Instance == null)
+            return;
+
+        //Add one to the level's puzzle counter
+        completedPuzzles++;
+    }
+
     void SetCameraCinemachine()
     {
         var players = ClientScene.localPlayers;
@@ -143,7 +173,9 @@ public sealed class LevelManager : MonoBehaviour
         int thievesTotal = numThieves + thieves.Count;
         string thiefText = numThieves + "/" + thievesTotal;
 
-        UILevelManager.Instance.SetStatistics(minutes.ToString("00") + ":" + seconds.ToString("00"), 0.ToString(), thiefText);
+        string puzzleText = completedPuzzles + "/" + totalPuzzles;
+
+        UILevelManager.Instance.SetStatistics(minutes.ToString("00") + ":" + seconds.ToString("00"), puzzleText, thiefText);
     }
 
     public void SetGameOverTrue()
