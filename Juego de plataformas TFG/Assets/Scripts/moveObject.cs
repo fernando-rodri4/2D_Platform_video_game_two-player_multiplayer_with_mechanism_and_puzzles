@@ -41,16 +41,12 @@ public class moveObject : MonoBehaviour
         if(isButtonActivate)
         {
 
-            AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
-
             Vector3 newPosition = transform.position;
             newPosition.y += sumPos;
             transform.position = newPosition;
         }
         else if(!isButtonActivate && transform.position != initialPos)
         {
-
-            AudioLevelManager.Instance.PlayRotatePuzzleClipAudio();
             Vector3 newPosition = transform.position;
             newPosition.y -= sumPos;
             transform.position = newPosition;     

@@ -146,14 +146,24 @@ public class PuzzleController : NetworkBehaviour
             StartCoroutine(FinishControls());
         }
 
+        print("PICTURE 2 = 0: " + (pictures[2].rotation.z % 360));
+        print("PICTURE 4 = 0: " + (pictures[4].rotation.z % 360));
+        print("PICTURE 8 -2 < x < 2: " + (pictures[8].rotation.z));
+        print("PICTURE 19 -2 < x < 2: " + (pictures[19].rotation.z));
+        print("PICTURE 21 -2 < x < 2: " + (pictures[21].rotation.z));
+        print("PICTURE 25 = 0: " + (pictures[25].rotation.z % 360));
+        print("PICTURE 26 -2 < x < 2: " + (pictures[26].rotation.z));
+        print("PICTURE 27 -1 < x < 1: " + (pictures[27].rotation.z));
+        print("PICTURE 29 = 1: " + (pictures[29].rotation.z));
+
         //If the puzzle is correct, call CompletePuzzle function
         if ((pictures[2].rotation.z % 360) == 0 && (pictures[3].rotation.z % 360) == 0 &&
             (pictures[4].rotation.z % 360) == 0 && ((pictures[8].rotation.z) > -2 && (pictures[8].rotation.z) < 2) &&
             ((pictures[14].rotation.z) > -2 && (pictures[14].rotation.z) < 2) && ((pictures[19].rotation.z) > -2 && (pictures[19].rotation.z) < 2) &&
             ((pictures[21].rotation.z) > -2 && (pictures[21].rotation.z) < 2) && ((pictures[22].rotation.z) > -2 && (pictures[22].rotation.z) < 2) &&
             ((pictures[23].rotation.z) > -2 && (pictures[23].rotation.z) < 2) && (pictures[25].rotation.z % 360) == 0 &&
-            ((pictures[26].rotation.z) > -2 && (pictures[26].rotation.z) < 2) && ((pictures[27].rotation.z) > -1 && (pictures[27].rotation.z) < 0) &&
-            (pictures[28].rotation.z % 360) == 0 && (pictures[29].rotation.z) == 1 && gameIsCompleted)
+            ((pictures[26].rotation.z) > -2 && (pictures[26].rotation.z) < 2) && ((pictures[27].rotation.z) > -1 && (pictures[27].rotation.z) < 1) &&
+            (pictures[28].rotation.z % 360) == 0 && ((pictures[29].rotation.z) == 1 ||(pictures[29].rotation.z) == -1) && gameIsCompleted)
         {
             gameIsCompleted = false;
             StartCoroutine(CompletePuzzle());

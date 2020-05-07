@@ -23,13 +23,13 @@ public class PuzzleAzteca : NetworkBehaviour
     public int sizeRow, sizeCol;
     int countPoint = 0;
     int countImagePoint = 0;
-    int countComplete = 0;
+    public int countComplete = 0;
 
     GameObject temp;    //Auxiliar variable to sort images
 
     public bool startControl = false;   //If the image can be moved or not
-    public bool checkComplete;  //Check if pieces are completed
     public bool gameIsComplete; //If puzzle is completed or not
+    bool complete = true;
 
     bool startPuzzle = false;   //If the puzzle has started or not
 
@@ -278,37 +278,37 @@ public class PuzzleAzteca : NetworkBehaviour
             }
         }
 
-        //If game is completed, call CompletePuzzle
-        if (gameIsComplete)
-        {
-            gameIsComplete = false;
-            StartCoroutine(CompletePuzzle());
-        }      
-    }
+        for(int r=0; r<sizeRow; r++){   //run rows
 
-    void FixedUpdate() {
-        if(checkComplete){
-            checkComplete=false;
-            for(int r=0; r<sizeRow; r++){   //run rows
+            for(int c=0; c<sizeCol; c++){   //run columns
 
-                for(int c=0; c<sizeCol; c++){   //run columns
-
-                    if(imageKeyMatrix[r,c].gameObject.name.CompareTo(imagePuzzleMatrix[r,c].gameObject.name) == 0){
-                        countComplete++;
-                    }
-                    else{
-                        break;  //out loop
-                    }
+                if(imageKeyMatrix[r,c].gameObject.transform.position == imagePuzzleMatrix[r,c].gameObject.transform.position){
+                    countComplete++;
+                    print(
+                        "IMAGEKEY -> F:"+r+" C:"+c + "NOMBRE: "+imageKeyMatrix[r,c].transform.position+"\n"
+                       +"IMAGEPUZZLE -> F:"+r+" C:"+c + "NOMBRE: "+imagePuzzleMatrix[r,c].transform.position+"\n"
+                       +"COUNT: "+countComplete
+                    );
+                }
+                else{
+                    break;  //out loop
                 }
             }
-            if(countComplete == checkPointList.Count){  //if 16 imagePuzzle == 16 imageKey (in 2 array) (CheckPointList.Count=9)
-                gameIsComplete=true;
-                Debug.Log("Game Is Complete");
-            }  
-            else{
-                countComplete=0;
-            }
-        }        
+        }
+        
+        if(countComplete == checkPointList.Count){  //if 16 imagePuzzle == 16 imageKey (in 2 array)
+            gameIsComplete=true;
+        }  
+        else{
+            countComplete=0;
+        }  
+
+        //If game is completed, call CompletePuzzle
+        if (gameIsComplete && complete)
+        {
+            complete = false;
+            StartCoroutine(CompletePuzzle());
+        }      
     }
 
     /// <summary>
@@ -368,23 +368,23 @@ public class PuzzleAzteca : NetworkBehaviour
     {
         //first row
         imagePuzzleMatrix[0,0] = imagePuzzleList[0];
-        imagePuzzleMatrix[0,1] = imagePuzzleList[1];
-        imagePuzzleMatrix[0,2] = imagePuzzleList[2];
-        imagePuzzleMatrix[0,3] = imagePuzzleList[3];
+        imagePuzzleMatrix[0,1] = imagePuzzleList[4];
+        imagePuzzleMatrix[0,2] = imagePuzzleList[1];
+        imagePuzzleMatrix[0,3] = imagePuzzleList[2];
         //second row
-        imagePuzzleMatrix[1,0] = imagePuzzleList[4];
-        imagePuzzleMatrix[1,1] = imagePuzzleList[5];
-        imagePuzzleMatrix[1,2] = imagePuzzleList[6];
-        imagePuzzleMatrix[1,3] = imagePuzzleList[7];
+        imagePuzzleMatrix[1,0] = imagePuzzleList[5];
+        imagePuzzleMatrix[1,1] = imagePuzzleList[6];
+        imagePuzzleMatrix[1,2] = imagePuzzleList[7];
+        imagePuzzleMatrix[1,3] = imagePuzzleList[3];
         //third row
-        imagePuzzleMatrix[2,0] = imagePuzzleList[8];
-        imagePuzzleMatrix[2,1] = imagePuzzleList[9];
-        imagePuzzleMatrix[2,2] = imagePuzzleList[10];
-        imagePuzzleMatrix[2,3] = imagePuzzleList[11];
+        imagePuzzleMatrix[2,0] = imagePuzzleList[12];
+        imagePuzzleMatrix[2,1] = imagePuzzleList[8];
+        imagePuzzleMatrix[2,2] = imagePuzzleList[9];
+        imagePuzzleMatrix[2,3] = imagePuzzleList[10];
         //fourth row
-        imagePuzzleMatrix[3,0] = imagePuzzleList[12];
-        imagePuzzleMatrix[3,1] = imagePuzzleList[13];
-        imagePuzzleMatrix[3,2] = imagePuzzleList[14];
+        imagePuzzleMatrix[3,0] = imagePuzzleList[13];
+        imagePuzzleMatrix[3,1] = imagePuzzleList[14];
+        imagePuzzleMatrix[3,2] = imagePuzzleList[11];
         imagePuzzleMatrix[3,3] = imagePuzzleList[15];
     }
 

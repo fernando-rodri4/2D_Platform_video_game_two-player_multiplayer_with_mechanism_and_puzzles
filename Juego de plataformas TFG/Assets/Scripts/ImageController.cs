@@ -28,7 +28,6 @@ public class ImageController : NetworkBehaviour
         if(startMove){  //If has authority and can move the image
             startMove = false;
             transform.position = target.transform.position;    //move to new position
-            puzzAzt.checkComplete=true;
         }
         
     }
