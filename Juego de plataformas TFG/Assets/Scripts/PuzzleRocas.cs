@@ -31,6 +31,7 @@ public class PuzzleRocas : NetworkBehaviour
 
     bool isCorrect = false; //If the puzzle is correct or not
     bool startPuzzle = false;   //If the puzzle is started or not
+    bool gameIsCompleted = true;
     int activeForPlayer1 = 0, activeForPlayer2 = 1; //Indicate the initial pieces
 
     /// <summary>
@@ -133,8 +134,9 @@ public class PuzzleRocas : NetworkBehaviour
            pieces[6].GetComponent<Pieces>().isCorrect() && pieces[7].GetComponent<Pieces>().isCorrect() && pieces[8].GetComponent<Pieces>().isCorrect() &&
            pieces[9].GetComponent<Pieces>().isCorrect() && pieces[10].GetComponent<Pieces>().isCorrect() && pieces[11].GetComponent<Pieces>().isCorrect() &&
            pieces[12].GetComponent<Pieces>().isCorrect() && pieces[13].GetComponent<Pieces>().isCorrect() && pieces[14].GetComponent<Pieces>().isCorrect() &&
-           pieces[15].GetComponent<Pieces>().isCorrect())
+           pieces[15].GetComponent<Pieces>().isCorrect() && gameIsCompleted)
         {
+            gameIsCompleted = false;
             StartCoroutine(CompletePuzzle());
         }
     }
@@ -166,7 +168,7 @@ public class PuzzleRocas : NetworkBehaviour
     /// </summary>
     IEnumerator FinishControls()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         puzzleControls.SetActive(false);
     }

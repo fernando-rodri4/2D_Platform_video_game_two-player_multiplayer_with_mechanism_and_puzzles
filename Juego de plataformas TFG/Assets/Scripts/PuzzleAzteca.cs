@@ -175,7 +175,7 @@ public class PuzzleAzteca : NetworkBehaviour
         }
 
         //Prepare the puzzle
-        if (playersList.Count == 1 && !startPuzzle)
+        if (playersList.Count == 2 && !startPuzzle)
         {
 
             Camera.main.orthographic = true;
@@ -281,6 +281,7 @@ public class PuzzleAzteca : NetworkBehaviour
         //If game is completed, call CompletePuzzle
         if (gameIsComplete)
         {
+            gameIsComplete = false;
             StartCoroutine(CompletePuzzle());
         }      
     }
@@ -313,10 +314,8 @@ public class PuzzleAzteca : NetworkBehaviour
     /// <summary>
     /// Sort image for player 2
     /// </summary>
-    void SortImage(){
-
-        if(hasAuthority)
-        {
+    void SortImage()
+    {
             temp = imagePuzzleMatrix[rowBlank,colBlank];
             imagePuzzleMatrix[rowBlank,colBlank] = null;
 
@@ -335,16 +334,13 @@ public class PuzzleAzteca : NetworkBehaviour
             //set row and col for image blank
             rowBlank = row; //position touch
             colBlank = col;
-        }
     }
 
     /// <summary>
     /// Sort image for player 1
     /// </summary>
-     void SortImage1(){
-
-        if(hasAuthority)
-        {
+     void SortImage1()
+     {
             temp = imagePuzzleMatrix[rowBlank1,colBlank1];
             imagePuzzleMatrix[rowBlank1, colBlank1] = null;
 
@@ -363,7 +359,6 @@ public class PuzzleAzteca : NetworkBehaviour
             //set row and col for image blank
             rowBlank1 = row; //position touch
             colBlank1 = col;
-        }
     }
 
     /// <summary>
@@ -411,7 +406,7 @@ public class PuzzleAzteca : NetworkBehaviour
     /// </summary>
     IEnumerator FinishControls()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         puzzleControls.SetActive(false);
     }
@@ -426,8 +421,6 @@ public class PuzzleAzteca : NetworkBehaviour
         yield return new WaitForSeconds(0.5f);
 
         AudioLevelManager.Instance.PlayPuzzleAudio();
-
-        gameIsComplete = true;
 
         MoveRocks();
 

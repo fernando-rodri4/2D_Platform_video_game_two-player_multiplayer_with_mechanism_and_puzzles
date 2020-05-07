@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 70.55
+  m_fontSize: 56.05
   m_fontSizeBase: 56.1
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -35,6 +35,7 @@ public class PuzzleController : NetworkBehaviour
     bool isCorrect = false; //If the puzzle is correct or not
 
     bool startPuzzle = false;   //If puzzle has started
+    bool gameIsCompleted = true;
 
     int activeForPlayer1 = 0, activeForPlayer2 = 1; //Initial piece for each player
 
@@ -152,8 +153,9 @@ public class PuzzleController : NetworkBehaviour
             ((pictures[21].rotation.z) > -2 && (pictures[21].rotation.z) < 2) && ((pictures[22].rotation.z) > -2 && (pictures[22].rotation.z) < 2) &&
             ((pictures[23].rotation.z) > -2 && (pictures[23].rotation.z) < 2) && (pictures[25].rotation.z % 360) == 0 &&
             ((pictures[26].rotation.z) > -2 && (pictures[26].rotation.z) < 2) && ((pictures[27].rotation.z) > -1 && (pictures[27].rotation.z) < 0) &&
-            (pictures[28].rotation.z % 360) == 0 && (pictures[29].rotation.z) == 1)
+            (pictures[28].rotation.z % 360) == 0 && (pictures[29].rotation.z) == 1 && gameIsCompleted)
         {
+            gameIsCompleted = false;
             StartCoroutine(CompletePuzzle());
         }
     }
