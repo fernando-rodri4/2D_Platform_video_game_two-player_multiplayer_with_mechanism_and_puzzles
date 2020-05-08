@@ -282,13 +282,14 @@ public class PuzzleAzteca : NetworkBehaviour
 
             for(int c=0; c<sizeCol; c++){   //run columns
 
-                if(imageKeyMatrix[r,c].gameObject.transform.position == imagePuzzleMatrix[r,c].gameObject.transform.position){
-                    countComplete++;
-                    print(
+            print(
                         "IMAGEKEY -> F:"+r+" C:"+c + "NOMBRE: "+imageKeyMatrix[r,c].transform.position+"\n"
                        +"IMAGEPUZZLE -> F:"+r+" C:"+c + "NOMBRE: "+imagePuzzleMatrix[r,c].transform.position+"\n"
-                       +"COUNT: "+countComplete
                     );
+
+                if(Mathf.Abs(imageKeyMatrix[r,c].gameObject.transform.position.x - imagePuzzleMatrix[r,c].gameObject.transform.position.x) <= 2.002 &&
+                    Mathf.Abs(imageKeyMatrix[r,c].gameObject.transform.position.y - imagePuzzleMatrix[r,c].gameObject.transform.position.y) <= 2){
+                    countComplete++;
                 }
                 else{
                     break;  //out loop
