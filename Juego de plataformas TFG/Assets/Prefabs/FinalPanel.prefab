@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 5935408145701392989}
   - component: {fileID: 5935408145701392988}
   - component: {fileID: 5935408145701392991}
-  - component: {fileID: 5126708213301847512}
+  - component: {fileID: 1978170324962700085}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -860,7 +860,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5126708213301847512
+--- !u!114 &1978170324962700085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -902,7 +902,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5935408145701392988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: changeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LevelMain
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5935408145730913011
 GameObject:
   m_ObjectHideFlags: 0
