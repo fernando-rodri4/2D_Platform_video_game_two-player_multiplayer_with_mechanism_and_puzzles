@@ -283,8 +283,8 @@ public class PuzzleAzteca : NetworkBehaviour
             for(int c=0; c<sizeCol; c++){   //run columns
 
             print(
-                        "IMAGEKEY -> F:"+r+" C:"+c + "NOMBRE: "+imageKeyMatrix[r,c].transform.localPosition +"\n"
-                       +"IMAGEPUZZLE -> F:"+r+" C:"+c + "NOMBRE: "+imagePuzzleMatrix[r,c].transform.localPosition +"\n"
+                        "IMAGEKEY -> F:"+r+" C:"+c + "NOMBRE: "+imageKeyMatrix[r,c].transform.localPosition + "\n"
+                       +"IMAGEPUZZLE -> F:"+r+" C:"+c + "NOMBRE: "+imagePuzzleMatrix[r,c].transform.localPosition + "\n"
                     );
 
                 if(Mathf.Abs(imageKeyMatrix[r,c].transform.localPosition.x - imagePuzzleMatrix[r,c].transform.localPosition.x) == 0 &&
