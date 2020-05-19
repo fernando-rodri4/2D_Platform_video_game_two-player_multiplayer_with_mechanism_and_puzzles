@@ -21,6 +21,7 @@ public class PuzzleController : NetworkBehaviour
     /// <summary>
     /// The layer the player game object is on
     /// </summary>
+    int playerLayer;
 
     /// <summary>
     /// List of players
