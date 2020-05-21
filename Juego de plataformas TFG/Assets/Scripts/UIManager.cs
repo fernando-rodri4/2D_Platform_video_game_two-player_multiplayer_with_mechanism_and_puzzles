@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public static UIManager Instance = null;
 
+    [SerializeField] GameObject[] levelAchievements = null;
+    [SerializeField] GameObject[] shadowsAchievements = null;
+
     void Awake()
     {
         //If an UILevelManager exists and it is not this...
@@ -28,5 +31,24 @@ public class UIManager : MonoBehaviour
 
         //This is the Instance UILevelManager.
         Instance = this;
+    }
+
+    void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public IEnumerator LevelAchievement(int level)
+    {
+        levelAchievements[level - 1].SetActive(true);
+        yield return new WaitForSeconds(7);
+        levelAchievements[level - 1].SetActive(false);
+    }
+
+    public IEnumerator CapturedShadows(int index)
+    {
+        shadowsAchievements[index - 1].SetActive(true);
+        yield return new WaitForSeconds(7);
+        shadowsAchievements[index - 1].SetActive(false);
     }
 }

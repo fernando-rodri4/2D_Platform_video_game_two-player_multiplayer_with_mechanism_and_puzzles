@@ -124,6 +124,16 @@ public sealed class LevelManager : MonoBehaviour
 
         //Tell the UIManager to update the thief text
         StartCoroutine(UILevelManager.Instance.UpdateThiefUI(numThieves));
+
+        switch (numThieves)
+        {
+            case 1:
+                GameManager.Instance.CapturedShadows(1);
+                break;
+            case 3:
+                GameManager.Instance.CapturedShadows(2);
+                break;
+        }
     }
 
     public void RegisterPuzzle()
