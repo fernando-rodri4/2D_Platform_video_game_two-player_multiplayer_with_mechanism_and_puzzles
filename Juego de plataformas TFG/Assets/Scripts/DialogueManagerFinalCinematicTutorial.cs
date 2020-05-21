@@ -52,12 +52,11 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
         }
         else if (players.Count == 2 && !isDialogueStart)
         {
+
             foreach (var player in players)
             {
                 player.GetComponent<PlayerMovement>().canMove = false;
             }
-
-            LevelManager.Instance.SetGameOverTrue();
 
             image.SetActive(false);
             text.SetActive(false);
@@ -65,6 +64,7 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
             dialoguePanel.SetActive(true);
             displayText.fontSize = textSize;
             displayText.text = "";
+            LevelManager.Instance.SetGameOverTrue();
             StartDialogue();
             isDialogueStart = true;
         }
@@ -121,6 +121,8 @@ public class DialogueManagerFinalCinematicTutorial : DialogueManager
 
     IEnumerator AppearTitle()
     {
+        GameManager.Instance.LevelComplete(1);
+
         yield return new WaitForSeconds(7);
 
         gameTitle.SetActive(true);
