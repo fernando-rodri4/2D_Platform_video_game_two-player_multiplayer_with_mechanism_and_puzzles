@@ -90,6 +90,7 @@ public class FinalLevel : DialogueManager
         if (sentences.Count <= 0 && displayText.text == activeSentence)
         {
             dialoguePanel.SetActive(false);
+            GameManager.Instance.LevelComplete(2);
             LevelManager.Instance.PlayerWin();
             return;
         }
