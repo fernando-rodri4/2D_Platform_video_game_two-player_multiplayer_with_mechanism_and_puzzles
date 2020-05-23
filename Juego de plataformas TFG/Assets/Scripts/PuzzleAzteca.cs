@@ -32,6 +32,7 @@ public class PuzzleAzteca : NetworkBehaviour
     bool complete = true;
 
     bool startPuzzle = false;   //If the puzzle has started or not
+    bool breakLoop = false;  
 
     /// <summary>
     /// List of images used for the puzzle
@@ -278,13 +279,15 @@ public class PuzzleAzteca : NetworkBehaviour
             }
         }
 
-        for(int r=0; r<sizeRow; r++){   //run rows
+        breakLoop = false;
 
-            for(int c=0; c<sizeCol; c++){   //run columns
+        for (int r=0; r<sizeRow && !breakLoop; r++){   //run rows
 
-            print(
-                        "IMAGEKEY -> F:"+r+" C:"+c + "NOMBRE: "+imageKeyMatrix[r,c].transform.localPosition + "\n"
-                       +"IMAGEPUZZLE -> F:"+r+" C:"+c + "NOMBRE: "+imagePuzzleMatrix[r,c].transform.localPosition + "\n"
+            for(int c=0; c< sizeCol && !breakLoop; c++){   //run columns
+
+            Debug.Log(
+                        "IMAGEKEY -> F:"+r+" C:"+c + imageKeyMatrix[r, c].name + ": "+ imageKeyMatrix[r,c].transform.localPosition + "\n"
+                       +"IMAGEPUZZLE -> F:"+r+" C:"+c + imagePuzzleMatrix[r, c].name + ": "+ imagePuzzleMatrix[r,c].transform.localPosition + "\n"
                     );
 
                 if(Mathf.Abs(imageKeyMatrix[r,c].transform.localPosition.x - imagePuzzleMatrix[r,c].transform.localPosition.x) == 0 &&
@@ -292,7 +295,7 @@ public class PuzzleAzteca : NetworkBehaviour
                     countComplete++;
                 }
                 else{
-                    break;  //out loop
+                    breakLoop = true;  //out loop
                 }
             }
         }
