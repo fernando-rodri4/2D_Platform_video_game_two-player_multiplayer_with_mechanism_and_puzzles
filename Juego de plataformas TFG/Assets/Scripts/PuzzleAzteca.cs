@@ -100,7 +100,7 @@ public class PuzzleAzteca : NetworkBehaviour
             return;
         }
 
-        LevelManager.Instance.RegisterPuzzle();
+        //LevelManager.Instance.RegisterPuzzle();
 
         //Get the integer representation of the "Player" layer
         playerLayer = LayerMask.NameToLayer("Player");
@@ -286,12 +286,13 @@ public class PuzzleAzteca : NetworkBehaviour
             for(int c=0; c< sizeCol && !breakLoop; c++){   //run columns
 
             Debug.Log(
-                        "IMAGEKEY -> F:"+r+" C:"+c + imageKeyMatrix[r, c].name + ": "+ imageKeyMatrix[r,c].transform.localPosition + "\n"
-                       +"IMAGEPUZZLE -> F:"+r+" C:"+c + imagePuzzleMatrix[r, c].name + ": "+ imagePuzzleMatrix[r,c].transform.localPosition + "\n"
+                        "F: " + r + "C: " + c  + "\n"
+                        + "KEY: " + imageKeyMatrix[r,c].name + imageKeyMatrix[r,c].transform.localPosition + "\n"
+                        + "PUZZLE: " + imagePuzzleMatrix[r,c].name + imagePuzzleMatrix[r,c].transform.localPosition + "\n"  
                     );
 
-                if(Mathf.Abs(imageKeyMatrix[r,c].transform.localPosition.x - imagePuzzleMatrix[r,c].transform.localPosition.x) == 0 &&
-                    Mathf.Abs(imageKeyMatrix[r,c].transform.localPosition.y - imagePuzzleMatrix[r,c].transform.localPosition.y) == 0){
+                if(Mathf.Abs(imageKeyMatrix[r,c].transform.localPosition.x - imagePuzzleMatrix[r,c].transform.localPosition.x) <= 0.1 &&
+                    Mathf.Abs(imageKeyMatrix[r,c].transform.localPosition.y - imagePuzzleMatrix[r,c].transform.localPosition.y) <= 0.1){
                     countComplete++;
                 }
                 else{
@@ -420,7 +421,7 @@ public class PuzzleAzteca : NetworkBehaviour
     /// </summary>
     IEnumerator CompletePuzzle()
     {
-        LevelManager.Instance.CompletedPuzzle();
+        //LevelManager.Instance.CompletedPuzzle();
 
         yield return new WaitForSeconds(0.5f);
 
