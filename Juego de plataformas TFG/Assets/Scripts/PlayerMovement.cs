@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerMovement : NetworkBehaviour
@@ -114,32 +116,32 @@ public class PlayerMovement : NetworkBehaviour
             }
         }
 
-        MovePlayer();
+            MovePlayer();
 
-        // If press jump button, activate jumping animation and deactivate carry animation if it is playing.
-        if (Input.GetButtonDown("Jump") && canMove)
-        {
-            isJump = true;
-
-            if (isCarry)
+            // If press jump button, activate jumping animation and deactivate carry animation if it is playing.
+            if (Input.GetButtonDown("Jump") && canMove)
             {
+                isJump = true;
+
+                if (isCarry)
+                {
+                    CarryPosition();
+                }
+            }
+
+            // If press carry button, call CarryPosition method.
+            if (Input.GetButtonDown("Carry") && canMove && horizontalMove == 0 && animator.GetFloat(fallParamID) == 0)
+            {
+                carryButton = true;
+
                 CarryPosition();
             }
-        }
 
-        // If press carry button, call CarryPosition method.
-        if (Input.GetButtonDown("Carry") && canMove && horizontalMove == 0 && animator.GetFloat(fallParamID) == 0)
-        {
-            carryButton = true;
-
-            CarryPosition();
-        }
-
-        /*// Deactivate carry animation if it is falling.
-        if (isCarry && animator.GetFloat(fallParamID) < -0.01)
-        {
-            CarryPosition();
-        }*/
+            /*// Deactivate carry animation if it is falling.
+            if (isCarry && animator.GetFloat(fallParamID) < -0.01)
+            {
+                CarryPosition();
+            }*/
     }
 
     protected void FixedUpdate()
@@ -155,6 +157,7 @@ public class PlayerMovement : NetworkBehaviour
     /// </summary>
     protected void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (other.CompareTag("Box") || other.CompareTag("Player"))
         {
             elementToCarry = other.gameObject;
@@ -163,6 +166,7 @@ public class PlayerMovement : NetworkBehaviour
 
     protected void OnTriggerExit2D(Collider2D other)
     {
+
         if ((other.CompareTag("Box") || other.CompareTag("Player"))  && other.gameObject == elementToCarry)
         {
             elementToCarry = null;
