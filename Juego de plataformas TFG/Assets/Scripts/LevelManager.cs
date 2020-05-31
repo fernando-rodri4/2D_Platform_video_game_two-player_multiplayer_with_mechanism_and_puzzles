@@ -1,10 +1,10 @@
 ﻿// This script is a Manager that controls the the flow and control of the level. It keeps
-// track of player data (thieves count, total level time) and interfaces with
-// the UILevelManager.
+// track of player data (thieves count, total level time).
 using UnityEngine;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public sealed class LevelManager : MonoBehaviour
 {
@@ -52,6 +52,16 @@ public sealed class LevelManager : MonoBehaviour
     /// </summary>
     bool isGameOver = false;
 
+    /// <summary>
+    /// Number of player in level
+    /// </summary>
+    int players = 0;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] Button buttonContinue;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -73,6 +83,20 @@ public sealed class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (players < 2)
+        {
+            players = GameObject.FindGameObjectsWithTag("Player").Length;
+            
+            return;
+        }
+        else if (players == 2)
+        {
+            players++;
+
+            buttonContinue.interactable = true;
+            buttonContinue.transform.GetChild(0).GetComponent<Text>().text = "CONTINUAR";
+        }
+
         //If the game is over, exit
         if (isGameOver)
         {

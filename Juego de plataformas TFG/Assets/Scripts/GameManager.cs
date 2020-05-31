@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     /// scripts access this one through this instance.
     /// </summary>
     public static GameManager Instance = null;
+
+    public int currentWidth;
+    public int currentHeight;
 
     void Awake()
     {
@@ -37,7 +41,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentWidth != Screen.width || currentHeight != Screen.height)
+        {
+            Screen.SetResolution(Screen.width, Screen.height, Screen.fullScreen);
+        }
     }
 
     public void LevelComplete(int level)

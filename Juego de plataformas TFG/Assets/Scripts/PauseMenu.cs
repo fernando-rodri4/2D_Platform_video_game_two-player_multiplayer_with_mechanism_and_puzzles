@@ -6,6 +6,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject optionsMenu;
 
+    /// <summary>
+    /// Number of player in level
+    /// </summary>
+    int players = 0;
+
     void Awake() {
 
         Pause();
@@ -16,17 +21,28 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
 
-            AudioLevelManager.Instance.PlayButtonAudio();
+        if (players < 2)
+        {
+            players = GameObject.FindGameObjectsWithTag("Player").Length;
+            
+            return;
+        }
+        else if (players == 2)
+        {
 
-            if(pause){
+            if(Input.GetKeyDown(KeyCode.Escape)){
 
-                Resume();
-            }
-            else{
+                AudioLevelManager.Instance.PlayButtonAudio();
 
-                Pause();
+                if(pause){
+
+                    Resume();
+                }
+                else{
+
+                    Pause();
+                }
             }
         }
     }
