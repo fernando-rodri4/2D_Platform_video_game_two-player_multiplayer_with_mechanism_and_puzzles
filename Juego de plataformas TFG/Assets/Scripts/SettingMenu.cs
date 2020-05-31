@@ -107,6 +107,9 @@ public class SettingMenu : MonoBehaviour
     {
         Resolution resolution = resolutionsList[resolutionIndex];
 
+        GameManager.Instance.currentHeight = Screen.height;
+        GameManager.Instance.currentWidth = Screen.width;
+
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
 
         PlayerPrefs.SetInt("resolutionWidht", resolution.width);
