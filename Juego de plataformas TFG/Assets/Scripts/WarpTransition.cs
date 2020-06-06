@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class WarpTransition : NetworkBehaviour
+public class WarpTransition : MonoBehaviour
 {
     /// <summary>
     /// Reference to the CameraTransition.
@@ -42,45 +42,29 @@ public class WarpTransition : NetworkBehaviour
     {
         if (Input.GetButtonDown("Enter"))
         {
+            GameObject player;
+
             if (player0 != null)
             {
-                player0.GetComponent<PlayerMovement>().canMove = false;
-
-                if (numberTransport == 0)
-                {
-                    gameObject.SetActive(false);
-                }
-
-                StartCoroutine(TransportPlayer(player0));
-
-                if(player0.GetComponent<PlayerMovement>().GetIsServer())
-                {
-                    RpcSubtractTransport();
-                }
-                else
-                {
-                    CmdSubtractTransport();
-                }
+                player = player0;
             }
-            else if(player1 != null)
+            else
             {
-                player1.GetComponent<PlayerMovement>().canMove = false;
+                player = player1;
+            }
+
+            if (player != null)
+            {
+                player.GetComponent<PlayerMovement>().canMove = false;
 
                 if (numberTransport == 0)
                 {
                     gameObject.SetActive(false);
                 }
 
-                StartCoroutine(TransportPlayer(player1));
+                StartCoroutine(TransportPlayer(player));
 
-                if (player1.GetComponent<PlayerMovement>().GetIsServer())
-                {
-                    RpcSubtractTransport();
-                }
-                else
-                {
-                    CmdSubtractTransport();
-                }
+                SubtractTransport();
             }
         }
     }
@@ -139,17 +123,5 @@ public class WarpTransition : NetworkBehaviour
     void SubtractTransport ()
     {
         numberTransport--;
-    }
-
-    [ClientRpc]
-    void RpcSubtractTransport()
-    {
-        SubtractTransport();
-    }
-
-    [Command]
-    void CmdSubtractTransport()
-    {
-        RpcSubtractTransport();
     }
 }
