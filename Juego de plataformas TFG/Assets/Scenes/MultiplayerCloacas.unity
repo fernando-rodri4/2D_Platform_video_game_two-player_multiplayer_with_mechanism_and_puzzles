@@ -1027,7 +1027,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 52
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 38.8
+  m_fontSize: 52.5
   m_fontSizeBase: 56.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2998,7 +2998,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &341805448
 PrefabInstance:
@@ -3275,7 +3275,7 @@ Transform:
   - {fileID: 1400633983}
   - {fileID: 880224407}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &357894876 stripped
 Transform:
@@ -5965,7 +5965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ngkejrngkjng
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e436ddbfd8e215245b55f3f627c9f93d, type: 2}
   m_sharedMaterial: {fileID: -9122746515307206408, guid: e436ddbfd8e215245b55f3f627c9f93d,
@@ -5994,8 +5994,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 61.4
-  m_fontSizeBase: 61.4
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6011,7 +6011,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -6969,7 +6969,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 34.15
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -7098,7 +7098,7 @@ Transform:
   - {fileID: 1311903529}
   - {fileID: 1318086202}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &671766830
 PrefabInstance:
@@ -42844,7 +42844,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 35.7
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -43041,7 +43041,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 52
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -44175,7 +44175,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 1087354407}
   button: {fileID: 2776168765516825650}
   displayText: {fileID: 527549619}
-  textSize: 36.65
+  textSize: 34
   typingSpeed: 0.009
   dialogue:
     name: 
@@ -45182,7 +45182,7 @@ Transform:
   - {fileID: 1297478758}
   - {fileID: 1048347931}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342324827
 GameObject:
@@ -45462,7 +45462,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 34.15
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -47258,7 +47258,7 @@ RectTransform:
   - {fileID: 1927390655}
   - {fileID: 1558714437}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -49246,7 +49246,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1783916234
 BoxCollider2D:
@@ -51885,7 +51885,7 @@ PrefabInstance:
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
       propertyPath: textSize
-      value: 41.65
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1344643906574200961, guid: 9d44b58d9f0712b478bf48fe1bfaa42d,
         type: 3}
@@ -53021,6 +53021,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1087354408}
     m_Modifications:
+    - target: {fileID: 1118080833412965960, guid: 4ec3c04cbbbb46e4e88c55e578a396ea,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118080833412965960, guid: 4ec3c04cbbbb46e4e88c55e578a396ea,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2642045288044888314, guid: 4ec3c04cbbbb46e4e88c55e578a396ea,
         type: 3}
       propertyPath: m_LocalPosition.x
