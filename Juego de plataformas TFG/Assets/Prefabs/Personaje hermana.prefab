@@ -110,7 +110,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014593393
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 1
   m_Sprite: {fileID: -863012215747988573, guid: 94b8391344a8d5048af4b5db749d3b40,
     type: 3}
@@ -210,14 +210,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_JumpForce: 500
   m_MovementSmoothing: 0.05
-  m_AirControl: 0
+  m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   m_GroundCheck: {fileID: 4165397341457389861}
   m_CarryEnableCollider: {fileID: 4165397342200973892}
   isSister: 1
-  m_FacingRight: 1
 --- !u!114 &4165397342012106378
 MonoBehaviour:
   m_ObjectHideFlags: 0
