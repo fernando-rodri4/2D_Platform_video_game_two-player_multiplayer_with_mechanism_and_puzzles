@@ -13,7 +13,7 @@ This project will be carried out by: **Fernando Rodríguez Salas** and **Ramón 
 
 The project will be divided into different tasks (graphics, code programming, music...), which will be distributed to each of the project members and will be carried out individually or jointly. 
 
-To carry out the development of the project we will use several technologies that will facilitate the task. We will make use of: Visual Studio 2019 for programming, Unity as a game engine, Piskel as a tool for developing graphic elements, FL Studio for music composition and as3sxfr for sounds.
+To carry out the development of the project we will use several technologies that will facilitate the task. We will make use of: Visual Studio 2019 for programming, Unity (2019.3.0) as a game engine, Piskel as a tool for developing graphic elements, FL Studio for music composition and as3sxfr for sounds.
 
 ### Goals of the project
 
@@ -50,7 +50,7 @@ Este proyecto será realizado por: **Fernando Rodríguez Salas** y **Ramón Jes�
 
 El proyecto se dividirá en diferentes tareas (gráficos, programación de código, música…), las cuales se repartirán a cada uno de los miembros del proyecto y se realizarán de forma individual o conjunta.
 
-Para realizar el desarrollo del proyecto usaremos varias tecnologías que nos facilitarán la tarea. Haremos uso de: Visual Studio 2019 para la programación, Unity como motor de videojuegos y Piskel como herramienta de desarrollo de elementos gráficos, FL Studio para la composición de la música y as3sxfr para los sonidos.
+Para realizar el desarrollo del proyecto usaremos varias tecnologías que nos facilitarán la tarea. Haremos uso de: Visual Studio 2019 para la programación, Unity (2019.3.0) como motor de videojuegos y Piskel como herramienta de desarrollo de elementos gráficos, FL Studio para la composición de la música y as3sxfr para los sonidos.
 
 ### Objetivos del proyecto
 
